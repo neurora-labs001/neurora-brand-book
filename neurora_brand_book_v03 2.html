@@ -1,0 +1,2615 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>neurora LABS — Brand Book v03</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..500&family=Inter+Tight:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    /* Ground & ink */
+    --paper:        #FAFAF8;
+    --paper-warm:   #F2F0EA;
+    --ink:          #0D1B33;   /* Navy / Sleep — primary ink */
+    --ink-soft:     #2B2F36;
+    --hairline:     rgba(13, 27, 51, 0.12);
+    --hairline-mid: rgba(13, 27, 51, 0.22);
+    --hairline-ink: rgba(13, 27, 51, 0.55);
+    --mute-1:       rgba(13, 27, 51, 0.55);
+    --mute-2:       rgba(13, 27, 51, 0.72);
+    --mute-3:       rgba(13, 27, 51, 0.85);
+
+    /* State palette — daily arc, morning → night */
+    --activate:     #B5471F;   /* burnt sienna / iron oxide */
+    --activate-soft:#E9D5C8;
+    --focus:        #1F4A3D;   /* clinical viridian / lab glass */
+    --focus-soft:   #D4DDD7;
+    --calm:         #5A6B7A;   /* slate dusk */
+    --calm-soft:    #DCDFE3;
+    --sleep:        #0D1B33;   /* navy */
+    --sleep-soft:   #C9CDD4;
+  }
+
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Inter Tight', sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* ───────── Document chrome ───────── */
+  .doc-header {
+    border-bottom: 0.5px solid var(--hairline);
+    padding: 24px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    background: var(--paper);
+    z-index: 100;
+    backdrop-filter: saturate(140%) blur(8px);
+  }
+  .doc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .doc-id strong { color: var(--ink); font-weight: 400; }
+  .doc-nav {
+    display: flex;
+    gap: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .doc-nav a {
+    color: var(--mute-1);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .doc-nav a:hover { color: var(--ink); }
+
+  /* ───────── Reusable shells ───────── */
+  .frame {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 88px 48px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .frame.tight  { padding: 64px 48px; }
+  .frame.airy   { padding: 112px 48px; }
+
+  .section-head {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+    margin-bottom: 56px;
+  }
+  .section-eyebrow {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .section-eyebrow .data {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 400;
+    color: var(--ink);
+  }
+  .section-h {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 56;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin: 16px 0 0;
+    max-width: 14ch;
+  }
+  .section-h em { font-style: italic; }
+  .section-h.wide { max-width: 22ch; }
+
+  .body-col p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 17px;
+    line-height: 1.7;
+    color: var(--mute-2);
+    margin-bottom: 18px;
+  }
+  .body-col p:last-child { margin-bottom: 0; }
+  .body-col strong { font-weight: 400; color: var(--ink); font-style: italic; }
+  .body-col em.data {
+    font-family: 'JetBrains Mono', monospace;
+    font-style: normal;
+    font-size: 14px;
+    color: var(--ink);
+    background: var(--paper-warm);
+    padding: 1px 6px;
+  }
+
+  /* ───────── Cover ───────── */
+  .cover { padding: 120px 48px 88px; max-width: 1320px; margin: 0 auto; border-bottom: 0.5px solid var(--hairline); }
+  .cover-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 40px;
+  }
+  .cover-tag .dot {
+    display: inline-block;
+    width: 6px; height: 6px;
+    background: var(--ink);
+    margin-right: 14px;
+    vertical-align: 2px;
+  }
+  .cover h1 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 72;
+    font-weight: 300;
+    font-size: 82px;
+    line-height: 0.98;
+    letter-spacing: -0.028em;
+    margin-bottom: 36px;
+    max-width: 920px;
+  }
+  .cover h1 em { font-style: italic; }
+  .cover-sub {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+    line-height: 1.5;
+    color: var(--mute-2);
+    max-width: 640px;
+    margin-bottom: 72px;
+  }
+  .cover-meta {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    padding-top: 24px;
+    max-width: 920px;
+  }
+  .cover-meta-cell {
+    padding-right: 24px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .cover-meta-cell:last-child { border-right: none; padding-left: 24px; padding-right: 0; }
+  .cover-meta-cell:not(:first-child) { padding-left: 24px; }
+  .meta-label {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 10px;
+  }
+  .meta-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  /* ───────── Contents ───────── */
+  .toc {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 56px 48px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .toc-head {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 24px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 64px;
+  }
+  .toc-row {
+    display: grid;
+    grid-template-columns: 64px 1fr auto;
+    align-items: baseline;
+    gap: 16px;
+    padding: 14px 0;
+    border-bottom: 0.5px solid var(--hairline);
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .toc-row .num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+    letter-spacing: 0.12em;
+  }
+  .toc-row .name {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-size: 18px;
+  }
+  .toc-row .name em { font-style: italic; color: var(--mute-2); }
+  .toc-row .pg {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+  }
+  .toc-row:hover .name { color: var(--ink); }
+
+  /* ───────── S01 — Foundation ───────── */
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+    margin-top: 8px;
+  }
+  .pillar {
+    border-top: 0.5px solid var(--ink);
+    padding-top: 22px;
+  }
+  .pillar-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 14px;
+  }
+  .pillar-title {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 32;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    margin-bottom: 14px;
+  }
+  .pillar-title em { font-style: italic; }
+  .pillar p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--mute-2);
+  }
+
+  /* ───────── S02 — Positioning rails ───────── */
+  .rails {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .rail {
+    padding: 28px 28px 32px;
+    border-right: 0.5px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .rail:nth-child(2n) { border-right: none; }
+  .rail:nth-last-child(-n+2) { border-bottom: none; }
+  .rail-tag {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+  }
+  .rail-tag.is { color: var(--ink); }
+  .rail-tag.isnot { color: var(--mute-1); }
+  .rail-line {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 24;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.3;
+    letter-spacing: -0.012em;
+  }
+  .rail-line em { font-style: italic; }
+  .rail.isnot .rail-line { color: var(--mute-1); text-decoration: line-through; text-decoration-thickness: 0.5px; text-decoration-color: var(--hairline-mid); }
+
+  /* ───────── S03 — Voice ───────── */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: 56px;
+  }
+  .voice-card {
+    border-top: 0.5px solid var(--ink);
+    padding-top: 22px;
+  }
+  .voice-card .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 16px;
+  }
+  .voice-card .word {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 36;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 30px;
+    margin-bottom: 14px;
+  }
+  .voice-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mute-2);
+  }
+
+  .word-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+  }
+  .word-col {
+    padding: 24px 0;
+  }
+  .word-col:first-child { padding-right: 32px; border-right: 0.5px solid var(--hairline); }
+  .word-col:last-child { padding-left: 32px; }
+  .word-col-head {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .word-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 24px;
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--hairline);
+    font-size: 14px;
+  }
+  .word-row:last-child { border-bottom: none; }
+  .word-row .yes {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--ink);
+  }
+  .word-row .no {
+    font-family: 'Inter Tight', sans-serif;
+    color: var(--mute-1);
+    text-decoration: line-through;
+    text-decoration-thickness: 0.5px;
+    text-decoration-color: var(--hairline-mid);
+    font-size: 14px;
+  }
+  .word-row .arrow {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+  }
+
+  .banned-list {
+    display: flex;
+    flex-direction: column;
+  }
+  .banned {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--mute-1);
+    text-decoration: line-through;
+    text-decoration-thickness: 0.5px;
+    text-decoration-color: var(--hairline-mid);
+    padding: 10px 0;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .banned:last-child { border-bottom: none; }
+
+  /* ───────── S04 — Typography ───────── */
+  .type-spec {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    margin-bottom: 56px;
+  }
+  .type-spec-cell {
+    padding: 28px 28px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .type-spec-cell:last-child { border-right: none; }
+  .ts-role {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 18px;
+  }
+  .ts-name {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 36;
+    font-weight: 300;
+    font-size: 30px;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .ts-name.sans { font-family: 'Inter Tight', sans-serif; font-weight: 400; letter-spacing: -0.012em; }
+  .ts-name.mono { font-family: 'JetBrains Mono', monospace; font-size: 22px; letter-spacing: -0.01em; }
+  .ts-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+    line-height: 1.6;
+  }
+  .ts-meta .paid { color: var(--mute-2); }
+  .ts-rule {
+    margin-top: 18px;
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 14;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--mute-2);
+    padding-top: 14px;
+    border-top: 0.5px solid var(--hairline);
+  }
+
+  /* Typography specimen */
+  .specimen {
+    border: 0.5px solid var(--hairline);
+    background: var(--paper);
+    margin-bottom: 56px;
+  }
+  .specimen-band {
+    padding: 12px 24px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .specimen-row {
+    padding: 36px 32px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 32px;
+    align-items: baseline;
+  }
+  .specimen-row:last-child { border-bottom: none; }
+  .specimen-key {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    line-height: 1.7;
+  }
+  .specimen-key strong { color: var(--ink); font-weight: 400; display: block; margin-bottom: 4px; }
+  .sp-h0 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 96;
+    font-weight: 300;
+    font-size: 96px;
+    line-height: 0.95;
+    letter-spacing: -0.032em;
+  }
+  .sp-h0 em { font-style: italic; }
+  .sp-h1 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 56;
+    font-weight: 300;
+    font-size: 54px;
+    line-height: 1.0;
+    letter-spacing: -0.024em;
+  }
+  .sp-h1 em { font-style: italic; }
+  .sp-h2 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 36;
+    font-weight: 300;
+    font-size: 32px;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+  }
+  .sp-h2 em { font-style: italic; }
+  .sp-editorial {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.55;
+    color: var(--mute-3);
+    max-width: 56ch;
+  }
+  .sp-editorial em { font-style: italic; }
+  .sp-body {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--mute-3);
+    max-width: 56ch;
+  }
+  .sp-label {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+  }
+  .sp-ui {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink);
+  }
+  .sp-data {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .sp-data-line {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--mute-2);
+    line-height: 1.8;
+  }
+
+  .type-rules {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+  }
+  .type-rule {
+    padding: 24px 0;
+    border-bottom: 0.5px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 20px;
+    align-items: baseline;
+  }
+  .type-rule:nth-child(odd) { padding-right: 28px; border-right: 0.5px solid var(--hairline); padding-left: 0; }
+  .type-rule:nth-child(even) { padding-left: 28px; }
+  .type-rule:nth-last-child(-n+2) { border-bottom: none; }
+  .type-rule .id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+    letter-spacing: 0.12em;
+  }
+  .type-rule .txt {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mute-2);
+  }
+  .type-rule .txt strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* ───────── S02 — Mission, Vision, Beliefs ───────── */
+  .anchors {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+    margin-bottom: 64px;
+  }
+  .anchor {
+    padding: 32px 32px 36px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .anchor:last-child { border-right: none; padding-left: 32px; }
+  .anchor:first-child { padding-left: 0; padding-right: 32px; }
+  .anchor:last-child { padding-right: 0; padding-left: 32px; }
+  .anchor .ribbon {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 18px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+  }
+  .anchor .ribbon strong { color: var(--ink); font-weight: 400; }
+  .anchor h3 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 56;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1.05;
+    letter-spacing: -0.022em;
+    margin-bottom: 20px;
+  }
+  .anchor h3 em { font-style: italic; }
+  .anchor p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: var(--mute-2);
+    margin-bottom: 14px;
+  }
+  .anchor p:last-child { margin-bottom: 0; }
+  .anchor p strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  .beliefs-head {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 0;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--ink);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .beliefs-head .sub {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 15px;
+    color: var(--mute-1);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+  .beliefs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .belief {
+    padding: 32px 0 32px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 72px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+  .belief:nth-child(odd) {
+    padding-right: 40px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .belief:nth-child(even) { padding-left: 40px; }
+  .belief:nth-last-child(-n+2) { border-bottom: none; }
+  .belief .roman {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--mute-1);
+    line-height: 1;
+    letter-spacing: 0.08em;
+    padding-top: 8px;
+  }
+  .belief .body h4 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 28;
+    font-weight: 300;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: -0.014em;
+    margin-bottom: 14px;
+  }
+  .belief .body h4 em { font-style: italic; }
+  .belief .body p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 14.5px;
+    line-height: 1.65;
+    color: var(--mute-2);
+  }
+  .belief .body p strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* ───────── S05 — Color ───────── */
+  .palette-ground {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    margin-bottom: 56px;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .pg-cell {
+    padding: 28px 24px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .pg-cell:last-child { border-right: none; }
+  .swatch {
+    height: 96px;
+    border: 0.5px solid var(--hairline-mid);
+    margin-bottom: 18px;
+  }
+  .pg-name {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 22;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 20px;
+    margin-bottom: 4px;
+  }
+  .pg-role {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 14px;
+  }
+  .pg-spec {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-2);
+    line-height: 1.7;
+  }
+
+  /* States color sub-section */
+  .states-block { margin-top: 24px; }
+  .states-heading {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--ink);
+    margin-bottom: 0;
+  }
+  .states-heading .order-note {
+    color: var(--mute-1);
+    font-weight: 400;
+    margin-left: 12px;
+  }
+  .state-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .state-card {
+    padding: 28px 24px 32px;
+    border-right: 0.5px solid var(--hairline);
+    position: relative;
+  }
+  .state-card:last-child { border-right: none; }
+  .state-swatch {
+    height: 120px;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .state-swatch::after {
+    content: "";
+    position: absolute; left: 0; bottom: 0;
+    width: 100%; height: 28px;
+    background: var(--accent-soft, transparent);
+  }
+  .state-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--mute-1);
+    margin-bottom: 10px;
+  }
+  .state-name {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 30;
+    font-weight: 300;
+    font-size: 26px;
+    line-height: 1.1;
+    margin-bottom: 4px;
+  }
+  .state-claim {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 17px;
+    color: var(--mute-2);
+    margin-bottom: 18px;
+  }
+  .state-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--mute-2);
+    line-height: 1.85;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--hairline);
+  }
+  .state-meta .key { color: var(--mute-1); }
+  .state-meta .hex { color: var(--ink); }
+
+  .color-rules-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 56px;
+    margin-top: 56px;
+  }
+  .color-rules-grid h4 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 18px;
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .color-rules-grid ul {
+    list-style: none;
+    padding: 0;
+  }
+  .color-rules-grid li {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--mute-2);
+    padding: 12px 0;
+    border-bottom: 0.5px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 8px;
+  }
+  .color-rules-grid li:last-child { border-bottom: none; }
+  .color-rules-grid li .marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-1);
+    padding-top: 3px;
+  }
+  .color-rules-grid strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* ───────── S06 — States detail ───────── */
+  .states-detail {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  .state-row-detail {
+    display: grid;
+    grid-template-columns: 220px 1fr 1fr;
+    gap: 48px;
+    padding: 40px 0;
+    border-top: 0.5px solid var(--hairline);
+    align-items: start;
+  }
+  .state-row-detail:first-child { border-top: 0.5px solid var(--ink); }
+  .state-row-detail:last-child { border-bottom: 0.5px solid var(--ink); }
+  .state-row-detail .head {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .state-row-detail .colorchip {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 18px;
+  }
+  .state-row-detail .id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    color: var(--mute-1);
+  }
+  .state-row-detail .name {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 40;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1;
+    margin: 4px 0 6px;
+  }
+  .state-row-detail .claim {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 16px;
+    color: var(--mute-2);
+  }
+  .state-row-detail h5 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .state-row-detail .col p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--mute-2);
+    margin-bottom: 14px;
+  }
+  .state-row-detail .col p:last-child { margin-bottom: 0; }
+  .state-row-detail .col p strong { font-weight: 400; color: var(--ink); font-style: italic; }
+  .state-row-detail .col .data-list {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--mute-2);
+    line-height: 1.85;
+  }
+  .state-row-detail .col .data-list .k { color: var(--mute-1); }
+  .state-row-detail .col .data-list .v { color: var(--ink); }
+
+  /* ───────── S07 — Wordmark ───────── */
+  .wm-frame {
+    background: var(--paper-warm);
+    padding: 56px 48px 88px;
+    text-align: center;
+    border: 0.5px solid var(--hairline);
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .wm-frame-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 56px;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .wm-construct {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 72;
+    font-weight: 400;
+    font-size: 96px;
+    line-height: 1;
+    letter-spacing: -0.018em;
+    color: var(--ink);
+    margin-bottom: 8px;
+  }
+  .wm-labs-tag {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .wm-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .wm-cell {
+    padding: 28px 28px 36px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .wm-cell:last-child { border-right: none; }
+  .wm-cell .label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 22px;
+  }
+  .wm-mini {
+    height: 90px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 18px;
+    border: 0.5px solid var(--hairline);
+  }
+  .wm-mini.paper { background: var(--paper); }
+  .wm-mini.dark  { background: var(--ink); color: var(--paper); }
+  .wm-mini.warm  { background: var(--paper-warm); }
+  .wm-mini .mark {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 24;
+    font-weight: 400;
+    font-size: 26px;
+    letter-spacing: -0.014em;
+    line-height: 1;
+  }
+  .wm-mini .mark em {
+    font-family: 'Inter Tight', sans-serif;
+    font-style: normal;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 0.5px solid currentColor;
+    opacity: 0.55;
+    vertical-align: 4px;
+    text-transform: uppercase;
+  }
+  .wm-cell .note {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 14;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--mute-2);
+  }
+
+  /* ───────── S08 — Application / Surfaces ───────── */
+  .surface-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  .surface {
+    border: 0.5px solid var(--hairline);
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .surface-head {
+    padding: 14px 22px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .surface-head strong { color: var(--ink); font-weight: 400; }
+  .surface-body { padding: 36px 28px; min-height: 280px; }
+  .surface-body.compact { padding: 28px; min-height: 0; }
+
+  /* Surface — Packaging label */
+  .label-card {
+    background: var(--paper);
+    border: 0.5px solid var(--hairline-mid);
+    padding: 28px 22px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    gap: 20px;
+    height: 360px;
+  }
+  .label-card .lh-top {
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .label-card .wm-label {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 20;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.014em;
+  }
+  .label-card .nl {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    color: var(--mute-1);
+  }
+  .label-card .state-mark {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 10px;
+  }
+  .label-card h3 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 48;
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 0.95;
+    letter-spacing: -0.022em;
+  }
+  .label-card h3 em { font-style: italic; }
+  .label-card .lh-mid {
+    border-top: 0.5px solid var(--hairline);
+    padding-top: 14px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--mute-2);
+    line-height: 1.7;
+  }
+  .label-card .lh-mid .k { color: var(--mute-1); display: block; font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 2px; }
+  .label-card .lh-bot {
+    border-top: 0.5px solid var(--hairline);
+    padding-top: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.18em;
+    color: var(--mute-1);
+    text-transform: uppercase;
+  }
+  .label-card .lh-bot .price { color: var(--ink); }
+
+  /* Surface — Site hero (compact) */
+  .site-hero {
+    height: 360px;
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+  }
+  .site-hero .topnav {
+    padding: 16px 22px;
+    border-bottom: 0.5px solid var(--hairline);
+    display: flex; justify-content: space-between; align-items: baseline;
+  }
+  .site-hero .wm {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 20;
+    font-weight: 400;
+    font-size: 18px;
+    letter-spacing: -0.014em;
+  }
+  .site-hero .wm em {
+    font-family: 'Inter Tight', sans-serif;
+    font-style: normal;
+    font-size: 8.5px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    color: var(--mute-1);
+    margin-left: 10px;
+    padding-left: 10px;
+    border-left: 0.5px solid var(--hairline-mid);
+    vertical-align: 3px;
+    text-transform: uppercase;
+  }
+  .site-hero .nav-links {
+    display: flex; gap: 22px;
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-2);
+  }
+  .site-hero .heart {
+    padding: 28px 28px 24px;
+    align-content: center;
+  }
+  .site-hero .eyebrow {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 14px;
+  }
+  .site-hero .eyebrow .data {
+    font-family: 'JetBrains Mono', monospace;
+    color: var(--ink);
+    font-weight: 400;
+    margin-right: 8px;
+  }
+  .site-hero h1 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 60;
+    font-weight: 300;
+    font-size: 44px;
+    line-height: 0.98;
+    letter-spacing: -0.025em;
+    margin-bottom: 16px;
+  }
+  .site-hero h1 em { font-style: italic; }
+  .site-hero .sub {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--mute-2);
+    max-width: 38ch;
+  }
+  .site-hero .spec-strip {
+    background: var(--paper-warm);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 0.5px solid var(--hairline);
+  }
+  .site-hero .ss-cell {
+    padding: 14px 16px;
+    border-right: 0.5px solid var(--hairline);
+  }
+  .site-hero .ss-cell:last-child { border-right: none; }
+  .site-hero .ss-k {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 4px;
+  }
+  .site-hero .ss-v {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    color: var(--ink);
+  }
+
+  /* Surface — Editorial / journal page */
+  .editorial-page {
+    padding: 32px 28px;
+    height: 360px;
+  }
+  .editorial-page .head-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding-bottom: 14px;
+    border-bottom: 0.5px solid var(--ink);
+    margin-bottom: 22px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+  .editorial-page .head-line strong { color: var(--ink); font-weight: 400; }
+  .editorial-page h4 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 36;
+    font-weight: 300;
+    font-size: 28px;
+    line-height: 1.1;
+    letter-spacing: -0.018em;
+    margin-bottom: 16px;
+  }
+  .editorial-page h4 em { font-style: italic; }
+  .editorial-page p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 14;
+    font-weight: 300;
+    font-size: 13px;
+    line-height: 1.65;
+    color: var(--mute-2);
+    margin-bottom: 10px;
+  }
+  .editorial-page p strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* Surface — Email signature / business card */
+  .stationery {
+    padding: 36px 28px;
+    height: 360px;
+    display: grid;
+    grid-template-rows: 1fr auto;
+  }
+  .stationery .mark {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 32;
+    font-weight: 400;
+    font-size: 28px;
+    letter-spacing: -0.018em;
+    margin-bottom: 6px;
+  }
+  .stationery .mark em {
+    font-family: 'Inter Tight', sans-serif;
+    font-style: normal;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.42em;
+    color: var(--mute-1);
+    margin-left: 12px;
+    padding-left: 12px;
+    border-left: 0.5px solid var(--hairline-mid);
+    vertical-align: 4px;
+    text-transform: uppercase;
+  }
+  .stationery .pos {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-style: italic;
+    font-size: 14px;
+    color: var(--mute-2);
+    margin-bottom: 36px;
+  }
+  .stationery .contact {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--mute-2);
+    line-height: 1.85;
+  }
+  .stationery .contact .k { color: var(--mute-1); display: inline-block; width: 32px; }
+  .stationery .foot {
+    padding-top: 16px;
+    border-top: 0.5px solid var(--hairline);
+    display: flex; justify-content: space-between;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+  }
+
+  /* Application rules */
+  .surface-rules {
+    margin-top: 56px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+  .surface-rules h4 {
+    font-family: 'Inter Tight', sans-serif;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ink);
+    padding-bottom: 12px;
+    border-bottom: 0.5px solid var(--ink);
+    margin-bottom: 4px;
+  }
+  .surface-rules-body p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15.5px;
+    line-height: 1.7;
+    color: var(--mute-2);
+    margin-bottom: 14px;
+  }
+  .surface-rules-body p:last-child { margin-bottom: 0; }
+  .surface-rules-body strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* ───────── S09 — Photography direction (no images, descriptive) ───────── */
+  .photo-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+    border-bottom: 0.5px solid var(--ink);
+  }
+  .photo-card {
+    padding: 32px 28px;
+    border-right: 0.5px solid var(--hairline);
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .photo-card:nth-child(2n) { border-right: none; }
+  .photo-card:nth-last-child(-n+2) { border-bottom: none; }
+  .photo-card .pc-id {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    margin-bottom: 12px;
+  }
+  .photo-card h4 {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 28;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.15;
+    margin-bottom: 14px;
+  }
+  .photo-card h4 em { font-style: italic; }
+  .photo-card p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 14;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--mute-2);
+    margin-bottom: 14px;
+  }
+  .photo-card .specs {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10.5px;
+    color: var(--mute-2);
+    line-height: 1.9;
+    padding-top: 14px;
+    border-top: 0.5px solid var(--hairline);
+  }
+  .photo-card .specs .k { color: var(--mute-1); }
+
+  /* ───────── S10 — Don'ts ───────── */
+  .donts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    border-top: 0.5px solid var(--ink);
+  }
+  .dont {
+    padding: 22px 0;
+    border-bottom: 0.5px solid var(--hairline);
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+  .dont:nth-child(odd) { padding-right: 32px; border-right: 0.5px solid var(--hairline); padding-left: 0; }
+  .dont:nth-child(even) { padding-left: 32px; }
+  .dont .x {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: var(--ink);
+    letter-spacing: 0.04em;
+  }
+  .dont .txt {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 16;
+    font-weight: 300;
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--mute-2);
+  }
+  .dont .txt strong { font-weight: 400; color: var(--ink); font-style: italic; }
+
+  /* ───────── Closing card ───────── */
+  .closing {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 96px 48px;
+    border-bottom: 0.5px solid var(--hairline);
+  }
+  .closing-inner {
+    max-width: 1320px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 64px;
+  }
+  .closing .section-eyebrow { color: rgba(250,250,248,0.6); }
+  .closing .section-eyebrow .data { color: var(--paper); }
+  .closing .section-h { color: var(--paper); }
+  .closing-body p {
+    font-family: 'Newsreader', serif;
+    font-variation-settings: "opsz" 18;
+    font-weight: 300;
+    font-size: 19px;
+    line-height: 1.65;
+    color: rgba(250,250,248,0.82);
+    margin-bottom: 18px;
+  }
+  .closing-body p strong { font-weight: 400; color: var(--paper); font-style: italic; }
+  .closing-meta {
+    margin-top: 32px;
+    padding-top: 24px;
+    border-top: 0.5px solid rgba(250,250,248,0.22);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    color: rgba(250,250,248,0.6);
+  }
+  .closing-meta .k { display: block; font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; margin-bottom: 6px; }
+  .closing-meta .v { color: var(--paper); font-size: 12px; }
+
+  /* ───────── Footer ───────── */
+  .doc-footer {
+    padding: 32px 48px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--mute-1);
+    max-width: 1320px;
+    margin: 0 auto;
+  }
+
+  @media print {
+    .doc-header { position: relative; }
+    .frame, .closing { page-break-inside: avoid; }
+  }
+
+  @media (max-width: 900px) {
+    .section-head, .surface-rules, .closing-inner, .how-to { grid-template-columns: 1fr; gap: 32px; }
+    .pillars, .surface-grid, .voice-grid, .photo-grid, .donts, .word-list, .color-rules-grid, .anchors, .beliefs { grid-template-columns: 1fr; }
+    .state-grid, .palette-ground, .cover-meta { grid-template-columns: repeat(2, 1fr); }
+    .state-row-detail { grid-template-columns: 1fr; }
+    .cover h1 { font-size: 56px; }
+    .sp-h0 { font-size: 64px; }
+    .doc-nav { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ───────── Sticky header ───────── -->
+<header class="doc-header">
+  <div class="doc-id">N · L — <strong>Brand Book</strong> · v03 · Pharma</div>
+  <nav class="doc-nav">
+    <a href="#s01">01 Foundation</a>
+    <a href="#s02">02 Mission</a>
+    <a href="#s05">05 Type</a>
+    <a href="#s06">06 Color</a>
+    <a href="#s07">07 States</a>
+    <a href="#s09">09 Surfaces</a>
+  </nav>
+</header>
+
+<!-- ───────── Cover ───────── -->
+<section class="cover">
+  <div class="cover-tag"><span class="dot"></span>Brand Book · v03 · Confidential · Internal use</div>
+  <h1>The system for <em>neurora LABS.</em></h1>
+  <p class="cover-sub">One typography, one palette, four states. A reference document for everyone who builds, writes, designs, or ships under the neurora mark — held to the standard of the work itself.</p>
+  <div class="cover-meta">
+    <div class="cover-meta-cell">
+      <div class="meta-label">Typography</div>
+      <div class="meta-value">V4 · Pharma</div>
+    </div>
+    <div class="cover-meta-cell">
+      <div class="meta-label">Locked</div>
+      <div class="meta-value">Type · Palette · Voice</div>
+    </div>
+    <div class="cover-meta-cell">
+      <div class="meta-label">Origin</div>
+      <div class="meta-value">Vienna · AT</div>
+    </div>
+    <div class="cover-meta-cell">
+      <div class="meta-label">Issued</div>
+      <div class="meta-value">v03 · 2026-05-22</div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Contents ───────── -->
+<section class="toc">
+  <div class="toc-head">§ Contents — Eleven sections</div>
+  <div class="toc-grid">
+    <a class="toc-row" href="#s01"><span class="num">S 01</span><span class="name">Foundation — what we are <em>and what we are not</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s02"><span class="num">S 02</span><span class="name">Mission, Vision, Beliefs — <em>the anchors</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s03"><span class="num">S 03</span><span class="name">Positioning rails — <em>is / is not</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s04"><span class="num">S 04</span><span class="name">Voice — <em>how we sound</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s05"><span class="num">S 05</span><span class="name">Typography — <em>the three-voice system</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s06"><span class="num">S 06</span><span class="name">Color — <em>ground, ink, and the four states</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s07"><span class="num">S 07</span><span class="name">States — <em>activate · focus · calm · sleep</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s08"><span class="num">S 08</span><span class="name">Wordmark — <em>construction &amp; lockups</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s09"><span class="num">S 09</span><span class="name">Application — <em>how we appear on surface</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s10"><span class="num">S 10</span><span class="name">Photography direction — <em>register, not stock</em></span><span class="pg">→</span></a>
+    <a class="toc-row" href="#s11"><span class="num">S 11</span><span class="name">Don't — <em>the boundary the brand defends</em></span><span class="pg">→</span></a>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S01 — Foundation -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s01">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 01</span> Foundation</div>
+      <h2 class="section-h">Scent with <em>purpose.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>Neurora LABS makes <strong>neuroscience-driven scent</strong> — formats built around the olfactory pathways that govern four states of the human nervous system. The work is not perfume. It is not aromatherapy. It is not wellness as a category. It is a small set of precisely engineered tools for shifting state, sold to people who want their tools to do work.</p>
+      <p>The system in this book is the typographic, chromatic, and verbal expression of that posture. Every rule that follows is downstream of one premise: <strong>the brand should look and read the way the product behaves</strong> — exact, restrained, useful, and warm where warmth earns its place.</p>
+    </div>
+  </div>
+
+  <div class="pillars">
+    <div class="pillar">
+      <div class="pillar-label">§ 01 · Premise</div>
+      <div class="pillar-title">Olfaction is the <em>shortest path</em> to state.</div>
+      <p>The olfactory bulb is the only sense wired directly into the limbic system. No thalamic relay, no cognitive filter. A scent reaches the structures that govern arousal, memory, and autonomic tone in under four hundred milliseconds.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">§ 02 · Discipline</div>
+      <div class="pillar-title">Built on science. <em>Made for owning your state.</em></div>
+      <p>Each format targets a specific shift — sympathetic to parasympathetic, low arousal to focused alertness — and is delivered in the dose, duration, and surface area appropriate to the context of use.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">§ 03 · Posture</div>
+      <div class="pillar-title">Educated peer, <em>not guru.</em></div>
+      <p>The brand addresses informed adults — curious about how their nervous system works, sceptical of overclaim, and looking for tools rather than rituals. It does not explain emotions back to people, does not promise transformation, and does not borrow the vocabulary of wellness, ritual marketing, or self-help.</p>
+    </div>
+    <div class="pillar">
+      <div class="pillar-label">§ 04 · Format</div>
+      <div class="pillar-title">Three formats, <em>four states.</em></div>
+      <p>Reed Diffuser <em class="data">100 ml</em>, Fabric Spray <em class="data">30 ml</em>, Roll-On <em class="data">10 ml</em> — each tuned to the spatial and temporal envelope of the state it serves. Sleep is the hero. The other three orbit it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S02 — Mission, Vision, Beliefs -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s02">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 02</span> Mission · Vision · Beliefs</div>
+      <h2 class="section-h wide">The anchors. <em>Why we exist, where we're going, what we hold.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>Three short anchors. They sit above every other rule in this book — when a brief, a campaign, or a product decision conflicts with one of them, the anchor wins. Type and palette are how neurora <strong>looks</strong>; these are why it <strong>exists</strong>.</p>
+      <p>The mission is what we do. The vision is the world we are working toward. The beliefs are the convictions that decide how we behave when no rule covers the case.</p>
+    </div>
+  </div>
+
+  <!-- Mission & Vision -->
+  <div class="anchors">
+    <div class="anchor">
+      <div class="ribbon"><span>§ 01 · <strong>Mission</strong></span><span>Why we exist</span></div>
+      <h3>We translate the science of scent into tools for <em>owning your state.</em></h3>
+      <p>Neurora LABS exists to close the distance between olfactory neuroscience and everyday human use — making the measured effects of scent on the nervous system <strong>accessible, precise, and held to a standard.</strong></p>
+      <p>The work is not perfume, not aromatherapy, not wellness. It is a small set of engineered instruments, each built around a specific autonomic shift, and delivered in the format that the context of use requires.</p>
+    </div>
+    <div class="anchor">
+      <div class="ribbon"><span>§ 02 · <strong>Vision</strong></span><span>Where we're going</span></div>
+      <h3>A world where shaping your state is <em>everyday, evidence-based, and yours.</em></h3>
+      <p>We work toward a future in which functional scent is a normal part of how people focus, recover, and rest — <strong>as deliberate as what they eat, as intentional as how they move</strong> — and remains in their own hands rather than the hands of an industry.</p>
+      <p>The vision is not a market. It is a category that does not yet fully exist: scent treated as instrumentation, sold to informed adults.</p>
+    </div>
+  </div>
+
+  <!-- Beliefs -->
+  <div class="beliefs-head">
+    <span>§ 03 · Core beliefs — Six convictions</span>
+    <span class="sub">What we hold when the rules run out.</span>
+  </div>
+  <div class="beliefs">
+
+    <div class="belief">
+      <div class="roman">B · 01</div>
+      <div class="body">
+        <h4>Scent is one of the most powerful levers of <em>human experience.</em></h4>
+        <p>The olfactory system is the only sense wired directly into the limbic structures that govern arousal, emotion, and memory. We design around that pathway with intention — never as decoration, never by accident.</p>
+      </div>
+    </div>
+
+    <div class="belief">
+      <div class="roman">B · 02</div>
+      <div class="body">
+        <h4>The four states are <em>biological,</em> not poetic.</h4>
+        <p>Activate, Focus, Calm, Sleep are autonomic and neuromodulatory states with measurable signatures. Our work is to identify the compounds, pathways, and dosages that influence each one with predictable effect — and to publish the reasoning when we do.</p>
+      </div>
+    </div>
+
+    <div class="belief">
+      <div class="roman">B · 03</div>
+      <div class="body">
+        <h4>You deserve to <em>know why it works.</em></h4>
+        <p>We cite our references. We name our actives. We explain the mechanism. <strong>If a claim cannot be sourced, the claim is not made.</strong> An informed customer is the only kind of customer this brand is built for.</p>
+      </div>
+    </div>
+
+    <div class="belief">
+      <div class="roman">B · 04</div>
+      <div class="body">
+        <h4>Nature, <em>refined by science.</em></h4>
+        <p>We work with organically sourced, naturally derived essential oils as our active ingredients — chosen for evidence, not romance. Science is how we study, formulate, and dose them so each compound delivers a measurable effect within a defined envelope of use.</p>
+      </div>
+    </div>
+
+    <div class="belief">
+      <div class="roman">B · 05</div>
+      <div class="body">
+        <h4>Objects that <em>earn daily use.</em></h4>
+        <p>An instrument that holds up to repeated use rewards it. The roll-on that lives in a pocket. The bottle that weighs in the hand. The reed that sits on the nightstand for eight weeks. The product is not a ritual — it is a tool that becomes part of how a person already lives.</p>
+      </div>
+    </div>
+
+    <div class="belief">
+      <div class="roman">B · 06</div>
+      <div class="body">
+        <h4>We change <em>the world</em> by changing <em>ourselves.</em></h4>
+        <p>Better-rested, more-focused, calmer, more-present people build better work and better lives around them. The brand's contribution begins at the smallest scale — one person, one evening, one shift from alert to at rest — and accumulates from there.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S03 — Positioning rails -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s03">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 03</span> Positioning rails</div>
+      <h2 class="section-h wide">What neurora is. <em>And what it refuses to be.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The positioning rails are not aspirational language. They are the working filter for every brief, every photo, every line of copy, every product decision. If a piece of work drifts toward the right-hand column, the system pulls it back.</p>
+    </div>
+  </div>
+
+  <div class="rails">
+    <div class="rail is">
+      <div class="rail-tag is">Is</div>
+      <div class="rail-line">A neuroscience-driven scent <em>laboratory.</em></div>
+    </div>
+    <div class="rail isnot">
+      <div class="rail-tag isnot">Is not</div>
+      <div class="rail-line">A perfume house.</div>
+    </div>
+    <div class="rail is">
+      <div class="rail-tag is">Is</div>
+      <div class="rail-line">A tool for <em>owning</em> your state.</div>
+    </div>
+    <div class="rail isnot">
+      <div class="rail-tag isnot">Is not</div>
+      <div class="rail-line">A wellness ritual.</div>
+    </div>
+    <div class="rail is">
+      <div class="rail-tag is">Is</div>
+      <div class="rail-line">Built on <em>peer-reviewed</em> evidence.</div>
+    </div>
+    <div class="rail isnot">
+      <div class="rail-tag isnot">Is not</div>
+      <div class="rail-line">Inspired by ancient wisdom.</div>
+    </div>
+    <div class="rail is">
+      <div class="rail-tag is">Is</div>
+      <div class="rail-line">Precise, calm, <em>technically honest.</em></div>
+    </div>
+    <div class="rail isnot">
+      <div class="rail-tag isnot">Is not</div>
+      <div class="rail-line">Trend-led or seasonal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S03 — Voice -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s04">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 04</span> Voice</div>
+      <h2 class="section-h">Precise. Calm. <em>Educated peer.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The voice carries calm authority. It addresses the reader as an equal — informed, curious, sceptical of overclaim — and does the cognitive work itself rather than asking the reader to do it. It uses ordinary words for ordinary things and reaches for the technical term only when the technical term is the right one.</p>
+      <p>The voice is allowed warmth. It is not allowed sentimentality, mysticism, urgency, or the language of self-improvement.</p>
+    </div>
+  </div>
+
+  <div class="voice-grid">
+    <div class="voice-card">
+      <div class="label">§ 01 · Register</div>
+      <div class="word">Exact.</div>
+      <p>Concrete units. Specific structures. "400 milliseconds," not "almost instantly." "Parasympathetic shift," not "deep relaxation." Precision is a form of respect.</p>
+    </div>
+    <div class="voice-card">
+      <div class="label">§ 02 · Register</div>
+      <div class="word">Quiet.</div>
+      <p>The product carries the volume. The copy does not need to perform. Short sentences. No exclamation, no rhetorical underline. Confidence reads as composure.</p>
+    </div>
+    <div class="voice-card">
+      <div class="label">§ 03 · Register</div>
+      <div class="word">Warm where it earns it.</div>
+      <p>Italic for the human moment — <em>own your night</em>, <em>permitted, not made</em>. Used sparingly. The serif italic is the brand's smile, not its default expression.</p>
+    </div>
+  </div>
+
+  <div class="word-list">
+    <div class="word-col">
+      <div class="word-col-head">We say · Substitutions</div>
+      <div class="word-row"><span class="yes">Scent</span><span class="arrow">←</span><span class="no">Fragrance</span></div>
+      <div class="word-row"><span class="yes">State</span><span class="arrow">←</span><span class="no">Mood</span></div>
+      <div class="word-row"><span class="yes">Format</span><span class="arrow">←</span><span class="no">Product line</span></div>
+      <div class="word-row"><span class="yes">Onset</span><span class="arrow">←</span><span class="no">Reaction time</span></div>
+      <div class="word-row"><span class="yes">Engineered</span><span class="arrow">←</span><span class="no">Crafted</span></div>
+      <div class="word-row"><span class="yes">Own your night</span><span class="arrow">←</span><span class="no">Drift into dreams</span></div>
+      <div class="word-row"><span class="yes">Built on science</span><span class="arrow">←</span><span class="no">Science-backed</span></div>
+      <div class="word-row"><span class="yes">Evidence</span><span class="arrow">←</span><span class="no">Wisdom</span></div>
+    </div>
+    <div class="word-col">
+      <div class="word-col-head">We never say</div>
+      <div class="banned-list">
+        <div class="banned">Aromatherapy</div>
+        <div class="banned">Wellness</div>
+        <div class="banned">Self-care</div>
+        <div class="banned">Ritual</div>
+        <div class="banned">Mindful · Mindfulness</div>
+        <div class="banned">Energy · Vibes</div>
+        <div class="banned">Healing · Heal</div>
+        <div class="banned">Journey · Discover</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S04 — Typography -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s05">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 05</span> Typography</div>
+      <h2 class="section-h wide">Humanist pharmaceutical. <em>Three voices, one system.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>Three typefaces, each with a single, defended job. The serif carries warmth and the spoken voice. The sans carries function — labels, navigation, button text, anything that needs to be read at a glance. The mono carries data, and only data — numbers, units, codes, specifications.</p>
+      <p>The discipline is the system. Mono is never used for headlines. Serif is never used for UI labels. Sans never sets editorial body. The visible separation between the three is what makes neurora read as <strong>pharmaceutical-precise rather than coder-aesthetic or wellness-soft.</strong></p>
+    </div>
+  </div>
+
+  <div class="type-spec">
+    <div class="type-spec-cell">
+      <div class="ts-role">§ 01 · Serif — voice</div>
+      <div class="ts-name">Newsreader</div>
+      <div class="ts-meta">
+        Weights <em>300 / 400</em><br>
+        Italic for emphasis<br>
+        <span class="paid">Paid equivalent: Lyon Text · Tiempos Text</span>
+      </div>
+      <div class="ts-rule">Wordmark, display, editorial body. The italic moment in every spoken line. The brand's smile.</div>
+    </div>
+    <div class="type-spec-cell">
+      <div class="ts-role">§ 02 · Sans — function</div>
+      <div class="ts-name sans">Inter Tight</div>
+      <div class="ts-meta">
+        Weights <em>400 / 500</em><br>
+        Tracked +0.18 to +0.32em for caps<br>
+        <span class="paid">Paid equivalent: ABC Diatype</span>
+      </div>
+      <div class="ts-rule">Labels, UI, navigation, eyebrows, captions. The voice that disappears so the work shows through.</div>
+    </div>
+    <div class="type-spec-cell">
+      <div class="ts-role">§ 03 · Mono — data only</div>
+      <div class="ts-name mono">JetBrains Mono</div>
+      <div class="ts-meta">
+        Weight <em>400</em><br>
+        Reserved for numbers · units · codes<br>
+        <span class="paid">Paid equivalent: ABC Diatype Mono</span>
+      </div>
+      <div class="ts-rule">Prices, milliseconds, millilitres, section markers (§ 01), SKU codes. Nothing else. The instrument's readout.</div>
+    </div>
+  </div>
+
+  <!-- Type specimen -->
+  <div class="specimen">
+    <div class="specimen-band"><span>Specimen · Type in use</span><span>v03 / pharma</span></div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Display · H0</strong>
+        Newsreader 300 · 96 px<br>
+        opsz 96 · −0.032em
+      </div>
+      <div class="sp-h0">Own your <em>night.</em></div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Headline · H1</strong>
+        Newsreader 300 · 54 px<br>
+        opsz 56 · −0.024em
+      </div>
+      <div class="sp-h1">Scent is the <em>shortest path</em> to state.</div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Sub · H2</strong>
+        Newsreader 300 · 32 px<br>
+        opsz 36 · −0.018em
+      </div>
+      <div class="sp-h2">Permitted, <em>not made.</em></div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Editorial body</strong>
+        Newsreader 300 · 19 px<br>
+        opsz 18 · 1.55 lh
+      </div>
+      <div class="sp-editorial">Olfaction is the only sense wired directly into the limbic system. There is no thalamic relay, no cognitive filter — a scent reaches the structures governing arousal, memory, and autonomic tone in under four hundred <em>milliseconds.</em></div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>UI body</strong>
+        Inter Tight 400 · 15 px<br>
+        1.6 lh
+      </div>
+      <div class="sp-body">Reed Diffuser 100 ml. Active across an open room for eight to twelve weeks. Engineered to shift the autonomic nervous system from sympathetic dominance toward parasympathetic rest.</div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Eyebrow / label</strong>
+        Inter Tight 500 · 11 px<br>
+        +0.28em · uppercase
+      </div>
+      <div class="sp-label">N · L 04 — Sleep · Reed Diffuser</div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>UI label · button</strong>
+        Inter Tight 500 · 14 px<br>
+        +0.22em · uppercase
+      </div>
+      <div class="sp-ui">SHOP SLEEP →</div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Data</strong>
+        JetBrains Mono 400 · 16 px<br>
+        numbers, units, codes
+      </div>
+      <div class="sp-data">EUR 64.00 · 100 ml · &lt; 400 ms · 8–12 wk</div>
+    </div>
+
+    <div class="specimen-row">
+      <div class="specimen-key">
+        <strong>Data · spec line</strong>
+        JetBrains Mono 400 · 12 px<br>
+        section markers, codes
+      </div>
+      <div class="sp-data-line">
+        § 01 · N·L 04 — SLEEP — REED — 100ML<br>
+        § 02 · Onset &lt; 400 ms · Duration 8–12 wk<br>
+        § 03 · Lot 26-Q2-A · EU/AT-7741
+      </div>
+    </div>
+  </div>
+
+  <!-- Type rules -->
+  <div class="type-rules">
+    <div class="type-rule">
+      <div class="id">R · 01</div>
+      <div class="txt"><strong>Mono is for data, full stop.</strong> Numbers, units (ml, ms, wk), prices, codes, section markers, lot numbers. Never headlines, never running copy, never word labels.</div>
+    </div>
+    <div class="type-rule">
+      <div class="id">R · 02</div>
+      <div class="txt"><strong>Italic is the spoken moment.</strong> One italic emphasis per line, maximum. Two italic words in a single headline is a tell that the line is overworking.</div>
+    </div>
+    <div class="type-rule">
+      <div class="id">R · 03</div>
+      <div class="txt"><strong>Caps belong to sans.</strong> All-caps treatments use Inter Tight 500 with +0.22 to +0.32em tracking. Newsreader is never set in all-caps.</div>
+    </div>
+    <div class="type-rule">
+      <div class="id">R · 04</div>
+      <div class="txt"><strong>Optical sizes are not optional.</strong> Newsreader is a variable face — use opsz 72 at display, opsz 18 at editorial body, opsz 14 at small print. The face is designed for it.</div>
+    </div>
+    <div class="type-rule">
+      <div class="id">R · 05</div>
+      <div class="txt"><strong>Tracking pulls tight at scale.</strong> Display sizes use negative tracking (−0.024em to −0.032em). Body stays at default. UI caps go positive (+0.22 to +0.32em). Consistency over personal taste.</div>
+    </div>
+    <div class="type-rule">
+      <div class="id">R · 06</div>
+      <div class="txt"><strong>The hairline is 0.5 px.</strong> Every divider in the system — between cells, under labels, around frames — is a 0.5 px line in ink at 12% opacity. Heavier rules undo the pharmaceutical register.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S05 — Color -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s06">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 06</span> Color</div>
+      <h2 class="section-h wide">Paper, ink, and <em>four pigments.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The system is paper-native. Paper is the ground, Navy is the ink. Warm grey provides the only secondary surface — spec strips, deep footers, instrument panels. The four state pigments are <strong>oxide colors, not jewelry colors</strong> — burnt sienna, viridian, slate, navy. They appear in marks, accents, and packaging foil. They never fill body backgrounds or act as decoration.</p>
+      <p>Colors are named for the state they belong to. Hex values are absolute. The brand defends the difference between <strong>Activate</strong> and gold, between <strong>Focus</strong> and tech-green, between <strong>Calm</strong> and pastel blue. The four pigments must read as mineral on the eye.</p>
+    </div>
+  </div>
+
+  <!-- Ground & ink -->
+  <div class="palette-ground">
+    <div class="pg-cell">
+      <div class="swatch" style="background: #FAFAF8;"></div>
+      <div class="pg-name">Paper</div>
+      <div class="pg-role">Primary ground · default surface</div>
+      <div class="pg-spec">#FAFAF8<br>RGB 250 · 250 · 248<br>Pantone — match TBD</div>
+    </div>
+    <div class="pg-cell">
+      <div class="swatch" style="background: #0D1B33;"></div>
+      <div class="pg-name">Navy <em style="font-size:14px;">— Sleep ink</em></div>
+      <div class="pg-role">Primary ink · all text</div>
+      <div class="pg-spec">#0D1B33<br>RGB 13 · 27 · 51<br>Pantone — match TBD</div>
+    </div>
+    <div class="pg-cell">
+      <div class="swatch" style="background: #F2F0EA;"></div>
+      <div class="pg-name">Warm grey</div>
+      <div class="pg-role">Secondary surface · spec</div>
+      <div class="pg-spec">#F2F0EA<br>RGB 242 · 240 · 234<br>Pantone — match TBD</div>
+    </div>
+    <div class="pg-cell">
+      <div class="swatch" style="background: #2B2F36;"></div>
+      <div class="pg-name">Anthracite</div>
+      <div class="pg-role">Sparingly · subdued ink</div>
+      <div class="pg-spec">#2B2F36<br>RGB 43 · 47 · 54<br>Pantone — match TBD</div>
+    </div>
+  </div>
+
+  <!-- State palette -->
+  <div class="states-block">
+    <div class="states-heading">§ State pigments <span class="order-note">— in daily-biological order · activate → focus → calm → sleep</span></div>
+    <div class="state-grid">
+
+      <div class="state-card">
+        <div class="state-swatch" style="background: #B5471F;"></div>
+        <div class="state-num">N·L 01 — 06:00</div>
+        <div class="state-name">Activate</div>
+        <div class="state-claim">Own your <em>day.</em></div>
+        <div class="state-meta">
+          <span class="key">Hex</span>     <span class="hex">#B5471F</span><br>
+          <span class="key">Name</span>    Burnt sienna<br>
+          <span class="key">RGB</span>     181 · 71 · 31<br>
+          <span class="key">Pantone</span> Match TBD<br>
+          <span class="key">Soft</span>    #E9D5C8
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-swatch" style="background: #1F4A3D;"></div>
+        <div class="state-num">N·L 02 — 10:00</div>
+        <div class="state-name">Focus</div>
+        <div class="state-claim">Own your <em>now.</em></div>
+        <div class="state-meta">
+          <span class="key">Hex</span>     <span class="hex">#1F4A3D</span><br>
+          <span class="key">Name</span>    Clinical viridian<br>
+          <span class="key">RGB</span>     31 · 74 · 61<br>
+          <span class="key">Pantone</span> Match TBD<br>
+          <span class="key">Soft</span>    #D4DDD7
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-swatch" style="background: #5A6B7A;"></div>
+        <div class="state-num">N·L 03 — 18:00</div>
+        <div class="state-name">Calm</div>
+        <div class="state-claim">Own your <em>mind.</em></div>
+        <div class="state-meta">
+          <span class="key">Hex</span>     <span class="hex">#5A6B7A</span><br>
+          <span class="key">Name</span>    Slate dusk<br>
+          <span class="key">RGB</span>     90 · 107 · 122<br>
+          <span class="key">Pantone</span> Match TBD<br>
+          <span class="key">Soft</span>    #DCDFE3
+        </div>
+      </div>
+
+      <div class="state-card">
+        <div class="state-swatch" style="background: #0D1B33;"></div>
+        <div class="state-num">N·L 04 — 22:00 · Hero</div>
+        <div class="state-name">Sleep</div>
+        <div class="state-claim">Own your <em>night.</em></div>
+        <div class="state-meta">
+          <span class="key">Hex</span>     <span class="hex">#0D1B33</span><br>
+          <span class="key">Name</span>    Navy<br>
+          <span class="key">RGB</span>     13 · 27 · 51<br>
+          <span class="key">Pantone</span> Match TBD<br>
+          <span class="key">Soft</span>    #C9CDD4
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="color-rules-grid">
+    <div>
+      <h4>What the system does</h4>
+      <ul>
+        <li><span class="marker">+</span><span><strong>Paper is the default ground</strong>, not Navy. The system reads as a document, not as a hero image. Navy hero panels are used for closing statements and Sleep-only contexts.</span></li>
+        <li><span class="marker">+</span><span><strong>State pigments are pigments</strong> — oxide, mineral, glass — never neon, never gradient, never glossy. They appear as flat color in marks, packaging caps, and accent rules.</span></li>
+        <li><span class="marker">+</span><span><strong>The four states sit in daily-biological order</strong>: Activate (morning), Focus (mid-day), Calm (evening), Sleep (night). This order is preserved in every navigation, listing, and label.</span></li>
+        <li><span class="marker">+</span><span><strong>Soft tints exist only for spec strips</strong> — never for state-themed backgrounds. A Calm page does not turn slate-blue. The Calm pigment marks the state from the corner; the page stays paper.</span></li>
+      </ul>
+    </div>
+    <div>
+      <h4>What the system rejects</h4>
+      <ul>
+        <li><span class="marker">−</span><span><strong>Gold</strong>, copper as ornament, metallic foils that read as perfume packaging. Activate is iron oxide — earth pigment — not jewelry. If it shines, it is wrong.</span></li>
+        <li><span class="marker">−</span><span><strong>Sage, mint, eucalyptus green</strong>. Focus is a deep clinical viridian, not the wellness-pharmacy green that has become category default since 2020.</span></li>
+        <li><span class="marker">−</span><span><strong>Pastels of any kind</strong>. Calm is a mineral dusk, not a baby blue. Soft tints are bone-paper grey with a hint of pigment, never confectionary.</span></li>
+        <li><span class="marker">−</span><span><strong>Gradients between states</strong>. The four are discrete tools, not a spectrum. They are presented as four flat tiles, never as a fade.</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S06 — States in detail -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s07">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 07</span> States</div>
+      <h2 class="section-h">Four tools. <em>One day.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>Each state is a distinct format, target, and claim — never a mood. The four sit in the order the body needs them: <strong>Activate</strong> at waking, <strong>Focus</strong> through working hours, <strong>Calm</strong> at the transition out of the day, <strong>Sleep</strong> at night. This is the order the brand uses in every nav bar, listing, and label. Reordering them — alphabetical, by popularity, by SKU code — is a category error.</p>
+    </div>
+  </div>
+
+  <div class="states-detail">
+
+    <!-- ACTIVATE -->
+    <div class="state-row-detail">
+      <div class="head">
+        <div class="colorchip" style="background: #B5471F;"></div>
+        <div class="id">N·L 01 · 06:00</div>
+        <div class="name">Activate</div>
+        <div class="claim">Own your <em>day.</em></div>
+      </div>
+      <div class="col">
+        <h5>Brief</h5>
+        <p>The morning shift from sleep inertia to focused alertness. Targets dopaminergic and noradrenergic tone without stimulant load. Sits where coffee sits, alongside it, not against it. <strong>Bright, oxidative, mineral</strong> — not zesty, not "energizing-citrus".</p>
+        <p>Used by people who want to be on, on purpose, without the jitter of a second espresso.</p>
+      </div>
+      <div class="col">
+        <h5>Spec</h5>
+        <div class="data-list">
+          <span class="k">Format       </span><span class="v">Roll-on 10 ml · Fabric spray 30 ml</span><br>
+          <span class="k">Onset        </span><span class="v">&lt; 200 ms</span><br>
+          <span class="k">Duration     </span><span class="v">2–4 h</span><br>
+          <span class="k">Target       </span><span class="v">Noradrenergic uptick</span><br>
+          <span class="k">Context      </span><span class="v">Morning · pre-work · pre-training</span><br>
+          <span class="k">Pigment      </span><span class="v">#B5471F · burnt sienna</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOCUS -->
+    <div class="state-row-detail">
+      <div class="head">
+        <div class="colorchip" style="background: #1F4A3D;"></div>
+        <div class="id">N·L 02 · 10:00</div>
+        <div class="name">Focus</div>
+        <div class="claim">Own your <em>now.</em></div>
+      </div>
+      <div class="col">
+        <h5>Brief</h5>
+        <p>Sustained attention across long work blocks. Targets the cholinergic system and reduces internal-mode wandering. <strong>Cool, resinous, evergreen</strong> — but clinical evergreen, not pine-forest. The green of laboratory glass under a fluorescent tube.</p>
+        <p>Used during deep work, study, design, writing, or any context where the cost of distraction is high.</p>
+      </div>
+      <div class="col">
+        <h5>Spec</h5>
+        <div class="data-list">
+          <span class="k">Format       </span><span class="v">Reed diffuser 100 ml · Roll-on 10 ml</span><br>
+          <span class="k">Onset        </span><span class="v">&lt; 300 ms</span><br>
+          <span class="k">Duration     </span><span class="v">3–5 h · 8–12 wk passive</span><br>
+          <span class="k">Target       </span><span class="v">Cholinergic attention</span><br>
+          <span class="k">Context      </span><span class="v">Desk · studio · workshop</span><br>
+          <span class="k">Pigment      </span><span class="v">#1F4A3D · clinical viridian</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- CALM -->
+    <div class="state-row-detail">
+      <div class="head">
+        <div class="colorchip" style="background: #5A6B7A;"></div>
+        <div class="id">N·L 03 · 18:00</div>
+        <div class="name">Calm</div>
+        <div class="claim">Own your <em>mind.</em></div>
+      </div>
+      <div class="col">
+        <h5>Brief</h5>
+        <p>The transition out of the working day — when the nervous system needs permission to stop being useful. Down-regulates sympathetic tone without sedating. <strong>Mineral, muted, dusk</strong> — the colour of light on stone an hour before sundown. Not lavender, not "soothing-cool".</p>
+        <p>Used in the threshold hours: after work, before dinner, in the moments where a person is trying to come back to themselves.</p>
+      </div>
+      <div class="col">
+        <h5>Spec</h5>
+        <div class="data-list">
+          <span class="k">Format       </span><span class="v">Fabric spray 30 ml · Reed diffuser 100 ml</span><br>
+          <span class="k">Onset        </span><span class="v">&lt; 350 ms</span><br>
+          <span class="k">Duration     </span><span class="v">2–4 h · 8–12 wk passive</span><br>
+          <span class="k">Target       </span><span class="v">Sympathetic down-regulation</span><br>
+          <span class="k">Context      </span><span class="v">Transition · post-work · pre-meal</span><br>
+          <span class="k">Pigment      </span><span class="v">#5A6B7A · slate dusk</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SLEEP -->
+    <div class="state-row-detail">
+      <div class="head">
+        <div class="colorchip" style="background: #0D1B33;"></div>
+        <div class="id">N·L 04 · 22:00 · Hero</div>
+        <div class="name">Sleep</div>
+        <div class="claim">Own your <em>night.</em></div>
+      </div>
+      <div class="col">
+        <h5>Brief</h5>
+        <p>The hero. The shift from sympathetic dominance to parasympathetic rest — the autonomic precondition for sleep onset. <strong>Sleep is not made; it is permitted.</strong> The product creates the conditions for which sleep is the natural answer.</p>
+        <p>This is the SKU the brand is best known for and the one most photographed, most cited, most defended. Every other state holds itself against the standard Sleep has set.</p>
+      </div>
+      <div class="col">
+        <h5>Spec</h5>
+        <div class="data-list">
+          <span class="k">Format       </span><span class="v">Reed diffuser 100 ml · Fabric spray 30 ml</span><br>
+          <span class="k">Onset        </span><span class="v">&lt; 400 ms</span><br>
+          <span class="k">Duration     </span><span class="v">8–12 wk passive · 2–3 h spray</span><br>
+          <span class="k">Target       </span><span class="v">Parasympathetic shift</span><br>
+          <span class="k">Context      </span><span class="v">Bedroom · wind-down · linen</span><br>
+          <span class="k">Pigment      </span><span class="v">#0D1B33 · navy · brand ink</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S07 — Wordmark -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s08">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 08</span> Wordmark</div>
+      <h2 class="section-h">A serif word. <em>Lowercase, set tight.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The wordmark is the single word <strong>neurora</strong>, set in Newsreader 400 at display optical size, all lowercase, tracking −0.014em. The serif itself is the differentiator — no sans wordmark in the category does this work. The lab descriptor <strong>LABS</strong> is held in Inter Tight 500, always uppercase, separated from the mark by a 0.5px hairline. The mark and the descriptor are equals, not parent and child.</p>
+      <p>Two lockups are sanctioned: a <strong>stacked primary</strong> (mark above, LABS as widely-tracked descriptor below, used at hero and packaging scale) and an <strong>inline compact</strong> (LABS to the right of the mark, used for nav bars, business cards, footers, and email signatures). A custom-drawn wordmark is the long-term goal; until that exists, Newsreader at display sizes is the standard. The mark is never bolded, never italicized, never set in caps, never reproduced in mono.</p>
+    </div>
+  </div>
+
+  <!-- Primary wordmark -->
+  <div class="wm-frame">
+    <div class="wm-frame-label">§ 00 · Stacked primary · Hero and packaging scale</div>
+    <div class="wm-construct">neurora</div>
+    <div class="wm-labs-tag">L · A · B · S</div>
+  </div>
+
+  <!-- Variations -->
+  <div class="wm-grid">
+    <div class="wm-cell">
+      <div class="label">§ 01 · Inline · Paper</div>
+      <div class="wm-mini paper">
+        <div class="mark">neurora <em>LABS</em></div>
+      </div>
+      <div class="note">The compact inline lockup. Newsreader on Paper, Navy ink, LABS in Inter Tight 500 caps with a hairline divider. Used in nav bars, business cards, footers, and email signatures.</div>
+    </div>
+    <div class="wm-cell">
+      <div class="label">§ 02 · Inline · Navy reversed</div>
+      <div class="wm-mini dark">
+        <div class="mark">neurora <em>LABS</em></div>
+      </div>
+      <div class="note">For closing panels, Sleep-only contexts, and packaging caps. Same construction, inverted. Used sparingly — Paper is the home.</div>
+    </div>
+    <div class="wm-cell">
+      <div class="label">§ 03 · Inline · Warm</div>
+      <div class="wm-mini warm">
+        <div class="mark" style="font-size:20px;">neurora <em>LABS</em></div>
+      </div>
+      <div class="note">On warm grey ground (spec strips, document footers, label backs). The inline lockup holds together at small sizes as long as the hairline divider stays visible.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S08 — Application / How we appear on surface -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s09">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 09</span> Application</div>
+      <h2 class="section-h wide">How neurora <em>appears on surface.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The system meets the world on four primary surfaces: <strong>the packaging label</strong> (the most defended surface — it carries the product alone, with no context), <strong>the site hero</strong> (the brand's introduction at scale), <strong>the editorial / journal page</strong> (where the brand earns its authority through writing), and <strong>stationery</strong> (where the brand introduces itself as a sender, not a seller).</p>
+      <p>Each surface follows the same rules — Paper ground, Navy ink, Newsreader for voice, Inter Tight for function, JetBrains Mono for data, a 0.5px hairline as the only divider. What changes is density and pacing. The label is information-dense and exact. The hero is spacious and quiet. The editorial page is long-form and serif-led. Stationery is sparse — almost all margin.</p>
+    </div>
+  </div>
+
+  <div class="surface-grid">
+
+    <!-- Packaging label -->
+    <div class="surface">
+      <div class="surface-head"><span>§ 01 · <strong>Packaging label</strong></span><span>Reed Diffuser · 100 ml</span></div>
+      <div class="surface-body">
+        <div class="label-card">
+          <div class="lh-top">
+            <div class="wm-label">neurora</div>
+            <div class="nl">N · L 04</div>
+          </div>
+          <div>
+            <div class="state-mark"><span style="display:inline-block;width:8px;height:8px;background:#0D1B33;vertical-align:1px;margin-right:8px;"></span>N · L 04 — Sleep</div>
+            <h3>Own your <em>night.</em></h3>
+            <div class="lh-mid" style="margin-top:18px;">
+              <div><span class="k">Format</span>Reed diffuser 100 ml</div>
+              <div><span class="k">Target</span>PNS shift</div>
+              <div><span class="k">Onset</span>&lt; 400 ms</div>
+              <div><span class="k">Duration</span>8–12 wk</div>
+            </div>
+          </div>
+          <div class="lh-bot">
+            <span>Lot 26-Q2-A · Vienna · AT</span>
+            <span class="price">EUR 64.00</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Site hero -->
+    <div class="surface">
+      <div class="surface-head"><span>§ 02 · <strong>Site hero</strong></span><span>SLEEP · landing page</span></div>
+      <div class="surface-body compact" style="padding:0;">
+        <div class="site-hero">
+          <div class="topnav">
+            <div class="wm">neurora <em>LABS</em></div>
+            <div class="nav-links"><span>States</span><span>Science</span><span>Shop</span></div>
+          </div>
+          <div class="heart">
+            <div class="eyebrow"><span class="data">N·L 04</span>Sleep</div>
+            <h1>Own your <em>night.</em></h1>
+            <div class="sub">A scent engineered around the olfactory pathways that govern sleep onset — built to shift the nervous system from alert to at rest.</div>
+          </div>
+          <div class="spec-strip">
+            <div class="ss-cell"><div class="ss-k">Format</div><div class="ss-v">100 ml</div></div>
+            <div class="ss-cell"><div class="ss-k">Onset</div><div class="ss-v">&lt; 400 ms</div></div>
+            <div class="ss-cell"><div class="ss-k">Duration</div><div class="ss-v">8–12 wk</div></div>
+            <div class="ss-cell"><div class="ss-k">Target</div><div class="ss-v">PNS shift</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Editorial -->
+    <div class="surface">
+      <div class="surface-head"><span>§ 03 · <strong>Editorial / journal</strong></span><span>The neurora Reader</span></div>
+      <div class="surface-body" style="padding:0;">
+        <div class="editorial-page">
+          <div class="head-line"><span>The neurora Reader · Issue 04</span><span><strong>§ 01 · Premise</strong></span></div>
+          <h4>Sleep is <em>permitted,</em> not made.</h4>
+          <p>Olfaction is the only sense wired directly into the limbic system. There is no thalamic relay, no cognitive filter — a scent reaches the structures governing arousal, memory, and autonomic tone in under <strong>400 ms.</strong></p>
+          <p>The conditions for sleep sit downstream of a single autonomic shift — from sympathetic dominance to parasympathetic rest. Build those conditions and the body finds the rest of the path on its own.</p>
+          <p>The format is a reed diffuser, the active surface is the room itself, and the time horizon is measured in weeks. The work is slow on purpose.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stationery -->
+    <div class="surface">
+      <div class="surface-head"><span>§ 04 · <strong>Stationery</strong></span><span>Business card · 85 × 55 mm</span></div>
+      <div class="surface-body" style="padding:0;">
+        <div class="stationery">
+          <div>
+            <div class="mark">neurora <em>LABS</em></div>
+            <div class="pos">[Position] · [Function]</div>
+            <div class="contact" style="margin-top:32px;">
+              <div><span class="k">N</span>[Name]</div>
+              <div><span class="k">E</span>[email@neurora.labs]</div>
+              <div><span class="k">T</span>+43 · [phone]</div>
+              <div><span class="k">A</span>[Street] · 1070 Vienna · AT</div>
+            </div>
+          </div>
+          <div class="foot">
+            <span>N · L · 04</span>
+            <span>Built on science</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="surface-rules">
+    <div>
+      <h4>Application rules</h4>
+    </div>
+    <div class="surface-rules-body">
+      <p><strong>The hairline carries the architecture.</strong> Every surface is composed as a grid of compartments separated by 0.5px hairlines in ink at 12% opacity. The hairline replaces the box, the card, the shadow. The whole system is one ruled page.</p>
+      <p><strong>Density signals register.</strong> Packaging and editorial are dense — the system tolerates and rewards information-richness. Hero surfaces and stationery are sparse — they earn their authority through restraint. The same elements; different pacing.</p>
+      <p><strong>State pigments mark, they do not flood.</strong> A state-themed surface introduces its pigment as a 6–8 px dot, a hairline accent, a foil cap, or a small filled block. It never replaces Paper as the page background. The brand stays paper-native at every scale.</p>
+      <p><strong>State marks defend their own contrast.</strong> On a paper label against a paper ground, the state pigment carries itself. On a dark or coloured bottle, the state mark must be enlarged, set on a paper block, or moved to a foil cap so it remains the at-a-glance differentiator between the four. A Sleep mark that disappears into a black bottle is not a mark.</p>
+      <p><strong>Data is always set in mono.</strong> Across every surface — packaging, hero, editorial, stationery, email — anywhere a number, unit, code, or section marker appears, JetBrains Mono is the only acceptable face.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S09 — Photography direction (descriptive, no images) -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s10">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 10</span> Photography direction</div>
+      <h2 class="section-h">Register, <em>not stock.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>The system carries itself typographically, but the brand earns its full register only when the photography matches. Photography is treated the way data is treated — as <strong>evidence</strong>, not decoration. Four registers are commissioned; nothing outside them is used.</p>
+      <p>This section is a direction, not a moodboard. Until the photography exists, the brand operates on type and palette alone — the system is designed to hold its authority without imagery if it has to.</p>
+    </div>
+  </div>
+
+  <div class="photo-grid">
+    <div class="photo-card">
+      <div class="pc-id">§ 01 · Product still</div>
+      <h4>The instrument, <em>in air.</em></h4>
+      <p>Single product, soft daylight from a single direction, paper-white ground, no styling, no props. The photograph is a specification — the object held at the angle that lets you read what it is. Shot in 4×5, scanned, lightly graded toward warm-cool neutrality.</p>
+      <div class="specs">
+        <span class="k">Ground   </span> Paper #FAFAF8<br>
+        <span class="k">Light    </span> North window · single direction<br>
+        <span class="k">Subject  </span> Product only · centered<br>
+        <span class="k">Tone     </span> Neutral · slight warm
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="pc-id">§ 02 · Macro · matter</div>
+      <h4>The raw material, <em>close.</em></h4>
+      <p>Macro on the source matter — resin, oil, glass, the diffuser reed itself. Skin-close, almost abstract, but legible as material. The point is that the work is made of something real. Used in editorial and at hero scale on Science pages.</p>
+      <div class="specs">
+        <span class="k">Distance </span> 50–200 mm<br>
+        <span class="k">DoF      </span> Shallow · single plane sharp<br>
+        <span class="k">Subject  </span> Material · texture · surface<br>
+        <span class="k">Tone     </span> Cool · pigment-true
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="pc-id">§ 03 · Hand · use</div>
+      <h4>A hand at work, <em>not a face.</em></h4>
+      <p>The product in use — uncapping the roll-on, setting a reed, spraying the linen. Hands only, no faces, no aspirational lifestyle. The brand shows what is done with the work, not who is doing it. The subject is the action, not the person.</p>
+      <div class="specs">
+        <span class="k">Subject  </span> Hands · object · gesture<br>
+        <span class="k">Crop     </span> Tight · no face<br>
+        <span class="k">Context  </span> Real surfaces · domestic<br>
+        <span class="k">Tone     </span> Neutral · low contrast
+      </div>
+    </div>
+    <div class="photo-card">
+      <div class="pc-id">§ 04 · Space · context</div>
+      <h4>The room <em>after</em> the spray.</h4>
+      <p>Interior shots of the spaces the product is used in — empty, composed, late or early light. The bedroom for Sleep, the studio for Focus, the kitchen for Activate, the living room for Calm. Architectural register — not "homey", not "lifestyle".</p>
+      <div class="specs">
+        <span class="k">Subject  </span> Empty room · post-use<br>
+        <span class="k">Time     </span> Threshold light · dusk / dawn<br>
+        <span class="k">Crop     </span> Symmetric · architectural<br>
+        <span class="k">Tone     </span> Quiet · single light source
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- S10 — Don't -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="frame" id="s11">
+  <div class="section-head">
+    <div>
+      <div class="section-eyebrow"><span class="data">S 11</span> Don't</div>
+      <h2 class="section-h">The boundary <em>the brand defends.</em></h2>
+    </div>
+    <div class="body-col">
+      <p>These are not preferences. These are the failures the system was built to prevent — the places where neurora would lose category separation, scientific credibility, or its claim to seriousness. Every "don't" below has been seen in the category. None of them belongs here.</p>
+    </div>
+  </div>
+
+  <div class="donts">
+    <div class="dont">
+      <div class="x">D · 01</div>
+      <div class="txt">Don't use the words <strong>wellness, ritual, aromatherapy, journey, energy, vibes, mindful, self-care, heal, discover</strong>, or any variant. They belong to a different category.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 02</div>
+      <div class="txt">Don't use <strong>gold, metallic foil, or any finish that shines</strong>. Activate is iron oxide, not jewelry. If a surface catches light, it has lost the pharmaceutical register.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 03</div>
+      <div class="txt">Don't reorder the states. The order is <strong>Activate · Focus · Calm · Sleep</strong> — the biological order of the day. Alphabetical, SKU-coded, or popularity-based orderings are wrong.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 04</div>
+      <div class="txt">Don't set body copy in mono. Don't set headlines in mono. <strong>Mono is for data only</strong> — numbers, units, codes, section markers. Every other use erodes the rule.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 05</div>
+      <div class="txt">Don't flood the page in state color. <strong>Paper is the ground</strong>. Pigment marks the state from the corner, the cap, or the rule — never the background.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 06</div>
+      <div class="txt">Don't promise transformation. Don't use the second-person imperative as a sales tactic. <strong>"Own your night" is the brand voice; "transform your life" is not.</strong></div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 07</div>
+      <div class="txt">Don't show faces. <strong>Photography is hands, materials, instruments, and rooms</strong> — the work, not the user. Aspirational lifestyle is a different category.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 08</div>
+      <div class="txt">Don't gradient the states. The four are <strong>discrete tools</strong>, not a colour-spectrum. They appear as four flat tiles, separated by hairlines, never as a fade.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 09</div>
+      <div class="txt">Don't borrow scientific authority without earning it. <strong>If a claim cannot be sourced, the claim is not made</strong>. The brand prefers a smaller, true sentence to a larger one that overstates.</div>
+    </div>
+    <div class="dont">
+      <div class="x">D · 10</div>
+      <div class="txt">Don't make the system louder to make a piece work. <strong>If a layout needs more weight, the layout is wrong</strong> — the answer is more space, not more ink.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═════════════════════════════════════════════════════════════ -->
+<!-- Closing -->
+<!-- ═════════════════════════════════════════════════════════════ -->
+<section class="closing">
+  <div class="closing-inner">
+    <div>
+      <div class="section-eyebrow"><span class="data">§ End</span> Master line</div>
+      <h2 class="section-h">Scent with <em>purpose.</em></h2>
+    </div>
+    <div class="closing-body">
+      <p><strong>Built on science. Made for owning your state.</strong></p>
+      <p>This book is the working frame. Everything else — campaigns, packaging revisions, partner activations, the next state, the next format — is a downstream application of what is set here. The system does not need to be redesigned at every launch. It needs to be respected.</p>
+      <div class="closing-meta">
+        <div><span class="k">Origin</span><span class="v">Vienna · AT</span></div>
+        <div><span class="k">Typography</span><span class="v">V4 · Pharma</span></div>
+        <div><span class="k">Book version</span><span class="v">v03 · 2026-05-22</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ───────── Footer ───────── -->
+<footer class="doc-footer">
+  <span>neurora LABS · Vienna</span>
+  <span>Brand Book · v03 · 2026-05-22</span>
+</footer>
+
+</body>
+</html>
