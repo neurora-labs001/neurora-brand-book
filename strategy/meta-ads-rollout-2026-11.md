@@ -442,3 +442,21 @@ Cart + Browse Abandon: add the gift line (ends 30.11.) as a plain fact, no count
 - Canonical Label Spec V4 (Brand Atlas) for physical label text
 - Shopify Admin + ShopifyQL · Sellerboard "Neurora Labs" 2026-08-22 → 2026-11-20 · Klaviyo flows
 - Competitor set: [vergleich.org](https://www.vergleich.org/kissenspray/), [beste-testsieger.de](https://www.beste-testsieger.de/kissenspray/), [test-vergleiche.com](https://test-vergleiche.com/kissenspray-testsieger/), [rossmann.de (Primavera)](https://www.rossmann.de/de/gesundheit-primavera-schlafwohl-kissenspray/p/4086900080461)
+
+---
+
+## 12 · Creative test round 1 (Brand Atlas, 2026-11-20)
+
+Generated in Brand Atlas brand "neurora LABS v2" (fonts switched to Manrope for heading, body, display and button; 2K; 4:5 feed). Find them under Creations by ID. All copy follows §6; scores are Brand Atlas brand-match QA.
+
+| # | Asset | Concept / sale it serves | Final image ID | Score | Open points |
+|---|---|---|---|---:|---|
+| 1 | **Persona** · woman late 30s in bed, eyes closed, inhaling at the wrist, SLEEP Roll-On upright on the nightstand, frosted board „Müde im Körper. Wach im Kopf.“ / „Dir fehlt keine Ruhe. Dir fehlt ein Übergang.“ | A · Kennst du das (cold) | `68067505-a362-4fae-b882-dd98cd027bfd` | 96 | Check the board text letter by letter; realistic AI person: add „KI-generiert“ before going live |
+| 2 | **Product only** · SLEEP Fabric Spray on limestone, hard window light, violet glow, board „Dein Abend. Auf Abruf.“ / „Auftragen. Einatmen. Loslassen.“ | C · Value (cold / RT) | `dba37372-aa56-4952-b41f-f757ed748cad` | 86 → label fix | Verify label panel WHEN NIGHT · WHAT REST · WHERE BEDROOM; „auf Abruf“ needs Claims Register clearance |
+| 3 | **Brand only** · frosted board on cream mood field, Signal Line „Kopf an → Licht aus“, „Von Kopf an zu Licht aus.“ / ritual sentence | B · Wissen / C static (cold) | `04852423-ed17-4f9b-8bf3-02d836af9e41` | 92 | Optional: a bit more air, cleaner line fade |
+| 4 | **Room** · bedroom after spraying, no people, spray on nightstand, „Ein Duft, der nur gut riecht,“ / „ist noch kein Signal.“ | B / C · Hope (cold) | `8a689ed2-1918-4cda-a084-5543a121918a` | 88 | QA flags the violet italic as off-brand; that is a scorer gap (2.0 accent), not an error |
+| 5 | **Offer tile** · open kraft box on Nachtviolett full tone, „Dein Ritual für den Abend.“ / „Bereit für die Nacht.“ + offer lines | Impulse (RT, carousel close) | `fd3e9e0f-d849-416f-a8e6-4676567de59a` | 86 | Full-tone violet is 2.0-compliant (Verpackung on Vollton); test a cream twin. Offer copy only once gift end date is set |
+
+**Rejected:** the 3-product set batch (`0f5e6a7a-…`, scores 76–78): wrong Roll-On silhouette, altered label text and invented board copy including a sleep-effect claim („durchschlafen“). Do not use.
+
+**Learned for round 2:** one product per image; spell the exact two-line headline in the brief; add EB Garamond Italic to Brand Atlas as an accent font so QA stops flagging the 2.0 accent line; produce 9:16 versions of the winners.
