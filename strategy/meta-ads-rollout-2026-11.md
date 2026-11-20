@@ -1,7 +1,8 @@
 # Meta Ads Rollout — neurora LABS · KW 47–49 / 2026
 
 > **Status:** Strategy v1 · 2026-11-20 · ready to execute
-> **Method:** "How I write ads" blueprint — 1 Premises → 2 Target → 3 Brief (17 elements) → 4 Writing
+> **Method:** "How I write ads" blueprint — Part 1 (the 4 sales: Content → Hope → Value → Impulse) · Part 2 (17 elements) · Part 3: 1 Premises → 2 Target → 3 Brief → 4 Writing
+> **Cold-traffic rule (Part 1):** cold ads are *indirect*. Attention → interest → new mechanism → **only then** product, price, offer. No cold ad opens with price, product or offer.
 > **Scope:** First paid Meta launch (DE + AT), Black Friday / Cyber Monday window, hand-over into Christmas
 > **Rules this document obeys:** Brand Book v03 DE (S04 voice, S11 Don'ts, S12 compliance C·01–C·03) and the neurora Hook-Baukasten (claim ceiling, banned words, family labels)
 
@@ -83,6 +84,20 @@ Inside Sleep we pick the **"Kopf-ausschalten" avatar** over "ohne Pille". Same d
 
 ## 4 · Step 3 — The Brief (17 elements, filled for Sleep)
 
+### 4.0 The argument in one chain (Part 1 · the 4 sales)
+*"Persuading = presenting an idea and giving reasons why it is true."*
+
+**The idea:** *Dein Abend braucht einen Schlusspunkt — und ein Duft kann ihn setzen, wenn er nur dafür da ist.*
+
+| Sale | What the reader must believe | Reason why we give |
+|---|---|---|
+| **1 · Content** | "This is worth watching to the end." | It looks like an evening clip / a lab note, not an ad, and it names *their* 23:47 moment. |
+| **2 · Hope** | "I now see what stopped me, and that there is a fix." | **What stopped them:** the scents they tried are everywhere (bathroom, living room, hand cream, candle), and a scent that is everywhere marks nothing. **Action needed:** one fixed signal, same time, only then. **Mechanism:** a scent reserved for the last half hour, in three reaches. |
+| **3 · Value** | "This product is the one that delivers that mechanism best." | The four value levers in §4 Stage 3 (odds · dream scenario · time · effort) at ≈ €1 per night. |
+| **4 · Impulse** | "Not buying is the bigger risk; buying now gains more." | 30 Tage Geld-zurück + not ingested (low risk) · gifted Roll-On, €146 for €89 (gain) · gift ends 30.11. (loss). |
+
+Every script below runs in this order. If a draft mentions price or product before the Hope Sale has finished, it is a retargeting ad, not a cold ad.
+
 ### Stage 1 · Content Sale
 | # | Element | Fill |
 |---|---|---|
@@ -106,7 +121,7 @@ Inside Sleep we pick the **"Kopf-ausschalten" avatar** over "ohne Pille". Same d
 | # | Element | Fill |
 |---|---|---|
 | 12 | USP | The only system that builds the day as four separate scents in biological order. SLEEP is the night tool of a lab, not a perfume house's lavender. |
-| 13 | Features | 4 oils, named · three reaches · Reed 8–12 weeks · Roll-On ≈ 95 uses · eingeatmet, nicht eingenommen · made in Europe · 1–2 day shipping from Wien/Berlin |
+| 13 | Features → the 4 value levers | **Odds ↑:** three reaches (wrist, pillow, room) mean the signal is wherever you are in the last half hour; a single spray can be forgotten, a room cannot. **Dream scenario tangible:** "Licht aus, und der Tag ist vorbei. Jeden Abend an derselben Stelle." **Time ↓:** no programme, no setup; the same sequence from the first evening (never promise faster sleep). **Effort ↓:** Roll-On = one move, Spray = two sprays, Reed = put the sticks in once, 8–12 weeks. Supporting facts: 4 named oils · eingeatmet, nicht eingenommen · made in Europe · 1–2 day shipping from Wien/Berlin |
 | 14 | Anchoring | €89 ÷ 12 weeks of Reed ≈ **€1.06 per night** (≈ €1.59 at 8 weeks). Against: another evening that runs until 1 am. *(Do not compare against sleep medication: medication adjacency.)* |
 
 ### Stage 4 · Impulse Sale
@@ -129,7 +144,8 @@ State **Sleep** · Formats: Set / Spray · Channel: cold Meta DACH unless noted 
 | **F1.neu** | „Ein Duft für die Nacht muss nicht besonders gut riechen. Er muss jeden Abend gleich riechen.“ | Tension + Payoff | Problem/solution-aware · **Concept B lead** |
 | **F10.neu** | „22:00. Ein Sprühstoß aufs Kissen. Ab hier wird nichts mehr verhandelt.“ | Concreteness + Payoff | Unaware/problem-aware · A/C variant |
 | **F8.neu** | „Was, wenn dein Abend ein festes Ende hätte — jeden Abend an derselben Stelle?“ | Payoff + open loop | A variant |
-| **F5.neu** | „Drei Handgriffe für die letzte halbe Stunde des Tages: Handgelenk. Kissen. Raum.“ | Concreteness + Payoff | Solution-aware · **Concept C lead** (carousel) |
+| **F5.neu** | „Drei Handgriffe für die letzte halbe Stunde des Tages: Handgelenk. Kissen. Raum.“ | Concreteness + Payoff | Solution-aware · carousel slide 4 / retargeting (names the product, so not a cold opener) |
+| **F1.neu** | „Ein Duft, der überall ist, markiert nichts.“ | Tension + open loop | Problem-aware · **Concept C lead** (cold static + carousel) |
 | **F2.12** | „Für alle, die abends müde sind und im Kopf trotzdem noch den ganzen Tag durchgehen.“ | Callout + Tension | B variant |
 | **F3.1** | „Wie dein Abend ein klares Ende bekommt — ohne dass es nach Wellness-Studio riecht.“ | Payoff without the category cliché | C variant |
 | **F4.neu** | „Wir haben [Zahl] Formulierungen für die Nacht verworfen. Geblieben sind vier Öle.“ `[BELEG NÖTIG: real count from R&D log]` | Concreteness + story | B variant, only with the real number |
@@ -138,22 +154,27 @@ State **Sleep** · Formats: Set / Spray · Channel: cold Meta DACH unless noted 
 Quality gate on all nine: no physiological effect claimed, no banned word, Du-form, brand name not leading, no "du kannst nicht schlafen"-style personal-attribute assertion (Meta). ✅
 Negative control, **never use**: „Hilft dir beim Einschlafen, ohne Nebenwirkungen.“ It's a medical claim and a medication comparison (see §9: the Amazon titles currently use this pattern).
 
-### 5.2 Concept A — POV „22:00“ (9:16 video, 18–22 s, hands only)
+### 5.2 Concept A — POV „22:00“ (9:16 video, 26–30 s, hands only)
 → `/pages/kopf-ausschalten`
 
-| Time | Visual | VO / on-screen text |
-|---|---|---|
-| 0–2 s | Dark bedroom, phone on the duvet shows **23:47**, a hand turns it face down | Text: **„Müde im Körper. Wach im Kopf.“** |
-| 2–6 s | Hand pulls the duvet back | VO: „Meist fehlt abends nicht die Müdigkeit. Es fehlt ein Schlusspunkt.“ |
-| 6–11 s | Roll-On on the wrist · two sprays on the pillow | VO: „Darum gibt es SLEEP. Ein Duft, der nur für die letzte halbe Stunde des Tages da ist. Für nichts sonst.“ |
-| 11–15 s | Reed Diffuser on the nightstand, macro on reeds | VO: „Lavendel, Zedernholz, Römische Kamille, Vetiver. Eingeatmet, nicht eingenommen.“ |
-| 15–20 s | Light off. End card on paper `#FAFAF8`, navy, mono data | Card: `SLEEP · Komplett-Set` · `89 € statt 117 €` · `+ Roll-On geschenkt` · `30 Tage Geld-zurück` · *Own your night.* |
+| Time | Sale | Visual | VO / on-screen text |
+|---|---|---|---|
+| 0–2 s | Content (#4, #5) | Dark bedroom, phone on the duvet shows **23:47**, a hand turns it face down | Text: **„Müde im Körper. Wach im Kopf.“** |
+| 2–6 s | Hope (#6, #8) | Hand pulls the duvet back | VO: „Meist fehlt abends nicht die Müdigkeit. Es fehlt ein Schlusspunkt.“ |
+| 6–11 s | Hope (#7 → why it went wrong) | Quick cuts: hand cream, a candle in the living room, a bathroom spray | VO: „Duft ist abends ja meistens schon da. Nur: überall. Und ein Duft, der überall ist, markiert nichts.“ |
+| 11–15 s | Hope (#9, #10) | Hand sets the Roll-On on the nightstand, sticks only, no label yet | VO: „Ein Schlusspunkt braucht einen Duft, der nur für diesen Moment da ist. Jeden Abend derselbe. Für nichts sonst.“ |
+| 15–21 s | Value (#12, #13) | Roll-On on the wrist · two sprays on the pillow · Reed on the nightstand, now the label is visible | VO: „Dafür haben wir SLEEP gebaut. Handgelenk, Kissen, Raum. Ein Handgriff. Lavendel, Zedernholz, Römische Kamille, Vetiver. Eingeatmet, nicht eingenommen.“ |
+| 21–24 s | Value (dream scenario) | Light off. Silence, 1 s | Text: „Licht aus. Tag vorbei.“ |
+| 24–29 s | Impulse (#15–17) | End card on paper `#FAFAF8`, navy, mono data | Card: `SLEEP · Komplett-Set` · `89 € statt 117 €` · `+ Roll-On geschenkt bis 30.11.` · `30 Tage Geld-zurück` · *Own your night.* |
 
-**Primary text:**
+The product name first appears at second 15, after the mechanism. That is the indirect order from Part 1.
+
+**Primary text** (same order: problem → why it hasn't worked → mechanism → product → offer):
 > Müde im Körper. Wach im Kopf.
 > Meist fehlt abends nicht die Müdigkeit, sondern ein Schlusspunkt — etwas, das sagt: Der Tag ist vorbei.
-> SLEEP ist genau dafür gebaut. Ein Duft, nur für die letzte halbe Stunde. Am Handgelenk, auf dem Kissen, im Raum. Jeden Abend derselbe.
-> Komplett-Set: 89 € statt 117 €, dazu ein Roll-On geschenkt. 30 Tage Geld-zurück.
+> Duft ist abends oft schon da. Nur überall: im Bad, im Wohnzimmer, in der Handcreme. Und was überall ist, markiert nichts.
+> SLEEP ist ein Duft nur für die letzte halbe Stunde. Am Handgelenk, auf dem Kissen, im Raum. Jeden Abend derselbe, für nichts sonst.
+> Komplett-Set: 89 € statt 117 €, bis 30.11. mit einem Roll-On geschenkt. 30 Tage Geld-zurück.
 
 **Headline:** Ein Duft. Nur für die Nacht. · **Description:** Versand in 1–2 Werktagen · **CTA:** Mehr dazu
 
@@ -162,17 +183,37 @@ Negative control, **never use**: „Hilft dir beim Einschlafen, ohne Nebenwirkun
 Visuals: hands at the lab bench, pipette, the four oils in brown glass, label close-ups, then the bedroom. Text on screen = the hook, then mono spec lines.
 
 > **VO (Philip):** „Ein Duft für die Nacht muss nicht besonders gut riechen. Er muss jeden Abend gleich riechen.
-> Viele Düfte für den Abend sind gebaut, um zu gefallen. Wir haben SLEEP anders gebaut: für einen einzigen Moment — die letzte halbe Stunde des Tages — und für nichts sonst.
+> Viele Düfte für den Abend sind gebaut, um zu gefallen — und benutzt werden sie überall: im Bad, im Wohnzimmer, auf der Haut. Ein Duft, der überall ist, sagt dem Abend nichts. Wir haben SLEEP anders gebaut: für einen einzigen Moment — die letzte halbe Stunde des Tages — und für nichts sonst.
 > Wenn derselbe Duft Nacht für Nacht zur selben Uhrzeit kommt, wird er zum Zeichen: Jetzt ist der Tag vorbei.
 > Vier Öle: Lavendel, Zedernholz, Römische Kamille, Vetiver. Drei Reichweiten: Handgelenk, Kissen, Raum.
 > Das Komplett-Set kostet 89 statt 117 Euro, bis Montag gibt es einen Roll-On dazu. Und wenn es nicht zu deinem Abend passt: 30 Tage Geld zurück.
 > Own your night.“
 
-### 5.4 Concept C — Spec-sheet static (4:5) + carousel „Drei Handgriffe“ (4:5 × 5)
+### 5.4 Concept C — "Lab note" static (4:5) + carousel (4:5 × 6)
 → `/products/sleep-komplett-set`
-Built strictly in the brand system: paper ground, navy ink, Newsreader voice, Inter Tight labels, **JetBrains Mono for every number**, 0.5 px hairlines, Sleep pigment only as a dot. It reads like a document, not an ad. That is the Format element (#1).
+Built strictly in the brand system: paper ground, navy ink, Newsreader voice, Inter Tight labels, **JetBrains Mono for every number**, 0.5 px hairlines, Sleep pigment only as a dot. It reads like a page from a lab notebook, not an ad. That is the Format element (#1).
 
-**Static:**
+**Cold static: indirect, mechanism first, no price, product only as a footnote:**
+```
+§ 01 · Notiz zur Nacht                            ● 22:00
+Ein Duft, der überall ist,
+markiert nichts.
+─────────────────────────────────────────────
+Ein Schlusspunkt braucht einen Duft, der nur für
+diesen Moment da ist. Jeden Abend derselbe.
+─────────────────────────────────────────────
+N·L 04 — SLEEP · Own your night.         neurora LABS
+```
+
+**Cold carousel (runs Content → Hope → Value → Impulse slide by slide):**
+1 „Ein Duft, der überall ist, markiert nichts.“ (Content)
+→ 2 „Abends riecht es oft schon: Bad, Wohnzimmer, Handcreme. Nur sagt das dem Tag nicht, dass er vorbei ist.“ (Hope: why it hasn't worked)
+→ 3 „Ein Schlusspunkt braucht einen Duft nur für diese halbe Stunde. Jeden Abend derselbe.“ (Hope: mechanism)
+→ 4 „Drei Handgriffe: Handgelenk. Kissen. Raum.“ — Roll-On 10 ml · Spray 30 ml · Reed 125 ml (Value)
+→ 5 „Licht aus. Tag vorbei.“ (Value: dream scenario)
+→ 6 Offer card: `89 € statt 117 €` · `+ Roll-On geschenkt bis 30.11.` · `30 Tage Geld-zurück` (Impulse)
+
+**Retargeting static (product-aware, so here product + price may lead):**
 ```
 N·L 04 — SLEEP                                   ● 22:00
 Ein Duft.
@@ -180,11 +221,10 @@ Nur für die Nacht.
 ─────────────────────────────────────────────
 Roll-On 10 ml · Fabric Spray 30 ml · Reed 125 ml
 Lavendel · Zedernholz · Röm. Kamille · Vetiver
-89 € statt 117 €  ·  + Roll-On geschenkt
+89 € statt 117 €  ·  + Roll-On geschenkt bis 30.11.
 ─────────────────────────────────────────────
 Own your night.                          neurora LABS
 ```
-**Carousel:** 1 „Drei Handgriffe für die letzte halbe Stunde des Tages.“ → 2 „Handgelenk. Roll-On, 10 ml.“ → 3 „Kissen. Fabric Spray, zwei Sprühstöße.“ → 4 „Raum. Reed Diffuser, 8–12 Wochen.“ → 5 Offer card + „Gilt bis 30.11., 23:59.“
 
 **Asset production:** statics and carousel → Brand Atlas `brand_generate_image` with the SLEEP product IDs (real packshots) and native copy. Videos → a 2-hour phone shoot in a real bedroom (single light source, evening; S10 §04 "Raum nach dem Sprühen").
 
@@ -193,7 +233,10 @@ Own your night.                          neurora LABS
 |---|---|---|---|
 | A · POV 22:00 | F6.neu | F10.neu | F8.neu |
 | B · Founder note | F1.neu | F2.12 | F4.neu *(or F3.1 until `[BELEG]`)* |
-| C · Spec static / carousel | F5.neu carousel | Spec static + F10.neu | F3.1 static |
+| C · Lab note static / carousel | Carousel (6 slides) | Lab-note static („markiert nichts“) | F3.1 lab-note static |
+| *RT (from 26.11.)* | *F7.neu + retargeting spec static* | *Winning cold ad + deadline end card* | — |
+
+Hook F5.neu („Drei Handgriffe…“) is now carousel slide 4, not the opener: it names the product format and belongs after the mechanism.
 
 Naming: `NR_SLP_{A|B|C}_{F-ID}_v1` · UTM on every ad: `utm_source=meta&utm_medium=paid_social&utm_campaign={{campaign.name}}&utm_content={{ad.name}}`
 
