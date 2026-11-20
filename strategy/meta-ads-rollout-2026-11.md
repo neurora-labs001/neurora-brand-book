@@ -16,9 +16,10 @@
 | **Brand frame** | **Mood on Demand.** Sleep = *„Dein Abend. Auf Abruf.“* · Wechsel *„Von Kopf an zu Licht aus.“* · *Own your night.* · Slogan *Choose the moment.* | 2.0 ch. 01, 08, 10 |
 | **Mechanism (Hope Sale)** | 2.0's own: **„Aus Gewohnheit wird Ritual. Aus Ritual wird dein Signal.“** Same scent, same moment, one breath, 30 days. | 2.0 belief 03: „Ein Duft wird erst durch Wiederholung zum Signal.“ The new mechanism the article asks for is already the brand's core idea. |
 | **Where ads sit** | **Rand (fast surfaces).** Angles and personas may be tested; logo, colour and Leitplanken always apply; comparisons only with their own landing page; test fast, review weekly. | 2.0 ch. 17 „Kern und Rand“ + channel table „Anzeigen“ |
-| **Hero offer** | **SLEEP · Komplett-Set €89** (statt €117) **+ Roll-On geschenkt** ab €85 | Only offer that clears break-even CPA (≈ €35). 2.0: no discount as the main message, so the offer closes the ad, it never leads. |
+| **Offers (matched to the live pages)** | **A → Abendritual · Set** (CALM Roll-On + SLEEP Spray), recommended default **groß €99** (+ SLEEP Reed, + Roll-On geschenkt ab €85 = €146 value). **B / C → SLEEP · Komplett-Set €89** (statt €117) + Roll-On geschenkt | The live persona page sells the Abendritual, so Concept A must too (§7.2). Both offers clear break-even (≈ €35–43). 2.0: no discount as the main message, so the offer closes the ad, it never leads. |
 | **Risk reversal** | **„30 Tage testen“** | 2.0 message ladder step 06 „Sicherheit: 30 Tage testen.“ The guarantee window equals the 30-day ritual window. |
-| **Landing** | A → `/pages/kopf-ausschalten` (persona page, a funnel tool per 2.0 ch. 07). B / C → `/products/sleep-komplett-set` | No new page this week |
+| **Landing** | A → `/pages/kopf-ausschalten` (live persona page: „Müde im Körper, wach im Kopf?“, Abendritual, VSL, Judge.me voices). B / C → `/products/sleep-komplett-set` **after the claim fixes in §7.2** | No new page this week. Theme NEURORA MOOD 6.1 read on 2026-11-20. |
+| **Fastest first asset** | The page's existing VSL `nr-vsl-kopf-ausschalten.mp4` as ad A1, with a new 3-second opener | It is already built in the brand's language; it can run on Monday while A2 / A3 are shot |
 | **Creative** | 3 concepts × 3 hooks = **9 ads**, mapped to 2.0 social pillars: *Kennst du das* · *Wissen* · *Verkauf* | One market, tested across formats |
 | **Budget (recommended)** | Test €90/day from Mon 23.11. + Retargeting €20/day from Thu 26.11. ≈ **€1,000 through 30.11.** | Leading-indicator reads per concept |
 | **Launch gates** | (1) every line **Cleared** in the Claims Register („Erst das Register, dann die Fläche“, which includes „auf Abruf“) · (2) every ad passes the **2.0 seven review questions** (§9) | 2.0 ch. 10 + ch. 20 |
@@ -158,7 +159,7 @@ Pulled 2026-11-20, last 91 days.
 |---|---|---|
 | 12 | USP | The MoodTech system: four states for one day, *Mood on Demand*. A signal for the moment, not a product for the shelf (2.0 positioning). |
 | 13 | Four value levers | **Odds ↑:** three reaches (wrist, pillow, room), so the signal is everywhere in that moment. **Dream scenario:** *Wie frische Bettwäsche und Licht aus.* **Time, honestly:** *30 Tage sind der Rahmen*, two seconds a night (2.0 forbids instant promises; the honest frame is the credible one for this avatar). **Effort ↓:** *Ein Atemzug, zwei Sekunden Aufmerksamkeit. Mehr Aufwand verlangt Neurora nicht.* |
-| 14 | Anchoring | €89 for the full evening set ≈ €1 per night over 12 weeks of Reed. No comparison with medication in this phase. |
+| 14 | Anchoring | The shop's own number: **≈ 0,31 € pro Abend im Roll-On** (€29 ÷ ~95 uses). Use it without the PDP's „weniger als jeder Schlaftee“ (a comparison; 2.0 keeps those off core surfaces). No comparison with medication in this phase. |
 
 ### Stage 4 · Impulse Sale
 | # | Element | Fill |
@@ -175,8 +176,8 @@ Pulled 2026-11-20, last 91 days.
 
 | ID | Hook | 2.0 pattern | Use |
 |---|---|---|---|
-| **F2.neu** | „Licht aus. Gedanken noch an.“ | Kennst du das | **Concept A lead** |
-| **F6.neu** | „Müde im Körper. Wach im Kopf.“ | Kennst du das (LP-congruent: `/pages/kopf-ausschalten`) | A variant |
+| **F6.neu** | „Müde im Körper. Wach im Kopf.“ | Kennst du das (= live LP H1 on `/pages/kopf-ausschalten`) | **Concept A lead** (A1 VSL + A2) |
+| **F2.neu** | „Licht aus. Gedanken noch an.“ | Kennst du das (2.0 Sleep line) | A3 |
 | **F10.neu** | „Wie frische Bettwäsche und Licht aus.“ | Gefühl (accent line) | A variant |
 | **F6.neu** | „Abschalten lässt sich eine Stimmung nicht. Ablösen schon.“ | Belief 01 | **Concept B lead** |
 | **F1.neu** | „Ein Duft, der nur gut riecht, ist noch kein Signal.“ | Belief 03 | B variant |
@@ -188,31 +189,33 @@ Pulled 2026-11-20, last 91 days.
 
 **Never use:** „Hilft dir beim Einschlafen, ohne Nebenwirkungen.“ (healing claim + comparison). The Amazon titles still use this pattern (§10).
 
-### 6.2 Concept A · *Kennst du das* (9:16 Reels / Stories + 4:5 Feed, 25–30 s)
-→ `/pages/kopf-ausschalten` · Imagery: *Mensch im Moment* + *Hand und Gebrauch* + *Raum*. Warm bedside lamp, one direction. Person 27–50, natural, not posing.
+### 6.2 Concept A · *Kennst du das* → Abendritual (9:16 Reels / Stories + 4:5 Feed, 25–30 s)
+→ `/pages/kopf-ausschalten` · The page sells the **Abendritual** (CALM for the handover from work, SLEEP for lights out), so this ad tells the same story: **one moment, the evening, in two steps.** Its mechanism line is already on the page: *„Dir fehlt keine Ruhe. Dir fehlt ein Übergang.“* Imagery: *Mensch im Moment* + *Hand und Gebrauch* + *Raum*. Warm lamp light, one direction. Person 27–50, natural, not posing.
+
+**A1 (Monday):** the page's existing VSL `nr-vsl-kopf-ausschalten.mp4`, re-cut to 9:16 / 4:5 with the opener below and the end card below. **A2 / A3:** the new shoot, as scripted here.
 
 | Time | Sale | Visual | VO / on-screen |
 |---|---|---|---|
-| 0–2 s | Content | Lamp on. Person lies in bed, eyes open, turns the phone face down | Text: **„Licht aus. Gedanken noch an.“** |
-| 2–6 s | Hope | Ceiling, the person exhales | VO: „Abschalten lässt sich so ein Abend nicht. Ablösen schon.“ |
-| 6–11 s | Hope (why it failed) | Hand cream, a candle in the living room, a perfume bottle (quick cuts) | VO: „Duft ist abends oft schon da. Nur überall. Und ein Duft, der nur gut riecht, ist noch kein Signal.“ |
-| 11–17 s | Hope (mechanism) | Roll-On on the wrist; the person closes their eyes and **inhales**; the Signal Line traces once around the wrist | VO: „Ein Signal entsteht durch Wiederholung. Derselbe Duft, im selben Moment, jeden Abend. Aus Gewohnheit wird Ritual. Aus Ritual wird dein Signal.“ |
-| 17–22 s | Value | Two sprays on the pillow · Reed on the nightstand (label readable, V4) | VO: „Für den Schlaf: Lavendel, Zedernholz, Römische Kamille, Vetiver. Auftragen. Einatmen. Loslassen.“ |
+| 0–2 s | Content | 22:00. Person in bed, eyes open, phone in hand | Text: **„Müde im Körper. Wach im Kopf.“** (= the page's H1) |
+| 2–6 s | Hope | Phone face down, the person exhales | VO: „Dir fehlt keine Ruhe. Dir fehlt ein Übergang.“ |
+| 6–11 s | Hope (why it failed) | Sofa, series on, scrolling (quick cuts, 19:45 → 23:15) | VO: „Zwischen Arbeit und Bett gibt es keinen klaren Moment. Also füllt das Handy die Lücke.“ |
+| 11–17 s | Hope (mechanism) | Laptop closes, CALM Roll-On on the wrist, the person inhales, the Signal Line traces once | VO: „Zwei feste Signale. Derselbe Duft, im selben Moment, jeden Abend. Aus Gewohnheit wird Ritual. Aus Ritual wird dein Signal.“ |
+| 17–22 s | Value | Two sprays of SLEEP on the pillow, labels readable (V4) | VO: „CALM, wenn der Laptop zugeht. SLEEP, bevor das Licht ausgeht. Auftragen. Einatmen. Loslassen.“ |
 | 22–24 s | Value (dream) | Lamp goes off | Accent line: *Wie frische Bettwäsche und Licht aus.* |
-| 24–30 s | Impulse | End card: Frosted Board on Creme with violet glow, Mood Dot | Label `SLEEP` · line 1 **Dein Abend.** · line 2 *Auf Abruf.* (EB Garamond Italic, `#4E3D98`) · subline „Komplett-Set 89 € statt 117 €. Roll-On geschenkt bis 30.11. 30 Tage testen.“ · *Own your night.* · *Choose the moment.* |
+| 24–30 s | Impulse | End card: Frosted Board on Creme, violet glow, Mood Dot | Label `ABENDRITUAL` · line 1 **Dein Abend.** · line 2 *Auf Abruf.* (EB Garamond Italic, `#4E3D98`) · subline „Großes Set 99 € statt 117 €. Roll-On geschenkt bis 30.11. 30 Tage testen.“ · *Own your night.* · *Choose the moment.* |
 
 **Primary text** (hook in the first ~125 characters):
-> Licht aus. Gedanken noch an.
+> Müde im Körper. Wach im Kopf. Dir fehlt keine Ruhe. Dir fehlt ein Übergang.
 >
-> Abschalten lässt sich so ein Abend nicht. Ablösen schon. Mit einem Signal, das nur zu diesem Moment gehört.
+> Zwischen Arbeit und Bett gibt es keinen klaren Moment. Also füllt das Handy die Lücke.
 >
-> Derselbe Duft, im selben Moment, jeden Abend. Aus Gewohnheit wird Ritual. Aus Ritual wird dein Signal.
+> Das Abendritual setzt zwei Signale: CALM, wenn der Laptop zugeht. SLEEP, bevor das Licht ausgeht. Derselbe Duft, im selben Moment, jeden Abend. Aus Gewohnheit wird Ritual. Aus Ritual wird dein Signal.
 >
-> Für den Schlaf: Lavendel, Zedernholz, Römische Kamille, Vetiver. Als Roll-On, Spray und Diffuser.
->
-> Komplett-Set 89 € statt 117 €, bis 30.11. mit einem Roll-On geschenkt. 30 Tage testen.
+> Großes Set 99 € statt 117 €, bis 30.11. mit einem Roll-On geschenkt. 30 Tage testen.
 
 **Headline:** Dein Abend. Auf Abruf. · **Description:** Versand in 1–2 Werktagen · **CTA button:** Mehr dazu
+
+*Note on 2.0 review question 02 („ein Moment“):* the moment is *der Abend*; CALM and SLEEP are its two steps, exactly as the live page frames it. Persona pages and their ads are *Rand* surfaces (2.0 ch. 17).
 
 ### 6.3 Concept B · *Wissen* (9:16 + 4:5, 25–35 s, motion board + VO)
 → `/products/sleep-komplett-set` · Frosted Boards on Creme, violet glow, one Signal Line drawing once (*Das Ausklingen*), cut with *Produkt und Materie* (product on stone, hard window light) and *Hand und Gebrauch*. Optional VO by Philip, or a person in *Mensch im Moment*.
@@ -253,10 +256,12 @@ No price on the cold static. The result leads (review question 03).
 
 **Retargeting static:** *Produkt auf der Box* (from above, label readable, white ground per the 2.0 reference) · **Dein Abend.** / *Auf Abruf.* · Komplett-Set 89 € statt 117 € · Roll-On geschenkt bis 30.11. · 30 Tage testen.
 
+**Retargeting voice (2.0 step 06 „Stimmen“):** verified Judge.me quote already on the live page, SLEEP Roll-On: „Super Produkt, kompakte Verpackung und Duft riecht gut, der Metall Roller ist außerdem angenehm für die Haut. Bin überzeugt !“ (Nicolas K., verifizierter Kauf). Quote it verbatim with name and source.
+
 ### 6.5 Ad matrix
 | Ad set | Ad 1 | Ad 2 | Ad 3 |
 |---|---|---|---|
-| A · Kennst du das | „Licht aus. Gedanken noch an.“ | „Müde im Körper. Wach im Kopf.“ | „Wie frische Bettwäsche und Licht aus.“ |
+| A · Kennst du das → Abendritual | **Existing VSL** + opener „Müde im Körper. Wach im Kopf.“ | New shoot, „Müde im Körper. Wach im Kopf.“ | New shoot, „Licht aus. Gedanken noch an.“ |
 | B · Wissen | „Abschalten … Ablösen schon.“ | „Ein Duft, der nur gut riecht …“ | „Ein Moment. Ein Duft. Ein Atemzug.“ |
 | C · Kachel | Carousel (6) | Static „Von Kopf an zu Licht aus.“ | Static „Auftragen. Einatmen. Loslassen.“ |
 | *RT (from 26.11.)* | *F7.neu + product-on-box static* | *Winning cold ad with offer end card* | |
@@ -276,7 +281,7 @@ Naming `NR_SLP_{A|B|C}_{hook}_v1` · UTM `utm_source=meta&utm_medium=paid_social
  COLD (Meta: FB + IG, DE+AT, 27–50)      WARM                          OWNED
  ┌──────────────────┐   click   ┌──────────────────────────┐  ATC   ┌───────────────┐
  │ A · Kennst du das│──────────▶│ /pages/kopf-ausschalten  │──┐     │ Cart: gift    │
- │                  │           │ persona page → Set CTA   │  ├────▶│ auto-added    │──▶ Checkout
+ │   (VSL first)    │           │ → Abendritual Set        │  ├────▶│ auto-added    │──▶ Checkout
  └──────────────────┘           └──────────────────────────┘  │     │ ≥ 85 €        │
  ┌──────────────────┐           ┌──────────────────────────┐  │     └───────────────┘
  │ B · Wissen       │──────────▶│ /products/sleep-         │──┘            │
@@ -288,24 +293,40 @@ Naming `NR_SLP_{A|B|C}_{hook}_v1` · UTM `utm_source=meta&utm_medium=paid_social
  product on box + offer             viewers, IG/FB engagers 30d
 ```
 
-### 7.1 Offer ladder on the page (2.0: rituals before single products)
+### 7.1 Offer ladders (2.0: rituals before single products)
+**A · `/pages/kopf-ausschalten`** (live: pick = Abendritual, „Oder einzeln wählen“ below, bonus line ab 85 € already on the page)
+| Rung | Product | Price | Role |
+|---|---|---|---|
+| 1 | Abendritual · Set klein (CALM RO + SLEEP Spray) | €59 (statt €68) | Entry; below the gift threshold |
+| **2 ★** | **Abendritual · Set groß** (+ SLEEP Reed) **+ Roll-On geschenkt** | **€99 (Wert €146)** | **Recommended default** (today the page defaults to the set without naming the size) |
+| 3 | Singles + SLEEP Komplett-Set | €29–89 | „Oder einzeln wählen“ |
+
+**B / C · `/products/sleep-komplett-set`**
 | Rung | Product | Price | Role |
 |---|---|---|---|
 | 1 | SLEEP Fabric Spray | €39 | Entry |
-| **2 ★** | **SLEEP Komplett-Set + Roll-On geschenkt** | **€89 (Wert €146)** | **Default: the full evening ritual** |
-| 3 | Abendritual · Set groß (Calm RO + Sleep Spray + Sleep Reed) | €99 | Pause and night: the first step into the system |
+| **2 ★** | **SLEEP Komplett-Set + Roll-On geschenkt** | **€89 (Wert €146)** | Default |
 
-### 7.2 Landing page check (2.0 Erzählfolge, 7 steps)
-Walk `/pages/kopf-ausschalten` and the Komplett-Set PDP on a phone against the 2.0 page order:
-1. **Versprechen:** Mood on Demand in one sentence (explained on first appearance, 2.0 rule)
-2. **Ergebnis:** the Wechsel *Von Kopf an zu Licht aus* with the Signal Line
-3. **Weg:** ritual and signal (Erklär-Modul, sentence complete)
-4. **Produkte:** moments and formats, Set pre-selected
-5. **Momente:** where it fits (bedroom, pillow, nightstand)
-6. **Beleg:** ingredients, voices, **30 Tage testen**
-7. **Abschluss:** one clear call to action
+### 7.2 Live funnel audit (theme NEURORA MOOD 6.1, read 2026-11-20)
 
-Plus: H1 matches the ad hook (A: „Licht aus. Gedanken noch an.“ or „Müde im Körper. Wach im Kopf.“) · gift visible before the cart · „kein Medikament“ · no countdown widgets · unlinked from main nav · gift auto-adds at ≥ €85.
+**`/pages/kopf-ausschalten` · ready for traffic, three small fixes**
+- ✅ H1 „Müde im Körper, wach im Kopf?“ with eyebrow „Kennst du das?“ = ad hook A. Mechanism already on the page: *„Dir fehlt keine Ruhe. Dir fehlt ein Übergang.“* Ritual steps, 30-day return in the FAQ, „kein Schlaf- und kein Beruhigungsmittel“, studies linked per oil with the note „kein Wirkversprechen“, Judge.me voices, sticky CTA, VSL.
+- ⚠ **66 vs 30 days:** the science note says „rund 66 Tage, bis eine neue Gewohnheit von allein läuft (Lally et al. 2010)“. The ads and 2.0 say „30 Tage sind der Rahmen“. Keep Lally as the honest citation, but frame it as: *30 Tage zum Testen und Anfangen; bis es ganz von allein läuft, dauert es oft länger.*
+- ⚠ **Default to the large set** (rung 2 above) so the default order clears the €85 gift threshold.
+- ⚠ Text spelling „neurora ist kein Arzneimittel“ → „Neurora“ (2.0 name rule).
+
+**`/products/sleep-komplett-set` · fix before B / C go live** (Meta reviews landing pages too)
+- ❌ **Effect / physiological claims:** „Wirkt mit dem ersten Atemzug“ · Lavendel „Tiefer schlafen: 2,5 PSQI-Punkte bessere Schlafqualität“ · Zedernholz „Fährt den Körper herunter: Puls, Blutdruck und Atmung sinken“. These read as product effect claims (2.0: „Kein Heilversprechen“, „Erst das Register, dann die Fläche“; EU medicinal-by-function risk). Rewrite in the page-LP style: *what the study measured, with source, plus „kein Wirkversprechen für SLEEP“.*
+- ❌ **Mechanism on the surface:** „Riechen ist der einzige Sinn ohne Umweg … direkt an verschiedene Bereiche des Gehirns“, „wirken sie direkt auf unser Gehirn“, „Geruch ist der schnellste Weg zu deinem Nervensystem“. 2.0: „Kein Mechanismus auf der Fläche.“ Replace with the 2.0 line „Kein Sinn ist enger mit Erinnerung und Stimmung verbunden als der Geruchssinn.“ (register-cleared) and the ritual module.
+- ❌ **Three placeholder testimonials:** „Platzhalter – hier stehen echte Kundenstimmen, sobald welche vorliegen.“ Replace with the verified Judge.me voices from the LP, or hide the block.
+- ⚠ „≈ 0,31 € pro Nacht im Roll-On – weniger als jeder Schlaftee“: keep the number, drop the comparison.
+- ⚠ 2.0 style: „Warum neurora?“ → „Warum Neurora?“; dashes in copy.
+
+**`/pages/ohne-pille` (Phase 2):** H1 „Ohne Melatonin einschlafen?“, framed „Als Ergänzung, nicht als Ersatz.“ Exactly the 2.0 *Vergleich* door with its own landing page. Before ads: add the full disclaimer „kein Ersatz, kein Entzug, sprich mit deinem Arzt“ and check the H1 against Meta's health policy.
+
+**Theme:** `snippets/countdown-timer.liquid` and a `product.flash-sale` template exist. Don't use them in this rollout (2.0: no countdown).
+
+Still to check by eye on a phone: the 2.0 page order (Versprechen → Ergebnis → Weg → Produkte → Momente → Beleg → Abschluss), gift auto-add at ≥ €85, page speed.
 
 ### 7.3 Klaviyo during the window
 Cart + Browse Abandon: add the gift line (ends 30.11.) as a plain fact, no countdown. Campaigns to the list on Thu 26.11. and Mon 30.11. 2.0 e-mail rule: **one moment per mail, benefit first, then the offer.**
@@ -341,6 +362,7 @@ Cart + Browse Abandon: add the gift line (ends 30.11.) as a plain fact, no count
 | Offer | Net of VAT | COGS* | Ship + pay** | **Break-even CPA** |
 |---|---:|---:|---:|---:|
 | SLEEP Komplett-Set + gift RO | €74.2 | ≈ €31 | ≈ €8 | **≈ €35** |
+| **Abendritual · Set groß + gift RO** | €82.5 | ≈ €31 | ≈ €8 | **≈ €43** |
 | Abendritual · Set klein | €49.2 | ≈ €15 | ≈ €7 | ≈ €27 |
 | SLEEP Fabric Spray | €32.5 | ≈ €7.6 | ≈ €7 | ≈ €18 |
 
@@ -393,7 +415,9 @@ Cart + Browse Abandon: add the gift line (ends 30.11.) as a plain fact, no count
 | 7 | **Hook-Baukasten skill is pre-2.0** (bans „Ritual“, lowercase „neurora“ in text, Calm "Own your mind") | Update the skill to 2.0 |
 | 8 | The repo still holds **Brand Book v03** (`index.html`, `neurora_brand_book_v04_DE.html`) | Add Brand Book 2.0 to this repo as the current version, mark v03 superseded |
 | 9 | Physical label strip colours were printed before 2.0 (Sleep pigment changed to Nachtviolett) | Check that product shots and the end-card pigment don't clash; label text stays per Spec V4 |
-| 10 | LP and PDP not audited | Network to the store is blocked here and theme access was declined. Walk §7.2 on a phone. |
+| 10 | **SLEEP Komplett-Set PDP:** effect claims, mechanism copy, three placeholder testimonials (§7.2) | **Blocks Concepts B / C.** Fix by Sunday, or point B / C to `/pages/kopf-ausschalten` instead |
+| 11 | LP says „rund 66 Tage“, ads say 30 | Reframe as in §7.2 so page and ad agree |
+| 12 | LP default set size | Pre-select Abendritual groß (€99) so the default clears the gift threshold |
 
 ---
 
@@ -401,9 +425,9 @@ Cart + Browse Abandon: add the gift line (ends 30.11.) as a plain fact, no count
 
 | Day | Do | Done when |
 |---|---|---|
-| **Fri 20.11.** | Decisions §10 #1–4. Meta tracking §8.1. Start the Brand Atlas 2.0 update (#6). | Test purchase in Events Manager |
-| **Sat 21.11.** | Shoot A (real person 27–50, real bedroom, warm lamp, one direction) and B (hands, product on stone). Build C boards from the 2.0 templates. | 9 assets in 9:16 + 4:5 |
-| **Sun 22.11.** | Edit + subtitles. Claims Register entries Cleared. **Seven-question gate (§9)** on every ad. LP check §7.2. Upload to Meta. | All 9 ads approved by Meta review |
+| **Fri 20.11.** | Decisions §10 #1–4. Meta tracking §8.1. Start the Brand Atlas 2.0 update (#6). Re-cut the existing VSL into ad A1. | Test purchase in Events Manager · A1 ready |
+| **Sat 21.11.** | Shoot A2 / A3 (real person 27–50, real bedroom, warm lamp, one direction) and B (hands, product on stone). Build C boards from the 2.0 templates. Fix the Komplett-Set PDP (§10 #10) and the LP points (#11, #12). | 9 assets in 9:16 + 4:5 · PDP clean |
+| **Sun 22.11.** | Edit + subtitles. Claims Register entries Cleared. **Seven-question gate (§9)** on every ad. Phone check of both pages. Upload to Meta. | All 9 ads approved by Meta review |
 | **Mon 23.11.** | **Launch `NR_SLP_TEST_ABO`** (€90/day) | Spend in all 3 ad sets |
 | **Tue 24.11.** | Read hook / hold / CTR. Swap failing hooks, keep bodies. | Kill log updated |
 | **Wed 25.11.** | First CPA read. Prepare BF end cards (gift date as a plain fact). | BF versions approved |
