@@ -53,11 +53,11 @@ function generic() {
   for (const f of files) {
     const h = f.endsWith('_45.html') ? 1350 : 1920; await page.setViewportSize({ width: 1080, height: h });
     await page.goto('file://' + path.join(dir, f)); await page.evaluate(() => document.fonts.ready);
-    const builtIn = await page.evaluate(() => !!document.querySelector('.sig-b, .comet'));
-    await page.evaluate(() => document.body.classList.add('anim'));
-    if (!builtIn) { await page.evaluate(css => { window.__GCSS = css; }, GENERIC_CSS); await page.evaluate(generic); }
-    await page.waitForTimeout(60);
-    const step = async t => page.evaluate(t => document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; }), t * 1000);
+    const builtIn = await page.evaluate(() => !!document.querySelector('.sig-b, .comet, .builtin'));
+    await page.evaluate(() => window.__measure && window.__measure());
+    if (!builtIn) await page.evaluate(css => { window.__GCSS = css; }, GENERIC_CSS);
+    await page.evaluate(gen => { document.body.classList.add('anim'); if (gen) generic(); document.getAnimations().forEach(a => a.pause()); }, !builtIn);
+    const step = async t => page.evaluate(t => { document.getAnimations().forEach(a => { a.pause(); a.currentTime = t; }); document.body.offsetHeight; return new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r))); }, t * 1000);
     if (shots) {
       for (const t of shots) { await step(t); await page.screenshot({ path: path.join(dir, 'out', `_pv_${f.replace('.html', '')}_${t}.jpg`), type: 'jpeg', quality: 80 }); }
       console.log('preview', f, builtIn ? 'built-in' : 'generic'); continue;

@@ -160,6 +160,126 @@ def ad_ba(d, fmt):
             + product_line(st, d["line"], d["ct"], d["cs"], fmt) + "<div class='grow'></div>")
     return page(d["key"], st, fmt, body)
 
+# ---------- 01-03 VIDEO layout: full-width stage (Ohne -> Mit) + product slider ----------
+VID_CSS = """
+.stage{position:relative;overflow:hidden}
+.stage .vcard{position:absolute;top:0;height:100%;border-radius:28px;overflow:hidden}
+.stage .vcard .in{position:absolute;top:0;width:var(--sw);height:100%;padding:26px 30px 12px}
+.stage .off{left:0;width:100%;background:rgba(242,241,238,.95);border:1px solid rgba(13,27,51,.07)}
+.stage .on{right:0;width:0;background:var(--soft);border:1px solid color-mix(in srgb,var(--c) 18%,transparent);box-shadow:0 24px 50px -36px color-mix(in srgb,var(--c) 70%,transparent)}
+.vrow{display:grid;grid-template-columns:104px 1fr;gap:12px;padding:16px 0 0;border-top:1px solid rgba(13,27,51,.07);font-size:35px;line-height:1.3;letter-spacing:-.01em}
+.vlbl{font-size:28px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;display:flex;align-items:center}
+.vtit{font-size:56px;font-weight:400;letter-spacing:-.035em;line-height:1.08;margin:14px 0 16px}
+.offt{color:rgba(13,27,51,.72)} .offt b{font-weight:700;color:#0D1B33}
+.ont{color:#0D1B33} .ont b{font-weight:700;color:var(--c)}
+.vrow .t{font-size:27px;font-weight:700;letter-spacing:.03em;padding-top:5px}
+.slider{overflow:hidden;border-radius:20px}
+.slider .strip{display:flex;gap:14px;width:max-content;transform:translateX(var(--from))}
+body.anim .bh{animation:bhup .75s cubic-bezier(.65,0,.3,1) 1.75s both}
+body.anim .hh{animation:hhup .75s cubic-bezier(.65,0,.3,1) 3.85s both}
+body.anim .stage{overflow:visible}
+body.anim .stage .off{animation:offin .8s cubic-bezier(.2,.8,.2,1) 4.45s both,offsq 1.8s cubic-bezier(.6,0,.3,1) 7.2s both}
+body.anim .stage .on{animation:onin 1.8s cubic-bezier(.6,0,.3,1) 7.2s both}
+body.anim .sig-start{animation:fadein .5s ease 4.75s both}
+body.anim .sig-b{animation:draw 2.2s cubic-bezier(.45,0,.2,1) 4.85s forwards}
+body.anim .sig-o{animation:opop .8s cubic-bezier(.3,1.5,.5,1) 6.95s both,obreathe 3.8s ease-in-out 7.8s infinite}
+body.anim .sig-a{animation:draw 1.9s cubic-bezier(.3,0,.2,1) 7.1s forwards}
+body.anim .sig-end{animation:opop .7s cubic-bezier(.3,1.5,.5,1) 8.95s both,obreathe 3.8s ease-in-out 9.7s infinite}
+body.anim .col{animation:colup .9s cubic-bezier(.65,0,.3,1) 9.4s both}
+body.anim .slider{animation:slin .9s cubic-bezier(.2,.8,.2,1) 9.5s both}
+body.anim .slider .strip{animation:slide 4s linear 9.5s both}
+@keyframes bhup{from{transform:translateY(var(--dyb)) scale(1.5)}to{transform:none}}
+@keyframes hhup{from{transform:translateY(var(--dyh)) scale(1.12)}to{transform:none}}
+@keyframes offin{from{transform:translateX(-115%)}to{transform:none}}
+@keyframes colup{from{transform:translateY(var(--dyc))}to{transform:none}}
+@keyframes slin{from{opacity:0;transform:translateY(70px)}to{opacity:1;transform:none}}
+@keyframes offsq{from{width:100%;opacity:1}to{width:0%;opacity:.35}}
+@keyframes onin{0%{width:0%;opacity:0}8%{opacity:1}100%{width:100%;opacity:1}}
+@keyframes slide{from{transform:translateX(var(--from))}to{transform:translateX(0)}}
+.w{display:inline-block}
+.qbadge.w{display:inline-flex}
+.qbadge .q.w{display:grid}
+body.anim .w{animation:wpop .42s cubic-bezier(.2,.9,.3,1.25) both}
+body.anim .qbadge.w{animation:wpop .5s cubic-bezier(.2,.9,.3,1.2) both}
+body.anim .qbadge .q.w{animation:wpop .5s cubic-bezier(.2,.9,.3,1.3) both,qwig 3.7s ease-in-out 3s infinite}
+@keyframes wpop{from{opacity:0;transform:translateY(14px) scale(.85)}to{opacity:1;transform:none}}
+"""
+
+MEASURE_JS = """<script>
+window.__measure = function () {
+  const H = innerHeight, sl = document.querySelector('.slider');
+  const sh = sl.getBoundingClientRect().height + parseFloat(getComputedStyle(sl).marginTop);
+  const dyc = sh / 2, mid = r => (r.top + r.bottom) / 2;
+  const col = document.querySelector('.col'), bh = document.querySelector('.bh'), hh = document.querySelector('.hh');
+  col.style.setProperty('--dyc', dyc + 'px');
+  bh.style.setProperty('--dyb', (H / 2 - (mid(bh.getBoundingClientRect()) + dyc)) + 'px');
+  hh.style.setProperty('--dyh', (H / 2 - (mid(hh.getBoundingClientRect()) + dyc)) + 'px');
+};
+</script>"""
+
+def _words(text, t0, step, cls="w"):
+    out = []; t = t0
+    for w in text.split(" "):
+        out.append(f"<span class='{cls}' style='animation-delay:{t:.2f}s'>{w}</span>"); t += step
+    return " ".join(out), t
+
+def typed_headline(d, size):
+    import re
+    q = re.sub(r"<[^>]+>", "", d["eyebrow"]).replace("❓", "").strip()
+    bw, t = _words(q, 0.35, 0.24)
+    badge = (f"<span class='qbadge w' style='animation-delay:0.15s'>{bw}<span class='q w' style='animation-delay:{t:.2f}s'>❓</span></span>")
+    a_w, t2 = _words(d["a"], t + 0.45, 0.27)
+    b_w, t3 = _words(d["b"], t2 + 0.1, 0.28)
+    return (f"<div class='center'><div class='eyebrow bh'>{badge}</div>"
+            f"<h1 class='hh' style='margin-top:16px;font-size:{size}px'>{a_w}<span class='acc'>{b_w}</span></h1></div>")
+
+VROWS = {
+ "01-sleep-vorher-nachher": (("22:50", "Licht aus. Und plötzlich <b>fällt dir alles ein</b>, was morgen ansteht."),
+                             ("22:16", "<b>Ein Sprühstoß</b> aufs Kissen, <b>Roll-On</b> aufs Handgelenk.")),
+ "02-calm-vorher-nachher":  (("18:40", "Auf dem Heimweg spielst du <b>das Meeting</b> noch einmal durch."),
+                             ("18:06", "<b>Roll-On</b> aufs Handgelenk. <b>Ein Atemzug.</b>")),
+ "03-focus-vorher-nachher": (("14:55", "<b>Zwölf Tabs offen.</b> Keiner davon fertig."),
+                             ("14:56", "<b>Roll-On</b> aufs Handgelenk. <b>Ein Atemzug.</b>")),
+}
+
+def ad_ba_video(d, fmt):
+    st = d["st"]; tall = fmt == "916"; c = S[st]
+    SW = 924 if tall else 936; ih = 214 if tall else 190; tw = 236
+    vo, vn = VROWS[d["key"]]
+    row = lambda r, on: (f"<div class='vrow'><span class='t' style='color:{'var(--c)' if on else 'rgba(13,27,51,.5)'}'>{r[0]}</span>"
+                         f"<span class='{'on' if on else 'off'}t'>{r[1]}</span></div>")
+    off = (f"<div class='vcard off'><div class='in' style='left:0'>"
+           "<div class='vlbl' style='color:rgba(13,27,51,.55)'>⦸&nbsp; Ohne Signal</div>"
+           f"<div class='vtit' style='color:rgba(13,27,51,.85)'>{d['off_t']}</div>"
+           + row(vo, False) + "</div></div>")
+    on = (f"<div class='vcard on'><div class='in' style='left:0'>"
+          f"<div class='vlbl' style='color:var(--c)'><span class='dot' style='width:15px;height:15px;margin-right:16px'></span>Mit {c['name']}</div>"
+          f"<div class='vtit' style='color:var(--c)'>{d['on_t']}</div>"
+          + row(vn, True) + "</div></div>")
+    stage_h = 330 if tall else 312
+    stage = f"<div class='stage' style='height:{stage_h}px;--sw:{SW}px'>{off}{on}</div>"
+    # product slider: Textilspray line + Roll-On line, the ad's state highlighted in both
+    def tile(kind, s_):
+        cc = S[s_]; hi = s_ == st
+        return (f"<div style='flex:none;width:{tw}px;background:#fff;border-radius:20px;padding:12px 8px 14px;text-align:center;"
+                + (f"box-shadow:inset 0 0 0 2.5px {cc['c']},0 18px 30px -20px color-mix(in srgb,{cc['c']} 70%,transparent)" if hi else "box-shadow:0 12px 24px -22px rgba(13,27,51,.5)")
+                + f"'><img src='{A}nr-{kind}-{s_}-cut.png' style='display:block;height:{ih}px;margin:0 auto;filter:drop-shadow(0 10px 10px rgba(13,27,51,.18))'>"
+                f"<div style='display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px'>"
+                f"<span class='dot' style='--c:{cc['c']};--g:{cc['g']};width:11px;height:11px'></span>"
+                f"<span class='lbl' style='font-size:19px;color:{cc['c']}'>{cc['name']}</span></div>"
+                f"<div style='font-size:18px;color:rgba(13,27,51,.55);margin-top:4px'>{'Textilspray' if kind == 'sbox' else 'Roll-On'}</div></div>")
+    order = ("activate", "focus", "calm", "sleep")
+    strip = "".join(tile("sbox", s_) for s_ in order) + "".join(tile("box", s_) for s_ in order)
+    shift = int(2.5 * (tw + 14))
+    bleed = 78 if tall else 72
+    slider = (f"<div class='slider' style='margin:{30 if tall else 22}px -{bleed}px 0;border-radius:0;padding:14px 0 24px'>"
+              f"<div class='strip' style='--from:-{shift}px'>{strip}</div></div>")
+    body = (top(st, "") + "<div class='grow'></div>"
+            + "<div class='col'>" + typed_headline(d, 88 if tall else 82)
+            + f"<div style='margin:{'14px' if tall else '8px'} -10px -4px'>{signal_bridge(st, 980, drop=72 if tall else 66, lx=245, rx=740)}</div>"
+            + stage + slider + "</div><div class='grow'></div>" + MEASURE_JS)
+    return page(d["key"], st, fmt, body, VID_CSS + 'body > svg{display:none}')
+
 # ---------- 04 Founder ----------
 def ad_founder(fmt):
     st = "activate"; tall = fmt == "916"
@@ -437,11 +557,10 @@ def wheel_svg(size=900):
                      f"<text x='{x:.1f}' y='{y+1:.1f}' font-family='Manrope' font-weight='600' font-size='{size*0.0175:.1f}' fill='#fff' text-anchor='middle' dominant-baseline='middle'>{num:02d}</text>")
     oct_pts = [_pt(cx, cy, Ri, h + 1.5) for h in range(0, 24, 3)]
     o.append("<polygon points='" + " ".join(f"{x:.1f},{y:.1f}" for x, y in oct_pts) + "' fill='#FBFAF7' stroke='rgba(13,27,51,.15)' stroke-width='1.5'/>")
-    r = size * 0.06; sy = cy - size * 0.03
+    r = size * 0.06; sy = cy
     o.append(f"<circle cx='{cx}' cy='{sy}' r='{r:.1f}' fill='none' stroke='rgba(13,27,51,.25)' stroke-width='1.5'/>")
     o.append(f"<path d='M {cx} {sy-r*0.95:.1f} L {cx+r*0.16:.1f} {sy} L {cx} {sy+r*0.95:.1f} L {cx-r*0.16:.1f} {sy} Z' fill='#0D1B33'/>"
              f"<path d='M {cx-r*0.95:.1f} {sy} L {cx} {sy-r*0.16:.1f} L {cx+r*0.95:.1f} {sy} L {cx} {sy+r*0.16:.1f} Z' fill='#0D1B33'/>")
-    o.append(f"<text x='{cx}' y='{cy+size*0.075:.1f}' font-family='EB Garamond' font-style='italic' font-size='{size*0.03:.1f}' fill='rgba(13,27,51,.6)' text-anchor='middle'>Ein Tag im Uhrzeigersinn</text>")
     o.append("</svg>")
     return "".join(o)
 
@@ -453,9 +572,94 @@ def ad_kompass_wheel(fmt):
       + "<div class='grow' style='min-height:20px'></div>"
       + f"<div class='board glow' style='padding:20px;margin-top:26px'><div style='width:760px;margin:0 auto'>{wheel_svg(900)}</div></div>"
       + "<div style='display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:24px'>"
-        "<p class='it' style='font-size:22px;line-height:1.35;color:rgba(13,27,51,.6);max-width:520px'>Duftfamilien beschreiben den Charakter eines Moleküls, keine Wirkung.</p>"
+        "<div></div>"
         "<div class='btn'>Zum Kompass &nbsp;→</div></div>")
     return page("Kompass", st, fmt, body)
+
+# ---------- 12a VIDEO: Neurora Mood-Kompass ----------
+KV_CSS = """
+.w{display:inline-block}
+.kbadge{display:inline-flex;align-items:center;gap:14px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:14px 30px 14px 22px;font-size:24px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+ box-shadow:0 0 0 7px color-mix(in srgb,var(--g) 40%,transparent),0 16px 30px -16px rgba(13,27,51,.55)}
+.kh .l1{font-weight:300;letter-spacing:-.045em;line-height:1.04;display:block}
+.kh .l2{font-family:'EB Garamond';font-style:italic;font-weight:400;letter-spacing:-.02em;line-height:1.04;color:var(--c);display:block}
+.win{overflow:hidden;position:relative}
+.facts{display:flex;justify-content:center;gap:12px;margin-top:14px}
+.facts span{background:#fff;border-radius:999px;padding:10px 20px;font-size:23px;box-shadow:0 10px 24px -18px rgba(13,27,51,.5)}
+.facts b{color:var(--c);font-weight:700}
+.kcap{font-size:34px;font-weight:300;letter-spacing:-.025em;text-align:center;line-height:1.2}
+.kcap b{font-weight:600;color:var(--c)}
+body.anim .w{animation:wpop .45s cubic-bezier(.2,.9,.3,1.25) both}
+body.anim .kb{animation:kbup .75s cubic-bezier(.65,0,.3,1) 1.55s both}
+body.anim .kh{animation:khup .75s cubic-bezier(.65,0,.3,1) 3.25s both}
+body.anim .kwb{animation:rin 1.2s cubic-bezier(.2,.8,.2,1) 3.75s both,kfade .9s ease 9.45s forwards}
+@keyframes kfade{to{opacity:0}}
+body.anim .kw path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 3s cubic-bezier(.45,0,.2,1) 4.0s forwards}
+body.anim .kw .inner{animation:fadein 1.6s ease 5.2s both}
+body.anim .facts span{animation:cpop .6s cubic-bezier(.2,.9,.3,1.2) both}
+body.anim .wininner{animation:swap 1.3s cubic-bezier(.65,0,.3,1) 9.4s both}
+body.anim .kstrip{animation:slide 4.6s linear 9.4s both}
+body.anim .kcta{animation:cpop .7s cubic-bezier(.2,.9,.3,1.2) 11.4s both}
+@keyframes wpop{from{opacity:0;transform:translateY(16px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes kbup{from{transform:translateY(var(--dyb)) scale(1.45)}to{transform:none}}
+@keyframes khup{from{transform:translateY(var(--dyh)) scale(1.12)}to{transform:none}}
+@keyframes rin{from{opacity:0;scale:.9}to{opacity:1;scale:1}}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes cpop{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+@keyframes swap{from{transform:none}to{transform:translateY(var(--swap))}}
+@keyframes slide{from{transform:translateX(var(--from))}to{transform:translateX(0)}}
+body > svg{display:none}
+"""
+
+KV_JS = """<script>
+window.__measure = function () {
+  const H = innerHeight, mid = r => (r.top + r.bottom) / 2;
+  const kb = document.querySelector('.kb'), kh = document.querySelector('.kh');
+  kb.style.setProperty('--dyb', (H / 2 - mid(kb.getBoundingClientRect())) + 'px');
+  kh.style.setProperty('--dyh', (H / 2 - mid(kh.getBoundingClientRect())) + 'px');
+  const wb = document.querySelector('.kwb'), wi = document.querySelector('.wininner');
+  const win = document.querySelector('.win').getBoundingClientRect().height, pr = document.querySelector('.kprod').getBoundingClientRect().height;
+  wi.style.setProperty('--swap', -(wb.getBoundingClientRect().height + 30 - Math.max(0, (win - pr) / 2)) + 'px');
+};
+</script>"""
+
+def ad_kompass_video(fmt):
+    st = "focus"; tall = fmt == "916"
+    def words(t, t0, step):
+        ws = t.split(" "); return " ".join(f"<span class='w' style='animation-delay:{t0 + i * step:.2f}s'>{w}</span>" for i, w in enumerate(ws)), t0 + len(ws) * step
+    bw, t = words("Der Neurora Mood-Kompass", 0.35, 0.26)
+    badge = (f"<div style='text-align:center'><span class='kbadge kb'><span class='w' style='animation-delay:.15s;font-size:28px;letter-spacing:0'>✦</span>{bw}</span></div>")
+    w1, t = words("Was steckt in", 1.9, 0.27); w2, _ = words("deinem Duft?", t + 0.05, 0.3)
+    head = (f"<div class='kh' style='text-align:center;margin-top:22px'><span class='l1' style='font-size:{96 if tall else 88}px'>{w1}</span>"
+            f"<span class='l2' style='font-size:{108 if tall else 100}px'>{w2}</span></div>")
+    wsvg = wheel_svg(900).replace("<path d=", "<path pathLength='1' d=")
+    # everything except the stroked arcs fades in as one layer
+    first = wsvg.index("<polygon")
+    wsvg = wsvg[:first] + "<g class='inner'>" + wsvg[first:].replace("</svg>", "</g></svg>")
+    fx = [("23", "Duftmoleküle"), ("8", "Duftfamilien"), ("4", "Momente")]
+    facts = "<div class='facts'>" + "".join(f"<span style='animation-delay:{7.3 + i * 0.45:.2f}s'><b>{n}</b> {l}</span>" for i, (n, l) in enumerate(fx)) + "</div>"
+    wsize = 600 if tall else 560
+    wheel_board = (f"<div class='kwb'><div class='kw' style='width:{wsize}px;margin:0 auto;filter:drop-shadow(0 30px 40px rgba(13,27,51,.10))'>{wsvg}</div>{facts}</div>")
+    bleed = 78 if tall else 72; tw = 296; ih = 290 if tall else 262
+    order = ("activate", "focus", "calm", "sleep")
+    def tile(kind, s_):
+        cc = S[s_]
+        return (f"<div style='flex:none;width:{tw}px;background:#fff;border-radius:20px;padding:12px 8px 14px;text-align:center;box-shadow:0 12px 24px -22px rgba(13,27,51,.5)'>"
+                f"<img src='{A}nr-{kind}-{s_}-cut.png' style='display:block;height:{ih}px;margin:0 auto;filter:drop-shadow(0 10px 10px rgba(13,27,51,.18))'>"
+                f"<div style='display:flex;align-items:center;justify-content:center;gap:9px;margin-top:10px'><span class='dot' style='--c:{cc['c']};--g:{cc['g']};width:11px;height:11px'></span>"
+                f"<span class='lbl' style='font-size:22px;color:{cc['c']}'>{cc['name']}</span></div>"
+                f"<div style='font-size:21px;color:rgba(13,27,51,.55);margin-top:4px'>{'Textilspray' if kind == 'sbox' else 'Roll-On'}</div></div>")
+    strip = "".join(tile("box", s_) for s_ in order) + "".join(tile("sbox", s_) for s_ in order)
+    shift = int(1.5 * (tw + 14))
+    products = (f"<div class='kprod' style='margin:0 -{bleed}px'><div class='kcap' style='padding:0 {bleed}px 22px'>Jeder Neurora-Duft hat<br><b>seinen Platz im Kompass.</b></div>"
+                f"<div style='overflow:hidden;padding:6px 0 20px'><div class='kstrip' style='display:flex;gap:14px;width:max-content;--from:-{shift}px;transform:translateX(-{shift}px)'>{strip}</div></div>"
+                f"<div style='text-align:center;margin-top:14px'><span class='btn kcta' style='font-size:30px;padding:30px 52px;min-height:100px'>Finde deinen Duft im Kompass&nbsp; →</span></div></div>")
+    win_h = max(wsize + 80, ih + 330)
+    window = (f"<div class='win' style='height:{win_h}px;margin:{26 if tall else 20}px -{bleed}px 0;padding:0 {bleed}px'>"
+              f"<div class='wininner'>{wheel_board}<div style='height:30px'></div>{products}</div></div>")
+    body = (top(st, "") + "<div class='grow'></div>" + badge + head + window + "<div class='grow'></div><i class='builtin'></i>" + KV_JS)
+    return page("Mood-Kompass Video", st, fmt, body, KV_CSS)
 
 ADS = [(d["key"], (lambda d: (lambda f: ad_ba(d, f)))(d)) for d in BA] + [
     ("04-founder-zitat", ad_founder), ("05-mission", ad_mission), ("06-calm-ein-atemzug", ad_atemzug),
@@ -466,9 +670,14 @@ ADS = [(d["key"], (lambda d: (lambda f: ad_ba(d, f)))(d)) for d in BA] + [
 
 if __name__ == "__main__":
     for f in os.listdir(ROOT):
-        if f.endswith(".html") and ("_45" in f or "_916" in f):
-            os.remove(os.path.join(ROOT, f))
+        if f.endswith(".html") and ("_45" in f or "_916" in f) and not f.startswith(("17", "18", "19", "v18", "v19")):
+            os.remove(os.path.join(ROOT, f))   # 17-19 and v18/v19 belong to gen3.py
     for key, fn in ADS:
         for fmt in ("45", "916"):
             open(os.path.join(ROOT, f"{key}_{fmt}.html"), "w").write(fn(fmt))
+    for fmt in ("45", "916"):
+        open(os.path.join(ROOT, f"v12a-kompass-rad_{fmt}.html"), "w").write(ad_kompass_video(fmt))
+    for d in BA:   # video-only layout, prefixed "v" so stills export ignores it
+        for fmt in ("45", "916"):
+            open(os.path.join(ROOT, f"v{d['key']}_{fmt}.html"), "w").write(ad_ba_video(d, fmt))
     print(len(ADS) * 2, "html files")

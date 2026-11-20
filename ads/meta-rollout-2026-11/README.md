@@ -64,3 +64,10 @@ Die Animation ist nur im Video-Render aktiv (`body.anim`), die JPG-Standbilder b
 - **01–03**: Die Signal Line zeichnet sich über etwa 5 s, danach bleibt das Bild 4–5 s ruhig stehen. Die ❓-Pille schwebt langsam.
 - **18/19 Ring**: Der Komet braucht 11 s pro Runde (nahtloser Loop), die Benefit-Pillen leuchten nacheinander auf.
 - **04–17**: Die Elemente bauen sich nacheinander auf (Logo, Headline, Boards, dann Kacheln und Zeilen gestaffelt). Linien zeichnen sich, Fotos zoomen langsam (Ken Burns), die Mood Dots pulsieren, das 🎁 hüpft und der CTA pulsiert bei 6 s und 9 s.
+
+## Videos v3: neue Video-Layouts (20.11.2026)
+
+- **01–03 Vorher/Nachher (13,5 s)**: Erst die Frage-Badge, dann die Headline, beide Wort für Wort, groß und zentriert, danach wandern sie nach oben. Die Karte „Ohne Signal“ kommt von links in voller Breite (große Schrift, ein Statement, Schlüsselwörter fett). Die Signal Line zeichnet sich, „Mit [Zustand]“ übernimmt. Danach rutscht der Block hoch und der Produkt-Slider (Textilspray- und Roll-On-Reihe) läuft vollflächig ein. Ohne „Der eigentliche Grund“, ohne „Choose the moment.“, ohne Band unten.
+- **12a Mood-Kompass (14 s)**: „✦ Der Neurora Mood-Kompass“, dann „Was steckt in deinem Duft?“. Der Kompass ohne Karte zeichnet sich langsam, der Stern sitzt mittig. Danach Fakten-Chips (23 Duftmoleküle · 8 Duftfamilien · 4 Momente). Der Kompass scrollt weg und große Produkte gleiten langsam ein. Zum Schluss der CTA „Finde deinen Duft im Kompass →“.
+- **18a–d und 19a–d Roll-On-Ring (12,5 s)**: Ein großes Statement pro Zustand (Activate: „Nie wieder Morgenmuffel!“, Focus: „Schluss mit Tab-Chaos!“, Calm: „Feierabend? Kopf macht Überstunden.“, Sleep: „Schluss mit Kopfkino im Bett!“). Die Benefits poppen nacheinander auf, sobald der Komet sie erreicht. Am Ende steht „[ZUSTAND] Roll-On“ groß mit gezeichneter Signal-Unterstreichung, ohne Preis und Button.
+- Claims-Check offen: „Nie wieder Morgenmuffel!“ (absolutes Versprechen). Der Kompass-Disclaimer zu Duftfamilien wurde auf Wunsch entfernt.

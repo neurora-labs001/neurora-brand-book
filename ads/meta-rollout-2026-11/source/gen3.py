@@ -69,6 +69,8 @@ RO = {
     "sleep":    dict(sig="Dein Signal für die Nacht.", air="<b>Ein Atemzug</b><br>und der Tag ist vorbei"),
 }
 
+VT0 = 3.3     # video: comet starts
+VSPIN = 7.0   # video: seconds per turn
 LOOP = 11.0  # seconds: one full 360° turn of the signal comet
 
 def comet(cx, cy, r, c):
@@ -85,7 +87,7 @@ def comet(cx, cy, r, c):
             f"<circle cx='{cx}' cy='{cy - r}' r='7' fill='#fff' stroke='{c['c']}' stroke-width='3'/>")
     return f"<g class='comet' style='transform-origin:{cx}px {cy}px'>{segs}{head}</g>"
 
-def ring(st, W, D, bottle=False):
+def ring(st, W, D, bottle=False, video=False):
     c = S[st]; r = D / 2; cx = W / 2; cy = r + 30; H = D + 60
     def pt(deg):
         a = math.radians(deg); return cx + r * math.sin(a), cy - r * math.cos(a)
@@ -129,17 +131,18 @@ def ring(st, W, D, bottle=False):
     labels = ""
     for deg, t in calls:
         x, y = pt(deg)
-        dl = f"animation-delay:{deg / 360 * LOOP - 0.45 - LOOP:.2f}s"
-        dots += (f"<g class='hitdot' style='transform-origin:{x:.1f}px {y:.1f}px;{dl}'>"
+        dl = (f"animation-delay:{VT0 + deg / 360 * VSPIN - 0.33:.2f}s" if video else f"animation-delay:{deg / 360 * LOOP - 0.45 - LOOP:.2f}s")
+        vh = " vhit" if video else ""
+        dots += (f"<g class='hitdot{vh}' style='transform-origin:{x:.1f}px {y:.1f}px;{dl}'>"
                  f"<circle cx='{x:.1f}' cy='{y:.1f}' r='22' fill='{c['g']}' opacity='.45'/>"
                  f"<circle cx='{x:.1f}' cy='{y:.1f}' r='13' fill='#fff'/>"
                  f"<circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='{c['c']}'/></g>")
         left = deg > 180; gap = 28
         style = (f"right:{W - x + gap:.0f}px;text-align:right" if left else f"left:{x + gap:.0f}px")
-        labels += (f"<div class='callout' style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - gap if left else W - x - gap:.0f}px;"
+        labels += (f"<div class='callout{vh}' style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - gap if left else W - x - gap:.0f}px;"
                    f"transform-origin:{'right' if left else 'left'} center;{dl}'>{t}</div>")
     dots += "</svg>"
-    return f"<div style='position:relative;width:{W}px;height:{H}px;margin:0 auto'>{disc}{back}{img}{dots}{labels}</div>"
+    return f"<div class='ringwrap' style='position:relative;width:{W}px;height:{H}px;margin:0 auto'><div class='ringbody'>{disc}{back}{img}</div>{dots}{labels}</div>"
 
 def ad_rollon(st, fmt, bottle=False):
     c = S[st]; tall = fmt == "916"
@@ -156,6 +159,67 @@ def ad_rollon(st, fmt, bottle=False):
         "<div class='btn'>Jetzt entdecken &nbsp;→</div></div>")
     return page(f"{c['name']} Roll-On", st, fmt, body, EXTRA + "body > svg{display:none}")
 
+HEAD = {"activate": ("Nie wieder", "Morgenmuffel!"), "focus": ("Schluss mit", "Tab-Chaos!"),
+        "calm": ("Feierabend?", "Kopf macht Überstunden."), "sleep": ("Schluss mit", "Kopfkino im Bett!")}
+
+VR_CSS = """
+.hd{text-align:center}
+.hd .l1{font-weight:300;letter-spacing:-.045em;line-height:1.02;display:block}
+.hd .l2{font-family:'EB Garamond';font-style:italic;font-weight:400;letter-spacing:-.02em;line-height:1.02;color:var(--c);display:block}
+.w{display:inline-block}
+.pname{text-align:center}
+.pname .st{font-weight:700;letter-spacing:.14em;color:var(--c)}
+.pname .it{color:#0D1B33}
+.comet{opacity:0}
+body.anim .w{animation:wpop .45s cubic-bezier(.2,.9,.3,1.25) both}
+body.anim .hd{animation:hdup .8s cubic-bezier(.65,0,.3,1) 1.75s both}
+body.anim .ringbody{animation:rin .9s cubic-bezier(.2,.8,.2,1) 2.3s both}
+body.anim .comet{animation:fadein .4s ease 3.1s both,spin 7s linear 3.3s infinite}
+body.anim .hitdot.vhit{animation:cdot .5s cubic-bezier(.3,1.6,.5,1) both,hitdot 7s ease-out infinite}
+body.anim .callout.vhit{animation:cpop .65s cubic-bezier(.2,.9,.3,1.2) both,hitpill 7s ease-out infinite}
+body.anim .pname{animation:pnin .9s cubic-bezier(.2,.8,.2,1) 10.3s both}
+body.anim .pname path{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.4s cubic-bezier(.45,0,.2,1) 10.7s forwards}
+@keyframes wpop{from{opacity:0;transform:translateY(16px) scale(.85)}to{opacity:1;transform:none}}
+@keyframes hdup{from{transform:translateY(var(--dyh)) scale(1.12)}to{transform:none}}
+@keyframes rin{from{opacity:0;scale:.86}to{opacity:1;scale:1}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes cdot{from{opacity:0;scale:0}to{opacity:1;scale:1}}
+@keyframes cpop{from{opacity:0;scale:.6}to{opacity:1;scale:1}}
+@keyframes pnin{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes draw{to{stroke-dashoffset:0}}
+body > svg{display:none}
+.callout{font-size:21px;line-height:1.3;padding:12px 18px}
+.callout b{font-size:27px;line-height:1.2;display:inline-block;margin-bottom:3px}
+"""
+
+VR_JS = """<script>
+window.__measure = function () {
+  const hd = document.querySelector('.hd'); const r = hd.getBoundingClientRect();
+  hd.style.setProperty('--dyh', (innerHeight / 2 - (r.top + r.bottom) / 2) + 'px');
+};
+</script>"""
+
+def ad_rollon_video(st, fmt, bottle=False):
+    c = S[st]; tall = fmt == "916"
+    W = 924 if tall else 936; D = 560 if tall else 500
+    l1, l2 = HEAD[st]
+    def words(t, t0, step=0.3):
+        out = []
+        for i, w in enumerate(t.split(" ")):
+            out.append(f"<span class='w' style='animation-delay:{t0 + i * step:.2f}s'>{w}</span>")
+        return " ".join(out), t0 + len(t.split(" ")) * step
+    w1, t = words(l1, 0.25); w2, _ = words(l2, t + 0.05)
+    hd = (f"<div class='hd'><span class='l1' style='font-size:{108 if tall else 100}px'>{w1}</span>"
+          f"<span class='l2' style='white-space:nowrap;font-size:{min(120 if tall else 112, int((860 if tall else 880) / (len(l2) * 0.43)))}px'>{w2}</span></div>")
+    uw = 520; uy = 26
+    ul = (f"<svg width='{uw}' height='60' viewBox='0 0 {uw} 60' style='display:block;margin:8px auto 0;overflow:visible'>"
+          f"<path pathLength='1' d='M 4 {uy}" + gesture_after(st, 4, uw - 4, uy) + f"' fill='none' stroke='{c['c']}' stroke-width='4' stroke-linecap='round'/></svg>")
+    pname = (f"<div class='pname'><span class='st' style='font-size:{58 if tall else 54}px'>{c['name']}</span>&nbsp; "
+             f"<span class='it' style='font-family:\"EB Garamond\";font-style:italic;font-size:{76 if tall else 70}px'>Roll-On</span>{ul}</div>")
+    body = (top(st, "") + "<div class='grow'></div>" + hd + "<div class='grow'></div>"
+            + ring(st, W, D, bottle, video=True) + "<div class='grow'></div>" + pname + "<div class='grow'></div>" + VR_JS)
+    return page(f"{c['name']} Roll-On Video", st, fmt, body, EXTRA + VR_CSS)
+
 ADS3 = [("17-gratis-goodie", ad_goodie)] + [
     (f"18{l}-rollon-{s}", (lambda s: (lambda f: ad_rollon(s, f)))(s)) for l, s in zip("abcd", ORDER)] + [
     (f"19{l}-rollon-signal-{s}", (lambda s: (lambda f: ad_rollon(s, f, True)))(s)) for l, s in zip("abcd", ORDER)]
@@ -164,4 +228,8 @@ if __name__ == "__main__":
     for key, fn in ADS3:
         for fmt in ("45", "916"):
             open(os.path.join(ROOT, f"{key}_{fmt}.html"), "w").write(fn(fmt))
+    for l, s_ in zip("abcd", ORDER):
+        for fmt in ("45", "916"):
+            open(os.path.join(ROOT, f"v18{l}-rollon-{s_}_{fmt}.html"), "w").write(ad_rollon_video(s_, fmt, False))
+            open(os.path.join(ROOT, f"v19{l}-rollon-signal-{s_}_{fmt}.html"), "w").write(ad_rollon_video(s_, fmt, True))
     print(len(ADS3) * 2, "html files")
