@@ -46,12 +46,12 @@ h1 .acc{color:var(--c);display:block}
 .btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:28px 46px;font-size:28px;font-weight:600;min-height:96px}
 .grow{flex:1 1 0;min-height:0}
 /* video-only motion: active when the renderer adds body.anim */
-body.anim .sig-b,body.anim .band-b{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.3s cubic-bezier(.45,0,.2,1) .4s forwards}
-body.anim .sig-a,body.anim .band-a{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s cubic-bezier(.3,0,.2,1) 1.9s forwards}
-body.anim .sig-o,body.anim .band-o{transform-box:fill-box;transform-origin:center;animation:opop .7s cubic-bezier(.3,1.6,.5,1) 1.55s both,obreathe 2.6s ease-in-out 2.3s infinite}
-body.anim .sig-end{transform-box:fill-box;transform-origin:center;animation:opop .6s cubic-bezier(.3,1.6,.5,1) 3.3s both,obreathe 2.6s ease-in-out 3.9s infinite}
-body.anim .sig-start{animation:fadein .4s ease .2s both}
-body.anim .qbadge{animation:qfloat 3.5s ease-in-out infinite}
+body.anim .sig-b,body.anim .band-b{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.4s cubic-bezier(.45,0,.2,1) .7s forwards}
+body.anim .sig-a,body.anim .band-a{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 2.6s cubic-bezier(.3,0,.2,1) 3.4s forwards}
+body.anim .sig-o,body.anim .band-o{transform-box:fill-box;transform-origin:center;animation:opop 1s cubic-bezier(.3,1.5,.5,1) 3s both,obreathe 3.8s ease-in-out 4.1s infinite}
+body.anim .sig-end{transform-box:fill-box;transform-origin:center;animation:opop .9s cubic-bezier(.3,1.5,.5,1) 5.9s both,obreathe 3.8s ease-in-out 6.8s infinite}
+body.anim .sig-start{animation:fadein .7s ease .3s both}
+body.anim .qbadge{animation:qfloat 5.5s ease-in-out infinite}
 @keyframes draw{to{stroke-dashoffset:0}}
 @keyframes opop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
 @keyframes obreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
@@ -61,7 +61,7 @@ body.anim .qbadge{animation:qfloat 3.5s ease-in-out infinite}
  box-shadow:0 0 0 7px color-mix(in srgb,var(--g) 40%,transparent),0 16px 30px -16px rgba(13,27,51,.55)}
 .qbadge .q{font-family:'Noto Color Emoji';font-size:34px;letter-spacing:0;line-height:1;display:inline-block;transform:rotate(14deg);
  background:#F6F3EC;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;box-shadow:0 0 18px 2px color-mix(in srgb,var(--g) 90%,transparent);
- animation:qwig 2.4s ease-in-out infinite;animation-play-state:paused}
+ animation:qwig 3.7s ease-in-out infinite;animation-play-state:paused}
 @keyframes qwig{0%,100%{transform:rotate(14deg) scale(1);box-shadow:0 0 18px 2px color-mix(in srgb,var(--g) 90%,transparent)}
  12%{transform:rotate(-12deg) scale(1.12)}24%{transform:rotate(18deg) scale(1.08)}36%{transform:rotate(-6deg) scale(1.04)}
  48%{transform:rotate(14deg) scale(1);box-shadow:0 0 30px 8px color-mix(in srgb,var(--g) 100%,transparent)}}

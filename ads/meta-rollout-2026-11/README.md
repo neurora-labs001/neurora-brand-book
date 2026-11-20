@@ -56,3 +56,11 @@ Before launch: claims marked in the strategy doc (§9) still need Claims Registe
 - **18a–d und 19a–d Roll-On-Ring (8 s, nahtloser Loop)**: Ein Signal-Komet mit Leuchtschweif läuft einmal 360° um den Ring. Erreicht er einen Benefit-Punkt, pulsiert der Punkt und die Benefit-Pille hebt sich mit Zustandsfarb-Kontur hervor (Reihenfolge: Ein Atemzug → 30 Tage → Immer dabei → Duft mit Funktion). Das Produkt schwebt leicht.
 
 Die Animation ist nur im Video-Render aktiv (`body.anim`), die JPG-Standbilder bleiben unverändert. Neu rendern: `node source/anim.js <filter> <sekunden>`.
+
+## Videos v2: alle 26 Anzeigen, 11 Sekunden (20.11.2026)
+
+52 MP4s (26 Anzeigen × 4:5 und 9:16, H.264, 30 fps, je 11 s), ruhigeres Tempo mit mehr Zeit zum Lesen:
+
+- **01–03**: Die Signal Line zeichnet sich über etwa 5 s, danach bleibt das Bild 4–5 s ruhig stehen. Die ❓-Pille schwebt langsam.
+- **18/19 Ring**: Der Komet braucht 11 s pro Runde (nahtloser Loop), die Benefit-Pillen leuchten nacheinander auf.
+- **04–17**: Die Elemente bauen sich nacheinander auf (Logo, Headline, Boards, dann Kacheln und Zeilen gestaffelt). Linien zeichnen sich, Fotos zoomen langsam (Ken Burns), die Mood Dots pulsieren, das 🎁 hüpft und der CTA pulsiert bei 6 s und 9 s.

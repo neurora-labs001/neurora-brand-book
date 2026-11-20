@@ -16,10 +16,10 @@ h1 .it{letter-spacing:-.02em;font-weight:400}
  box-shadow:0 16px 30px -22px rgba(13,27,51,.45);backdrop-filter:blur(10px)}
 .callout b{font-weight:700;color:var(--c)}
 .comet{opacity:0}
-body.anim .comet{opacity:1;animation:spin 8s linear infinite}
-body.anim .hitdot{animation:hitdot 8s ease-out infinite}
-body.anim .callout{animation:hitpill 8s ease-out infinite}
-body.anim .prod{animation:pfloat 4s ease-in-out infinite}
+body.anim .comet{opacity:1;animation:spin 11s linear infinite}
+body.anim .hitdot{animation:hitdot 11s ease-out infinite}
+body.anim .callout{animation:hitpill 11s ease-out infinite}
+body.anim .prod{animation:pfloat 5.5s ease-in-out infinite}
 @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
 @keyframes hitdot{0%,100%{transform:scale(1)}5.5%{transform:scale(1.45)}14%{transform:scale(1)}}
 @keyframes hitpill{0%,100%{transform:translateY(-50%) scale(1);box-shadow:0 16px 30px -22px rgba(13,27,51,.45)}
@@ -69,7 +69,7 @@ RO = {
     "sleep":    dict(sig="Dein Signal für die Nacht.", air="<b>Ein Atemzug</b><br>und der Tag ist vorbei"),
 }
 
-LOOP = 8.0   # seconds: one full 360° turn of the signal comet
+LOOP = 11.0  # seconds: one full 360° turn of the signal comet
 
 def comet(cx, cy, r, c):
     """Signal comet: bright head + fading tail on the ring. Hidden in stills, rotates in video (body.anim)."""
