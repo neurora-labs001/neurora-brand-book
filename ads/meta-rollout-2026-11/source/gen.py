@@ -23,39 +23,54 @@ def svg_logo(kind, color="#0D1B33", h=None, w=None):
     return s.replace("<svg ", f"<svg fill='{color}' style='display:block;{style}' ", 1)
 
 # ---------- Signal Line ----------
-def gesture_before(kind, x0, x1, y):
-    """Left (before) part of the Signal Line, from x0 to x1 at baseline y."""
-    n = 6; step = (x1 - x0) / n; d = ""
-    if kind == "sleep":
-        for i in range(n):
-            a = x0 + i * step
-            d += f" Q {a+step*0.25:.1f} {y-16:.1f} {a+step*0.5:.1f} {y:.1f} Q {a+step*0.75:.1f} {y+16:.1f} {a+step:.1f} {y:.1f}"
-    elif kind == "calm":
-        for i in range(n):
-            a = x0 + i * step
-            d += (f" C {a+step*0.15:.1f} {y-30:.1f} {a+step*0.85:.1f} {y-30:.1f} {a+step*0.9:.1f} {y-6:.1f}"
-                  f" C {a+step*0.95:.1f} {y+10:.1f} {a+step*0.6:.1f} {y+12:.1f} {a+step*0.7:.1f} {y:.1f}"
-                  f" L {a+step:.1f} {y:.1f}")
-    elif kind == "focus":
-        for i in range(n):
-            a = x0 + i * step
-            d += f" L {a+step*0.5:.1f} {y-18:.1f} L {a+step:.1f} {y+10:.1f}"
-    else:  # activate: flat and low
-        d += f" L {x1:.1f} {y+8:.1f}"
+import math as _m
+
+def _smooth(pts):
+    """Catmull-Rom through pts (first point = current pen position) -> cubic Bezier segments."""
+    d = ""
+    P = [pts[0]] + pts + [pts[-1]]
+    for i in range(1, len(P) - 2):
+        p0, p1, p2, p3 = P[i - 1], P[i], P[i + 1], P[i + 2]
+        c1 = (p1[0] + (p2[0] - p0[0]) / 6, p1[1] + (p2[1] - p0[1]) / 6)
+        c2 = (p2[0] - (p3[0] - p1[0]) / 6, p2[1] - (p3[1] - p1[1]) / 6)
+        d += f" C {c1[0]:.1f} {c1[1]:.1f} {c2[0]:.1f} {c2[1]:.1f} {p2[0]:.1f} {p2[1]:.1f}"
     return d
 
-def gesture_after(kind, x0, x1, y):
+def _sample(f, x0, x1, n):
+    return [(x0 + (x1 - x0) * i / n, f(i / n)) for i in range(n + 1)]
+
+def gesture_before(kind, x0, x1, y):
+    """Left (before) part of the Signal Line: the unsettled state. Starts at (x0,y), ends at (x1,y)."""
     w = x1 - x0
-    if kind == "sleep":
-        return (f" C {x0+w*0.15:.1f} {y-14:.1f} {x0+w*0.3:.1f} {y+12:.1f} {x0+w*0.5:.1f} {y+18:.1f}"
-                f" S {x0+w*0.85:.1f} {y+28:.1f} {x1:.1f} {y+30:.1f}")
-    if kind == "calm":
-        return (f" C {x0+w*0.25:.1f} {y-36:.1f} {x0+w*0.45:.1f} {y-36:.1f} {x0+w*0.6:.1f} {y+4:.1f}"
-                f" S {x0+w*0.9:.1f} {y-22:.1f} {x1:.1f} {y-18:.1f}")
-    if kind == "focus":
+    if kind == "sleep":      # restless, even waves
+        k = max(3, round(w / 34))
+        return _smooth(_sample(lambda t: y - 11 * _m.sin(2 * _m.pi * k * t), x0, x1, k * 12))
+    if kind == "calm":       # small looping thoughts (prolate cycloid)
+        n = max(3, round(w / 38)); R = w / (2 * _m.pi * n); r = R * 1.75
+        pts = []
+        for i in range(n * 18 + 1):
+            t = 2 * _m.pi * n * i / (n * 18)
+            pts.append((x0 + R * t - r * _m.sin(t) * min(1, t / 2.5, (2 * _m.pi * n - t) / 2.5), y - r * (1 - _m.cos(t)) * min(1, t / 2.5, (2 * _m.pi * n - t) / 2.5)))
+        return _smooth(pts)
+    if kind == "focus":      # scattered: even zigzag
+        k = max(4, round(w / 26)); d = ""
+        for i in range(k):
+            a = x0 + w * i / k
+            d += f" L {a + w / k * 0.5:.1f} {y - 12:.1f} L {a + w / k:.1f} {y + (8 if i < k - 1 else 0):.1f}"
+        return d
+    return _smooth(_sample(lambda t: y + 6 * _m.sin(_m.pi * t) ** 0.6, x0, x1, 24))   # activate: flat, low
+
+def gesture_after(kind, x0, x1, y):
+    """Right (after) part: the state the signal sets. Starts at (x0,y)."""
+    w = x1 - x0
+    if kind == "sleep":      # Ausklingen: the wave fades and settles lower
+        return _smooth(_sample(lambda t: y - 13 * _m.exp(-4.2 * t) * _m.sin(2 * _m.pi * 2.2 * t) + 22 * (1 - _m.exp(-2.4 * t)), x0, x1, 64))
+    if kind == "calm":       # one long exhale, then level
+        return _smooth(_sample(lambda t: y - 22 * _m.sin(_m.pi * min(t / 0.55, 1)) * (1 if t < 0.55 else 0) + 10 * max(0, t - 0.55) / 0.45 * _m.sin(_m.pi * max(0, t - 0.55) / 0.9), x0, x1, 48))
+    if kind == "focus":      # one clean line
         return f" L {x1:.1f} {y:.1f}"
-    return (f" L {x0+w*0.2:.1f} {y:.1f} C {x0+w*0.28:.1f} {y:.1f} {x0+w*0.3:.1f} {y-34:.1f} {x0+w*0.36:.1f} {y-34:.1f}"
-            f" C {x0+w*0.42:.1f} {y-34:.1f} {x0+w*0.4:.1f} {y-14:.1f} {x0+w*0.5:.1f} {y-14:.1f} L {x1:.1f} {y-14:.1f}")
+    # activate: a smooth rise to a higher plateau
+    return _smooth(_sample(lambda t: y - 26 / (1 + _m.exp(-(t - 0.32) * 18)), x0, x1, 48))
 
 def o_mark(cx, cy, st, r=17):
     c = S[st]
@@ -65,15 +80,17 @@ def o_mark(cx, cy, st, r=17):
 
 def signal_bridge(st, W, top=20, drop=120, lx=None, rx=None):
     """Signal Line that starts in the 'Ohne Signal' card and ends in the 'Mit' card."""
-    c = S[st]; y = top + 18
-    lx = lx or W * 0.25; rx = rx or W * 0.75; ox = W * 0.48
-    before = f"M {lx:.1f} {top+drop:.1f} L {lx:.1f} {y+16:.1f} Q {lx:.1f} {y:.1f} {lx+18:.1f} {y:.1f}" + gesture_before(st, lx + 18, ox - 26, y)
-    after = f"M {ox+26:.1f} {y:.1f}" + gesture_after(st, ox + 26, rx - 22, y) + f" Q {rx:.1f} {y+(30 if st=='sleep' else 0):.1f} {rx:.1f} {y+40:.1f} L {rx:.1f} {top+drop:.1f}"
-    return (f"<svg class='bridge' viewBox='0 0 {W} {top+drop+14}' width='{W}' height='{top+drop+14}'>"
-            f"<path d='{before}' fill='none' stroke='{c['c']}' stroke-opacity='.45' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/>"
-            f"<path d='{after}' fill='none' stroke='{c['c']}' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/>"
+    c = S[st]; y = top + 30
+    lx = lx or W * 0.25; rx = rx or W * 0.75; ox = W * 0.48; rad = 18
+    before = f"M {lx:.1f} {top+drop:.1f} L {lx:.1f} {y+rad:.1f} Q {lx:.1f} {y:.1f} {lx+rad:.1f} {y:.1f}" + gesture_before(st, lx + rad, ox - 24, y)
+    after_g = gesture_after(st, ox + 24, rx - rad, y)
+    yl = float(after_g.split()[-1])
+    after = f"M {ox+24:.1f} {y:.1f}" + after_g + f" Q {rx:.1f} {yl:.1f} {rx:.1f} {yl+rad:.1f} L {rx:.1f} {top+drop:.1f}"
+    return (f"<svg class='bridge' viewBox='0 0 {W} {top+drop+16}' width='{W}' height='{top+drop+16}' style='overflow:visible'>"
+            f"<path d='{before}' fill='none' stroke='{c['c']}' stroke-opacity='.42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>"
+            f"<path d='{after}' fill='none' stroke='{c['c']}' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/>"
             f"<circle cx='{lx}' cy='{top+drop}' r='6' fill='#FAF9F6' stroke='{c['c']}' stroke-opacity='.5' stroke-width='2'/>"
-            f"<circle cx='{rx}' cy='{top+drop}' r='8' fill='{c['c']}'/><circle cx='{rx}' cy='{top+drop}' r='14' fill='{c['g']}' opacity='.35'/>"
+            f"<circle cx='{rx}' cy='{top+drop}' r='14' fill='{c['g']}' opacity='.4'/><circle cx='{rx}' cy='{top+drop}' r='7.5' fill='{c['c']}'/>"
             f"{o_mark(ox, y, st)}</svg>")
 
 def signal_inline(st, W, H=70, ox_frac=0.36, color=None):

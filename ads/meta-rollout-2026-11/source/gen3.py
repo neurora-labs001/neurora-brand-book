@@ -11,6 +11,10 @@ EXTRA = """
 .badge{display:inline-flex;align-items:center;gap:12px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:12px 24px 12px 18px;font-size:20px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .emo{font-family:'Noto Color Emoji';letter-spacing:0;font-style:normal}
 h1 .it{letter-spacing:-.02em;font-weight:400}
+.callout{white-space:nowrap;font-size:23px;line-height:1.28;font-weight:400;color:#0D1B33;z-index:4;padding:12px 16px;border-radius:18px;
+ background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(255,255,255,.66));border:1px solid rgba(255,255,255,.95);
+ box-shadow:0 16px 30px -22px rgba(13,27,51,.45);backdrop-filter:blur(10px)}
+.callout b{font-weight:700;color:var(--c)}
 .moodbar{height:8px;border-radius:99px;background:linear-gradient(90deg,#F6AE8E,#8AD3BD 35%,#A3CCF0 66%,#C5B0F3)}
 """
 
@@ -48,10 +52,10 @@ def ad_goodie(fmt):
 
 # ---------- 18 Roll-On: Signal ring (all states) ----------
 RO = {
-    "activate": dict(sig="Dein Signal für den Morgen.", air="Dein Morgen zum Einatmen"),
-    "focus":    dict(sig="Dein Signal zum Abtauchen.", air="Dein Fokus zum Einatmen"),
-    "calm":     dict(sig="Dein Signal für den Feierabend.", air="Dein Feierabend zum Einatmen"),
-    "sleep":    dict(sig="Dein Signal für die Nacht.", air="Dein Abend zum Einatmen"),
+    "activate": dict(sig="Dein Signal für den Morgen.", air="Dein Morgen<br><b>zum Einatmen</b>"),
+    "focus":    dict(sig="Dein Signal zum Abtauchen.", air="Dein Fokus<br><b>zum Einatmen</b>"),
+    "calm":     dict(sig="Dein Signal für den Feierabend.", air="Dein Feierabend<br><b>zum Einatmen</b>"),
+    "sleep":    dict(sig="Dein Signal für die Nacht.", air="Dein Abend<br><b>zum Einatmen</b>"),
 }
 
 def ring(st, W, D, bottle=False):
@@ -61,18 +65,24 @@ def ring(st, W, D, bottle=False):
     def arc(d0, d1):
         x0, y0 = pt(d0); x1, y1 = pt(d1)
         return f"M {x0:.1f} {y0:.1f} A {r} {r} 0 {1 if (d1 - d0) % 360 > 180 else 0} 1 {x1:.1f} {y1:.1f}"
-    calls = [(305, "Rund 95 Rituale pro Roll-On"), (235, "10 ml für jede Tasche"), (55, RO[st]["air"]), (125, "30 Tage testen, Geld zurück")]
+    calls = [(318, "<b>Rund 95 Rituale</b><br>pro Roll-On"), (222, "<b>10 ml</b><br>für jede Tasche"), (42, RO[st]["air"]), (138, "<b>30 Tage testen</b><br>Geld zurück")]
     # layer 0: dense state-colour disc
-    disc = (f"<div style='position:absolute;left:{cx - r + 3}px;top:{cy - r + 3}px;width:{D - 6}px;height:{D - 6}px;border-radius:50%;"
-            f"background:radial-gradient(circle at 50% 40%,color-mix(in srgb,{c['g']} 62%,#fff) 0%,color-mix(in srgb,{c['g']} 88%,#fff) 48%,{c['g']} 78%,color-mix(in srgb,{c['g']} 80%,{c['c']}) 100%);"
-            f"box-shadow:0 0 120px 10px color-mix(in srgb,{c['g']} 55%,transparent),0 50px 90px -50px rgba(13,27,51,.5)'></div>")
+    disc = (f"<div style='position:absolute;left:{cx - r}px;top:{cy - r}px;width:{D}px;height:{D}px;border-radius:50%;"
+            f"background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.9) 0%,rgba(255,255,255,0) 42%),"
+            f"radial-gradient(circle at 78% 88%,color-mix(in srgb,{c['c']} 22%,transparent) 0%,transparent 55%),"
+            f"radial-gradient(circle at 50% 50%,color-mix(in srgb,{c['g']} 38%,#F7F4EE) 0%,color-mix(in srgb,{c['g']} 62%,#F7F4EE) 58%,color-mix(in srgb,{c['g']} 85%,{c['c']}) 100%);"
+            f"border:1.5px solid rgba(255,255,255,.85);"
+            f"box-shadow:inset 0 0 0 9px rgba(255,255,255,.22),inset 0 -40px 70px -30px color-mix(in srgb,{c['c']} 30%,transparent),"
+            f"0 0 110px 0 color-mix(in srgb,{c['g']} 50%,transparent),0 50px 90px -55px rgba(13,27,51,.45)'></div>")
     # layer 1 (behind the product): ring, arcs and the filigree Signal Line
     ly = cy + r * 0.30; x0 = cx - r; x1 = cx + r; ox = cx - r * (0.47 if bottle else 0.72)
     d1 = f"M {x0:.1f} {ly:.1f}" + gesture_before(st, x0, ox - 16, ly)
     d2 = f"M {ox + 16:.1f} {ly:.1f}" + gesture_after(st, ox + 16, x1, ly)
     back = (f"<svg width='{W}' height='{H}' style='position:absolute;left:0;top:0;z-index:1;overflow:visible'>"
             f"<circle cx='{cx}' cy='{cy}' r='{r}' fill='none' stroke='{c['c']}' stroke-opacity='.28' stroke-width='2'/>"
-            f"<path d='{arc(305, 55)}' fill='none' stroke='{c['c']}' stroke-width='3.5' stroke-linecap='round'/>"
+            f"<defs><linearGradient id='ag' x1='0' x2='1'><stop offset='0' stop-color='{c['c']}' stop-opacity='.55'/><stop offset='.5' stop-color='{c['c']}'/><stop offset='1' stop-color='{c['c']}' stop-opacity='.55'/></linearGradient></defs>"
+            f"<path d='{arc(300, 60)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
+            f"<path d='{arc(120, 240)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
             f"<defs><clipPath id='dc'><circle cx='{cx}' cy='{cy}' r='{r - 3}'/></clipPath></defs><g clip-path='url(#dc)'>"
             f"<path d='{d1}' fill='none' stroke='#fff' stroke-opacity='.85' stroke-width='1.6' stroke-linecap='round'/>"
             f"<path d='{d2}' fill='none' stroke='{c['c']}' stroke-width='1.8' stroke-linecap='round'/>"
@@ -91,12 +101,12 @@ def ring(st, W, D, bottle=False):
     labels = ""
     for deg, t in calls:
         x, y = pt(deg)
-        dots += (f"<circle cx='{x:.1f}' cy='{y:.1f}' r='17' fill='#fff' opacity='.55'/>"
-                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='{c['c']}' stroke='#fff' stroke-width='3'/>")
-        left = deg > 180
-        style = (f"right:{W - x + 30:.0f}px;text-align:right" if left else f"left:{x + 30:.0f}px")
-        labels += (f"<div style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - 30 if left else W - x - 30:.0f}px;"
-                   f"font-size:23px;line-height:1.3;font-weight:500;z-index:4'>{t}</div>")
+        dots += (f"<circle cx='{x:.1f}' cy='{y:.1f}' r='22' fill='{c['g']}' opacity='.45'/>"
+                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='13' fill='#fff'/>"
+                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='{c['c']}'/>")
+        left = deg > 180; gap = 28
+        style = (f"right:{W - x + gap:.0f}px;text-align:right" if left else f"left:{x + gap:.0f}px")
+        labels += (f"<div class='callout' style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - gap if left else W - x - gap:.0f}px'>{t}</div>")
     dots += "</svg>"
     return f"<div style='position:relative;width:{W}px;height:{H}px;margin:0 auto'>{disc}{back}{img}{dots}{labels}</div>"
 

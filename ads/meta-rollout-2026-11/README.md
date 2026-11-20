@@ -35,3 +35,10 @@ Before launch: claims marked in the strategy doc (§9) still need Claims Registe
 - **19a–d Roll-On Signal-Ring, Flasche ohne Verpackung**: gleiche Texte wie 18a–d. Die Flasche steht leicht geneigt in einem dichteren Zustandsfarb-Kreis. Durch den Kreis läuft eine feine, zustandsspezifische Signal Line hinter der Flasche. In 9:16 entfällt das untere Signal-Band (eine Signal Line pro Fläche).
   Die Flaschen sind aus dem Brand-Atlas-Packshot „Sleep Roll-On“ (Line-up) freigestellt. Der seitliche Farbstreifen wurde retuschiert, weil der KI-Packshot dort verfälschten Text zeigt („SCEN YOU CAN FEEY…“). Sobald echte Freisteller-Fotos der Flaschen vorliegen, bitte austauschen. Skript: `source/bottlecut.py`.
 - **Fix 18a–d (20.11.)**: Der Box-Freisteller ist jetzt sauber, ohne grauen Fotoschatten (die kaputte Ecke unten links bei Calm ist behoben). Die Box sitzt im Kreis, der Ring liegt hinter der Box. Der Kreis ist in der Zustandsfarbe dicht gefüllt, wie bei 19, mit derselben feinen Signal Line. Das Bild hat etwas mehr Kontrast und Farbe. In 9:16 entfällt das untere Signal-Band.
+
+## Runde 4 (20.11.2026)
+
+- **Signal Lines neu gezeichnet** (alle Anzeigen): mathematisch glatte Kurven. Sleep klingt aus, Calm zeigt gleichmäßige Atem-Schleifen, Focus geht vom Zickzack in eine gerade Linie über, Activate steigt weich an. Dazu saubere Eckradien an den Brücken.
+- **01–03 Vorher/Nachher**: Eyebrow als Frage mit Emoji („🌙 Sieht dein Abend so aus?“, „🛋️ … Feierabend …“, „💻 … Nachmittag …“). Statt des Produkt-Chips gibt es ein Frosted Board mit der Produktreihe (01: Textilspray-Reihe, 02/03: Roll-On-Reihe, eigener Zustand hervorgehoben) und CTA. In 9:16 ist alles zentriert und nichts abgeschnitten.
+- **18/19 Roll-On-Ring**: Glas-Scheibe statt flacher Farbfläche. Die Bögen sind oben und unten hervorgehoben, sodass beide Benefit-Paare verbunden sind. Die Callouts stehen als Frosted Pills mit größeren Punkten und fetten Schlüsselwörtern.
+- Layout-Fix für alle Anzeigen: Elemente schrumpfen nicht mehr unbemerkt (keine abgeschnittenen Boards). Die Mindestschriftgröße liegt überall bei 18 px.

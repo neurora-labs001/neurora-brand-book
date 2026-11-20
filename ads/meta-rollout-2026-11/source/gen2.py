@@ -44,7 +44,9 @@ h1 .acc{color:var(--c);display:block}
 .chip .s{font-size:19px;color:rgba(13,27,51,.55);margin-top:4px}
 .chip .arr{margin-left:auto;font-size:36px;color:var(--c);font-weight:300}
 .btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:28px 46px;font-size:28px;font-weight:600;min-height:96px}
-.grow{flex:1}
+.grow{flex:1 1 0;min-height:0}
+.wrap > *{flex-shrink:0}
+.wrap > .grow{flex-shrink:1}
 .center{text-align:center}
 """
 
@@ -82,40 +84,60 @@ def chip(img, t, s):
 
 # ---------- 01-03 Vorher / Nachher ----------
 BA = [
- dict(key="01-sleep-vorher-nachher", st="sleep", eyebrow="So sieht dein Abend gerade aus", a="Der Körper liegt.", b="Der Kopf nicht.",
+ dict(key="01-sleep-vorher-nachher", st="sleep", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">🌙</span>&nbsp; Sieht dein Abend so aus?", a="Der Körper liegt.", b="Der Kopf nicht.",
       off_t="Licht aus. Gedanken noch an.", off=[("22:50", "Licht aus. Und plötzlich fällt dir alles ein, was morgen ansteht."), ("23:40", "Du drehst das Kissen um und rechnest, wie viele Stunden noch bleiben.")],
       on_t="Licht aus. Der Tag ist vorbei.", on=[("22:16", "Ein Sprühstoß aufs Kissen, Roll-On aufs Handgelenk."), ("22:17", "Dein Signal: Der Tag ist vorbei.")],
-      why="Dir fehlt keine Müdigkeit. Dir fehlt ein Ende für den Tag.", img="nr-set-sleep-hero.webp", ct="Dein Abend-Signal holen", cs="SLEEP Komplett-Set · €89"),
- dict(key="02-calm-vorher-nachher", st="calm", eyebrow="So sieht dein Feierabend gerade aus", a="Du bist zu Hause.", b="Aber nicht ganz da.",
+      why="Dir fehlt keine Müdigkeit. Dir fehlt ein Ende für den Tag.", img="nr-set-sleep-hero.webp", line="sbox", ct="Dein Abend-Signal holen", cs="SLEEP Komplett-Set · €89"),
+ dict(key="02-calm-vorher-nachher", st="calm", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">🛋️</span>&nbsp; Sieht dein Feierabend so aus?", a="Du bist zu Hause.", b="Aber nicht ganz da.",
       off_t="Zu Hause. Kopf noch im Meeting.", off=[("18:40", "Auf dem Heimweg spielst du das Meeting noch einmal durch."), ("19:30", "Am Tisch nickst du, hörst aber nur halb zu.")],
       on_t="Laptop zu. Kopf frei.", on=[("18:06", "Roll-On aufs Handgelenk. Ein Atemzug."), ("18:07", "Dein Signal: Ab jetzt ist Feierabend.")],
-      why="Dir fehlt kein Feierabend. Dir fehlt ein Schlusspunkt.", img="nr-set-calm-hero_d9e1c46a-abd5-4b2b-b375-fb6d6ae9d035.webp", ct="Dein Feierabend-Signal holen", cs="CALM Komplett-Set · €89"),
- dict(key="03-focus-vorher-nachher", st="focus", eyebrow="So sieht dein Nachmittag gerade aus", a="Du bist beschäftigt.", b="Aber nicht bei der Sache.",
+      why="Dir fehlt kein Feierabend. Dir fehlt ein Schlusspunkt.", img="nr-set-calm-hero_d9e1c46a-abd5-4b2b-b375-fb6d6ae9d035.webp", line="box", ct="Dein Feierabend-Signal holen", cs="CALM Komplett-Set · €89"),
+ dict(key="03-focus-vorher-nachher", st="focus", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">💻</span>&nbsp; Sieht dein Nachmittag so aus?", a="Du bist beschäftigt.", b="Aber nicht bei der Sache.",
       off_t="Viel beschäftigt. Wenig geschafft.", off=[("14:55", "Zwölf Tabs offen. Keiner davon fertig."), ("15:10", "Dritter Kaffee. Oder doch der Riegel aus der Schublade.")],
       on_t="Eine Aufgabe. Ganz bei der Sache.", on=[("14:56", "Roll-On aufs Handgelenk. Ein Atemzug."), ("14:57", "Dein Signal zum Abtauchen.")],
-      why="Dir fehlt keine Konzentration. Dir fehlt ein klarer Neustart.", img="nr-set-focus-hero_651397b1-0fd3-4ca6-a8b7-f7041f0dc4a8.webp", ct="Dein Fokus-Signal holen", cs="FOCUS Komplett-Set · €89"),
+      why="Dir fehlt keine Konzentration. Dir fehlt ein klarer Neustart.", img="nr-set-focus-hero_651397b1-0fd3-4ca6-a8b7-f7041f0dc4a8.webp", line="box", ct="Dein Fokus-Signal holen", cs="FOCUS Komplett-Set · €89"),
 ]
 
+def product_line(st, kind, ct, cs, fmt):
+    """Frosted board with the product line (four states, the ad's state highlighted) and the CTA."""
+    tall = fmt == "916"; ih = 150 if tall else 172
+    fmt_name = "Textilspray" if kind == "sbox" else "Roll-On"
+    tiles = ""
+    for s in ("activate", "focus", "calm", "sleep"):
+        on = s == st; c = S[s]
+        tiles += (f"<div style='flex:1;background:#fff;border-radius:20px;padding:12px 8px 14px;text-align:center;"
+                  + (f"box-shadow:0 0 0 2.5px {c['c']},0 18px 34px -18px color-mix(in srgb,{c['c']} 70%,transparent)" if on else "box-shadow:0 12px 26px -22px rgba(13,27,51,.5)")
+                  + f"'><img src='{A}nr-{kind}-{s}-cut.png' style='display:block;height:{ih}px;margin:0 auto;filter:drop-shadow(0 10px 10px rgba(13,27,51,.18))'>"
+                  f"<div style='display:flex;align-items:center;justify-content:center;gap:9px;margin-top:12px'>"
+                  f"<span class='dot' style='--c:{c['c']};--g:{c['g']};width:10px;height:10px'></span>"
+                  f"<span class='lbl' style='font-size:18px;color:{c['c']}'>{c['name']}</span></div></div>")
+    return (f"<div class='board glow' style='padding:{'24px 24px 24px' if tall else '18px 20px 20px'};margin-top:{18 if tall else 14}px'>"
+            f"<div style='display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:{16 if tall else 12}px'>"
+            f"<div style='font-size:{27 if tall else 25}px;font-weight:600;letter-spacing:-.01em'>{ct} <span style='color:var(--c)'>→</span></div>"
+            f"<div style='font-size:{20 if tall else 19}px;color:rgba(13,27,51,.6)'>{fmt_name}-Reihe · {cs}</div></div>"
+            f"<div style='display:flex;gap:12px'>{tiles}</div></div>")
+
 def ad_ba(d, fmt):
-    st = d["st"]
+    st = d["st"]; tall = fmt == "916"
+    rp = "11px" if tall else "12px"
     rows = lambda rs, on: "".join(
-        f"<div style='display:grid;grid-template-columns:70px 1fr;gap:10px;padding:18px 0;border-top:1px solid rgba(13,27,51,.07);font-size:23.5px;line-height:1.38'>"
-        f"<span style='font-size:19px;font-weight:600;letter-spacing:.04em;padding-top:3px;color:{'var(--c)' if on else 'rgba(13,27,51,.5)'}'>{t}</span>"
+        f"<div style='display:grid;grid-template-columns:66px 1fr;gap:8px;padding:{rp} 0;border-top:1px solid rgba(13,27,51,.07);font-size:{22 if tall else 21.5}px;line-height:1.36'>"
+        f"<span style='font-size:19px;font-weight:600;letter-spacing:.04em;padding-top:2px;color:{'var(--c)' if on else 'rgba(13,27,51,.5)'}'>{t}</span>"
         f"<span style='color:{'#0D1B33' if on else 'rgba(13,27,51,.7)'}'>{x}</span></div>" for t, x in rs)
     card = lambda on: (
-        f"<div style='border-radius:28px;padding:28px 26px 14px;{'background:var(--soft);border:1px solid color-mix(in srgb,var(--c) 14%,transparent)' if on else 'background:rgba(242,241,238,.9);border:1px solid rgba(13,27,51,.06)'}'>"
+        f"<div style='border-radius:26px;padding:{'22px 22px 6px' if tall else '20px 22px 6px'};{'background:var(--soft);border:1px solid color-mix(in srgb,var(--c) 14%,transparent)' if on else 'background:rgba(242,241,238,.9);border:1px solid rgba(13,27,51,.06)'}'>"
         + (f"<div class='lbl' style='color:var(--c)'><span class='dot' style='width:10px;height:10px;margin-right:12px'></span>Mit {S[st]['name']}</div>" if on else
            "<div class='lbl' style='color:rgba(13,27,51,.5)'>⦸&nbsp; Ohne Signal</div>")
-        + f"<div style='font-size:32px;font-weight:300;letter-spacing:-.035em;line-height:1.12;margin:14px 0 14px;color:{'var(--c)' if on else 'rgba(13,27,51,.8)'}'>{d['on_t'] if on else d['off_t']}</div>"
+        + f"<div style='font-size:28px;font-weight:300;letter-spacing:-.035em;line-height:1.12;margin:12px 0 10px;color:{'var(--c)' if on else 'rgba(13,27,51,.8)'}'>{d['on_t'] if on else d['off_t']}</div>"
         + rows(d["on"] if on else d["off"], on) + "</div>")
     body = (top(st) + "<div class='grow'></div>"
-            + headline(d["eyebrow"], d["a"], d["b"], 92, center=True, grey=False)
-            + f"<div style='margin:20px -10px -4px'>{signal_bridge(st, 980, drop=86, lx=245, rx=740)}</div>"
-            + f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>{card(False)}{card(True)}</div>"
-            + f"<div style='background:#121B33;color:#F6F3EC;border-radius:24px;padding:24px 28px;margin-top:16px'>"
-              f"<div class='lbl' style='font-size:17px;color:var(--g)'>Der eigentliche Grund</div>"
-              f"<div style='font-size:30px;font-weight:300;letter-spacing:-.02em;line-height:1.2;margin-top:8px'>{d['why']}</div></div>"
-            + f"<div style='margin-top:18px'>{chip(d['img'], d['ct'], d['cs'])}</div>" + "<div class='grow'></div>")
+            + headline(d["eyebrow"], d["a"], d["b"], 84 if tall else 80, center=True, grey=False)
+            + f"<div style='margin:{'14px' if tall else '6px'} -10px -4px'>{signal_bridge(st, 980, drop=72 if tall else 70, lx=245, rx=740)}</div>"
+            + f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:14px'>{card(False)}{card(True)}</div>"
+            + f"<div style='background:#121B33;color:#F6F3EC;border-radius:22px;padding:{'18px 24px' if tall else '16px 24px'};margin-top:14px'>"
+              f"<div class='lbl' style='font-size:18px;color:var(--g)'>Der eigentliche Grund</div>"
+              f"<div style='font-size:{28 if tall else 26}px;font-weight:300;letter-spacing:-.02em;line-height:1.2;margin-top:6px'>{d['why']}</div></div>"
+            + product_line(st, d["line"], d["ct"], d["cs"], fmt) + "<div class='grow'></div>")
     return page(d["key"], st, fmt, body)
 
 # ---------- 04 Founder ----------
@@ -212,7 +234,7 @@ def ad_vier_momente(fmt):
     cards = "".join(
         f"<div style='border-radius:30px;padding:28px 26px 30px;background:linear-gradient(160deg,rgba(255,255,255,.94) 35%,color-mix(in srgb,{S[s]['g']} 34%,#fff));box-shadow:0 18px 40px -30px rgba(13,27,51,.35);border:1px solid rgba(255,255,255,.95);display:flex;flex-direction:column'>"
         f"<div style='display:flex;justify-content:space-between;align-items:center'><span class='it' style='font-size:44px;color:{S[s]['c']}'>{t}</span>"
-        f"<span class='lbl' style='font-size:16px;color:{S[s]['c']};background:#fff;border-radius:999px;padding:9px 14px'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:9px;height:9px;box-shadow:none;margin-right:8px'></span>{S[s]['name']}</span></div>"
+        f"<span class='lbl' style='font-size:18px;color:{S[s]['c']};background:#fff;border-radius:999px;padding:9px 14px'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:9px;height:9px;box-shadow:none;margin-right:8px'></span>{S[s]['name']}</span></div>"
         f"<div class='grow' style='min-height:20px'></div><div style='margin:0 0 18px'>{signal_inline(s, 410, 54, 0.36)}</div>"
         f"<div style='font-size:46px;font-weight:300;letter-spacing:-.045em;line-height:1.05'>{h}</div></div>" for s, t, h in m)
     body = (top(st, "dots")
@@ -252,7 +274,7 @@ def ad_offer(fmt):
       + headline("Dein Angebot", "Alles für deinen", "Fokus-Block.", 80, grey=False)
       + "<div class='board' style='margin-top:30px;flex:1;display:flex;flex-direction:column'>"
       f"<div style='position:relative'><img src='{A}nr-set-focus-hero_651397b1-0fd3-4ca6-a8b7-f7041f0dc4a8.webp' style='display:block;width:100%;height:360px;object-fit:cover;object-position:50% 62%'>"
-      "<div style='position:absolute;right:24px;bottom:22px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;text-align:center'><div><div style='font-size:42px;font-weight:300;color:var(--c);line-height:1'>30</div><div class='lbl' style='font-size:16px;margin-top:4px'>Tage testen</div></div></div></div>"
+      "<div style='position:absolute;right:24px;bottom:22px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;text-align:center'><div><div style='font-size:42px;font-weight:300;color:var(--c);line-height:1'>30</div><div class='lbl' style='font-size:18px;margin-top:4px'>Tage testen</div></div></div></div>"
       f"<div style='padding:20px 34px 30px;display:flex;flex-direction:column;flex:1'>{rows}"
       "<div style='display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px;padding-top:16px;border-top:1.5px solid #0D1B33'><div style='font-size:21px;color:rgba(13,27,51,.6)'>Gesamtwert <s>€122,99</s></div>"
       "<div style='font-size:72px;font-weight:300;color:var(--c);line-height:1'>€89</div></div>"
@@ -317,7 +339,7 @@ def ad_quiz_q(fmt):
 # ---------- 15 Glossar: MoodTech ----------
 def ad_gloss_moodtech(fmt):
     st = "sleep"
-    states = "".join(f"<div style='flex:1;text-align:center'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:14px;height:14px'></span><div class='lbl' style='font-size:17px;color:{S[s]['c']};margin-top:14px'>{S[s]['name']}</div></div>" for s in ("activate", "focus", "calm", "sleep"))
+    states = "".join(f"<div style='flex:1;text-align:center'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:14px;height:14px'></span><div class='lbl' style='font-size:18px;color:{S[s]['c']};margin-top:14px'>{S[s]['name']}</div></div>" for s in ("activate", "focus", "calm", "sleep"))
     body = (top(st, "dots")
       + "<div class='eyebrow grey'>Glossar · MoodTech</div>"
       + "<h1 style='font-size:94px;margin-top:18px'>Kein Parfum für andere.<br>Keine Kapsel zum Schlucken.<span class='acc'>Ein Duft für deinen Moment.</span></h1>"
