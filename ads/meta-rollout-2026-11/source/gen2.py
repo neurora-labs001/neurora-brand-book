@@ -45,6 +45,14 @@ h1 .acc{color:var(--c);display:block}
 .chip .arr{margin-left:auto;font-size:36px;color:var(--c);font-weight:300}
 .btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:28px 46px;font-size:28px;font-weight:600;min-height:96px}
 .grow{flex:1 1 0;min-height:0}
+.qbadge{display:inline-flex;align-items:center;gap:12px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:10px 14px 10px 28px;font-size:22px;font-weight:600;letter-spacing:.16em;
+ box-shadow:0 0 0 7px color-mix(in srgb,var(--g) 40%,transparent),0 16px 30px -16px rgba(13,27,51,.55)}
+.qbadge .q{font-family:'Noto Color Emoji';font-size:34px;letter-spacing:0;line-height:1;display:inline-block;transform:rotate(14deg);
+ background:#F6F3EC;border-radius:50%;width:46px;height:46px;display:grid;place-items:center;box-shadow:0 0 18px 2px color-mix(in srgb,var(--g) 90%,transparent);
+ animation:qwig 2.4s ease-in-out infinite;animation-play-state:paused}
+@keyframes qwig{0%,100%{transform:rotate(14deg) scale(1);box-shadow:0 0 18px 2px color-mix(in srgb,var(--g) 90%,transparent)}
+ 12%{transform:rotate(-12deg) scale(1.12)}24%{transform:rotate(18deg) scale(1.08)}36%{transform:rotate(-6deg) scale(1.04)}
+ 48%{transform:rotate(14deg) scale(1);box-shadow:0 0 30px 8px color-mix(in srgb,var(--g) 100%,transparent)}}
 .wrap > *{flex-shrink:0}
 .wrap > .grow{flex-shrink:1}
 .center{text-align:center}
@@ -84,15 +92,15 @@ def chip(img, t, s):
 
 # ---------- 01-03 Vorher / Nachher ----------
 BA = [
- dict(key="01-sleep-vorher-nachher", st="sleep", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">🌙</span>&nbsp; Sieht dein Abend so aus?", a="Der Körper liegt.", b="Der Kopf nicht.",
+ dict(key="01-sleep-vorher-nachher", st="sleep", eyebrow="<span class='qbadge'>Sieht dein Abend so aus<span class='q'>❓</span></span>", a="Der Körper liegt.", b="Der Kopf nicht.",
       off_t="Licht aus. Gedanken noch an.", off=[("22:50", "Licht aus. Und plötzlich fällt dir alles ein, was morgen ansteht."), ("23:40", "Du drehst das Kissen um und rechnest, wie viele Stunden noch bleiben.")],
       on_t="Licht aus. Der Tag ist vorbei.", on=[("22:16", "Ein Sprühstoß aufs Kissen, Roll-On aufs Handgelenk."), ("22:17", "Dein Signal: Der Tag ist vorbei.")],
       why="Dir fehlt keine Müdigkeit. Dir fehlt ein Ende für den Tag.", img="nr-set-sleep-hero.webp", line="sbox", ct="Dein Abend-Signal holen", cs="SLEEP Komplett-Set · €89"),
- dict(key="02-calm-vorher-nachher", st="calm", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">🛋️</span>&nbsp; Sieht dein Feierabend so aus?", a="Du bist zu Hause.", b="Aber nicht ganz da.",
+ dict(key="02-calm-vorher-nachher", st="calm", eyebrow="<span class='qbadge'>Sieht dein Feierabend so aus<span class='q'>❓</span></span>", a="Du bist zu Hause.", b="Aber nicht ganz da.",
       off_t="Zu Hause. Kopf noch im Meeting.", off=[("18:40", "Auf dem Heimweg spielst du das Meeting noch einmal durch."), ("19:30", "Am Tisch nickst du, hörst aber nur halb zu.")],
       on_t="Laptop zu. Kopf frei.", on=[("18:06", "Roll-On aufs Handgelenk. Ein Atemzug."), ("18:07", "Dein Signal: Ab jetzt ist Feierabend.")],
       why="Dir fehlt kein Feierabend. Dir fehlt ein Schlusspunkt.", img="nr-set-calm-hero_d9e1c46a-abd5-4b2b-b375-fb6d6ae9d035.webp", line="box", ct="Dein Feierabend-Signal holen", cs="CALM Komplett-Set · €89"),
- dict(key="03-focus-vorher-nachher", st="focus", eyebrow="<span style=\"font-family:'Noto Color Emoji';letter-spacing:0\">💻</span>&nbsp; Sieht dein Nachmittag so aus?", a="Du bist beschäftigt.", b="Aber nicht bei der Sache.",
+ dict(key="03-focus-vorher-nachher", st="focus", eyebrow="<span class='qbadge'>Sieht dein Nachmittag so aus<span class='q'>❓</span></span>", a="Du bist beschäftigt.", b="Aber nicht bei der Sache.",
       off_t="Viel beschäftigt. Wenig geschafft.", off=[("14:55", "Zwölf Tabs offen. Keiner davon fertig."), ("15:10", "Dritter Kaffee. Oder doch der Riegel aus der Schublade.")],
       on_t="Eine Aufgabe. Ganz bei der Sache.", on=[("14:56", "Roll-On aufs Handgelenk. Ein Atemzug."), ("14:57", "Dein Signal zum Abtauchen.")],
       why="Dir fehlt keine Konzentration. Dir fehlt ein klarer Neustart.", img="nr-set-focus-hero_651397b1-0fd3-4ca6-a8b7-f7041f0dc4a8.webp", line="box", ct="Dein Fokus-Signal holen", cs="FOCUS Komplett-Set · €89"),
