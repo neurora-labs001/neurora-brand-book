@@ -26,3 +26,9 @@ Built 1:1 from the live webshop sections (theme NEURORA MOOD 6.1) and Brand Book
 | 16 | Wir sagen dir genau, was gemessen wurde. Und was nicht. | Brand | Cold · Skeptic trust (Glossar) |
 
 Before launch: claims marked in the strategy doc (§9) still need Claims Register clearance, in particular „auf Abruf" (06, 10, 13) and the study reference in 10.
+
+## Runde 3 (20.11.2026)
+
+- **17 Gratis-Goodie** (Retargeting): „Ein Roll-On geht aufs Haus. 🎁“. Zeigt die vier Geschenk-Boxen, ohne Schwellenwert, ohne Enddatum. Ziel: `/collections/sets`.
+- **18a–d Roll-On Signal-Ring** (alle vier Zustände): ersetzt die dunkle Anzeige „Kopf noch an? Licht aus, Duft an.“. Neue Botschaft „Ein Duft. Ein Moment. Dein Signal für …“. Creme, Frosted, Mood Dots, Signal-Line-Ring und die offene Box als Hero. Die Callouts bleiben, aus „4 ätherische Öle“ wird „Rund 95 Rituale pro Roll-On“.
+- Generator: `source/gen3.py`. Freisteller der Boxen: `source/cutout.py`.
