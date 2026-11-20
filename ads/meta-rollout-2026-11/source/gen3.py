@@ -11,7 +11,7 @@ EXTRA = """
 .badge{display:inline-flex;align-items:center;gap:12px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:12px 24px 12px 18px;font-size:20px;font-weight:600;letter-spacing:.16em;text-transform:uppercase}
 .emo{font-family:'Noto Color Emoji';letter-spacing:0;font-style:normal}
 h1 .it{letter-spacing:-.02em;font-weight:400}
-.callout{white-space:nowrap;font-size:23px;line-height:1.28;font-weight:400;color:#0D1B33;z-index:4;padding:12px 16px;border-radius:18px;
+.callout{white-space:nowrap;font-size:22px;line-height:1.3;font-weight:400;color:#0D1B33;z-index:4;padding:11px 15px;border-radius:18px;
  background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(255,255,255,.66));border:1px solid rgba(255,255,255,.95);
  box-shadow:0 16px 30px -22px rgba(13,27,51,.45);backdrop-filter:blur(10px)}
 .callout b{font-weight:700;color:var(--c)}
@@ -52,10 +52,10 @@ def ad_goodie(fmt):
 
 # ---------- 18 Roll-On: Signal ring (all states) ----------
 RO = {
-    "activate": dict(sig="Dein Signal für den Morgen.", air="Dein Morgen<br><b>zum Einatmen</b>"),
-    "focus":    dict(sig="Dein Signal zum Abtauchen.", air="Dein Fokus<br><b>zum Einatmen</b>"),
-    "calm":     dict(sig="Dein Signal für den Feierabend.", air="Dein Feierabend<br><b>zum Einatmen</b>"),
-    "sleep":    dict(sig="Dein Signal für die Nacht.", air="Dein Abend<br><b>zum Einatmen</b>"),
+    "activate": dict(sig="Dein Signal für den Morgen.", air="<b>Ein Atemzug</b><br>und der Tag beginnt"),
+    "focus":    dict(sig="Dein Signal zum Abtauchen.", air="<b>Ein Atemzug</b><br>dann tauchst du ab"),
+    "calm":     dict(sig="Dein Signal für den Feierabend.", air="<b>Ein Atemzug</b><br>ab jetzt ist Feierabend"),
+    "sleep":    dict(sig="Dein Signal für die Nacht.", air="<b>Ein Atemzug</b><br>und der Tag ist vorbei"),
 }
 
 def ring(st, W, D, bottle=False):
@@ -65,7 +65,7 @@ def ring(st, W, D, bottle=False):
     def arc(d0, d1):
         x0, y0 = pt(d0); x1, y1 = pt(d1)
         return f"M {x0:.1f} {y0:.1f} A {r} {r} 0 {1 if (d1 - d0) % 360 > 180 else 0} 1 {x1:.1f} {y1:.1f}"
-    calls = [(318, "<b>Rund 95 Rituale</b><br>pro Roll-On"), (222, "<b>10 ml</b><br>für jede Tasche"), (42, RO[st]["air"]), (138, "<b>30 Tage testen</b><br>Geld zurück")]
+    calls = [(326, "<b>Duft mit Funktion</b><br>wissenschaftliche Formel"), (214, "<b>Immer dabei</b><br>10 ml für jede Tasche"), (34, RO[st]["air"]), (146, "<b>30 Tage testen</b><br>Passt nicht? Geld zurück.")]
     # layer 0: dense state-colour disc
     disc = (f"<div style='position:absolute;left:{cx - r}px;top:{cy - r}px;width:{D}px;height:{D}px;border-radius:50%;"
             f"background:radial-gradient(circle at 30% 22%,rgba(255,255,255,.9) 0%,rgba(255,255,255,0) 42%),"
@@ -81,8 +81,8 @@ def ring(st, W, D, bottle=False):
     back = (f"<svg width='{W}' height='{H}' style='position:absolute;left:0;top:0;z-index:1;overflow:visible'>"
             f"<circle cx='{cx}' cy='{cy}' r='{r}' fill='none' stroke='{c['c']}' stroke-opacity='.28' stroke-width='2'/>"
             f"<defs><linearGradient id='ag' x1='0' x2='1'><stop offset='0' stop-color='{c['c']}' stop-opacity='.55'/><stop offset='.5' stop-color='{c['c']}'/><stop offset='1' stop-color='{c['c']}' stop-opacity='.55'/></linearGradient></defs>"
-            f"<path d='{arc(300, 60)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
-            f"<path d='{arc(120, 240)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
+            f"<path d='{arc(316, 44)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
+            f"<path d='{arc(136, 224)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
             f"<defs><clipPath id='dc'><circle cx='{cx}' cy='{cy}' r='{r - 3}'/></clipPath></defs><g clip-path='url(#dc)'>"
             f"<path d='{d1}' fill='none' stroke='#fff' stroke-opacity='.85' stroke-width='1.6' stroke-linecap='round'/>"
             f"<path d='{d2}' fill='none' stroke='{c['c']}' stroke-width='1.8' stroke-linecap='round'/>"
@@ -113,7 +113,7 @@ def ring(st, W, D, bottle=False):
 def ad_rollon(st, fmt, bottle=False):
     c = S[st]; tall = fmt == "916"
     W = 924 if tall else 936
-    D = 640 if tall else 600
+    D = 560
     body = (top(st, "dots")
       + "<div class='center'>"
         f"<div class='eyebrow'>{c['name']} · Roll-On</div>"
