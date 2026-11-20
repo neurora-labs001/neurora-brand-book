@@ -23,7 +23,7 @@ body::before{content:"";position:absolute;inset:0;z-index:0;background:
 .dots i{width:13px;height:13px;border-radius:50%;display:block}
 .slogan{font-size:22px;font-weight:300;letter-spacing:-.01em;color:rgba(13,27,51,.7)}
 .slogan b{font-family:'EB Garamond';font-style:italic;font-weight:400;color:var(--c);font-size:26px}
-.eyebrow{font-size:17px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c)}
+.eyebrow{font-size:20px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--c)}
 .eyebrow.grey{color:rgba(13,27,51,.55)}
 h1{font-weight:300;letter-spacing:-.045em;line-height:1.02;font-size:88px}
 h1 .acc{color:var(--c);display:block}
@@ -36,14 +36,14 @@ h1 .acc{color:var(--c);display:block}
  radial-gradient(320px 260px at 60% 110%, rgba(163,204,240,.28),transparent 70%)}
 .board > *{position:relative;z-index:1}
 .dot{display:inline-block;width:12px;height:12px;border-radius:50%;background:var(--c);box-shadow:0 0 0 5px color-mix(in srgb,var(--g) 45%,transparent),0 0 16px 3px color-mix(in srgb,var(--g) 80%,transparent);vertical-align:middle}
-.lbl{font-size:15px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
+.lbl{font-size:18px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
 .it{font-family:'EB Garamond';font-style:italic;font-weight:400}
 .chip{display:flex;align-items:center;gap:20px;background:#fff;border-radius:24px;padding:14px 26px 14px 14px;box-shadow:0 14px 34px -24px rgba(13,27,51,.4)}
 .chip img{width:88px;height:88px;object-fit:cover;border-radius:16px}
 .chip .t{font-size:26px;font-weight:600;letter-spacing:-.01em}
 .chip .s{font-size:19px;color:rgba(13,27,51,.55);margin-top:4px}
 .chip .arr{margin-left:auto;font-size:36px;color:var(--c);font-weight:300}
-.btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:24px 40px;font-size:26px;font-weight:600}
+.btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:28px 46px;font-size:28px;font-weight:600;min-height:96px}
 .grow{flex:1}
 .center{text-align:center}
 """
@@ -62,7 +62,7 @@ def band(st):
 def page(title, st, fmt, body, css=""):
     c = S[st]
     H = 1350 if fmt == "45" else 1920
-    pad = "64px 60px 60px" if fmt == "45" else "250px 60px 370px"   # 9:16: keep clear of Reels/Stories UI
+    pad = "64px 72px 60px" if fmt == "45" else "274px 78px 400px"   # 9:16: keep clear of Reels/Stories UI
     v = f"--H:{H}px;--pad:{pad};--c:{c['c']};--g:{c['g']};--soft:{c['soft']};"
     return (f"<!doctype html><html><head><meta charset='utf-8'><title>{title}</title><style>:root{{{v}}}{CSS}{css}</style></head>"
             f"<body class='f{fmt}'>{band(st) if fmt == '916' else ''}<div class='wrap'>{body}</div></body></html>")
@@ -100,7 +100,7 @@ def ad_ba(d, fmt):
     st = d["st"]
     rows = lambda rs, on: "".join(
         f"<div style='display:grid;grid-template-columns:70px 1fr;gap:10px;padding:18px 0;border-top:1px solid rgba(13,27,51,.07);font-size:23.5px;line-height:1.38'>"
-        f"<span style='font-size:16px;font-weight:600;letter-spacing:.04em;padding-top:4px;color:{'var(--c)' if on else 'rgba(13,27,51,.5)'}'>{t}</span>"
+        f"<span style='font-size:19px;font-weight:600;letter-spacing:.04em;padding-top:3px;color:{'var(--c)' if on else 'rgba(13,27,51,.5)'}'>{t}</span>"
         f"<span style='color:{'#0D1B33' if on else 'rgba(13,27,51,.7)'}'>{x}</span></div>" for t, x in rs)
     card = lambda on: (
         f"<div style='border-radius:28px;padding:28px 26px 14px;{'background:var(--soft);border:1px solid color-mix(in srgb,var(--c) 14%,transparent)' if on else 'background:rgba(242,241,238,.9);border:1px solid rgba(13,27,51,.06)'}'>"
@@ -113,7 +113,7 @@ def ad_ba(d, fmt):
             + f"<div style='margin:20px -10px -4px'>{signal_bridge(st, 980, drop=86, lx=245, rx=740)}</div>"
             + f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:16px'>{card(False)}{card(True)}</div>"
             + f"<div style='background:#121B33;color:#F6F3EC;border-radius:24px;padding:24px 28px;margin-top:16px'>"
-              f"<div class='lbl' style='font-size:13px;color:var(--g)'>Der eigentliche Grund</div>"
+              f"<div class='lbl' style='font-size:17px;color:var(--g)'>Der eigentliche Grund</div>"
               f"<div style='font-size:30px;font-weight:300;letter-spacing:-.02em;line-height:1.2;margin-top:8px'>{d['why']}</div></div>"
             + f"<div style='margin-top:18px'>{chip(d['img'], d['ct'], d['cs'])}</div>" + "<div class='grow'></div>")
     return page(d["key"], st, fmt, body)
@@ -128,8 +128,9 @@ def ad_founder(fmt):
       f"<div class='it' style='font-size:130px;line-height:.6;color:var(--c);height:60px;margin-top:34px'>“</div>"
       f"<div style='font-size:60px;font-weight:300;letter-spacing:-.04em;line-height:1.12'>Duft begleitet uns jeden Tag, meist unbewusst. Mit Neurora Labs machen wir ihn zu einem <span style='color:var(--c)'>bewussten Werkzeug</span>.</div>"
       f"<div style='display:flex;align-items:center;gap:16px;margin-top:30px'><div style='width:46px;height:46px;border-radius:10px;background:#0D1B33;display:grid;place-items:center'>{svg_logo('mono', '#F6F3EC', h=22)}</div>"
-      f"<div class='lbl' style='color:rgba(13,27,51,.6);font-size:16px'>Philip Huber, Founder &amp; CEO</div></div></div>"
-      f"<div class='board' style='padding:12px;margin-top:30px'><img src='{A}nr-rituale-66-tag-1.jpg' style='display:block;width:100%;height:300px;object-fit:cover;object-position:62% 55%;border-radius:22px'></div>")
+      f"<div class='lbl' style='color:rgba(13,27,51,.6);font-size:19px'>Philip Huber, Founder &amp; CEO</div></div></div>"
+      f"<div class='board' style='padding:12px;margin-top:30px'><img src='{A}nr-rituale-66-tag-1.jpg' style='display:block;width:100%;height:300px;object-fit:cover;object-position:62% 55%;border-radius:22px'></div>"
+      + "<div style='margin-top:24px'><div class='btn'>Philip erklärt das Ritual&nbsp; →</div></div>")
     return page("Founder", st, fmt, body)
 
 # ---------- 05 Mission (navy, product centre) ----------
@@ -140,8 +141,8 @@ def ad_mission(fmt):
       + "<h1 style='font-size:84px;color:#F6F3EC'>Auf Wissenschaft gebaut.<span class='acc' style='color:rgba(246,243,236,.5)'>Damit deine Stimmung dir gehört.</span></h1>"
       + "<div class='grow' style='display:flex;align-items:center;padding:34px 0'>"
       f"<div style='width:100%;border-radius:32px;overflow:hidden;box-shadow:0 40px 80px -40px rgba(0,0,0,.6);border:1px solid rgba(255,255,255,.12)'>"
-      f"<img src='{A}nr-set-sleep-hero.webp' style='display:block;width:100%;height:560px;object-fit:cover;object-position:50% 58%'></div></div>"
-      + f"<div class='lbl' style='font-size:15px;color:rgba(246,243,236,.65)'><span class='dot' style='--c:#B5471F;--g:#F6AE8E;width:9px;height:9px;margin-right:12px'></span>Mission</div>"
+      f"<img src='{A}nr-set-sleep-hero.webp' style='display:block;width:100%;height:520px;object-fit:cover;object-position:50% 58%'></div></div>"
+      + f"<div class='lbl' style='font-size:18px;color:rgba(246,243,236,.65)'><span class='dot' style='--c:#B5471F;--g:#F6AE8E;width:9px;height:9px;margin-right:12px'></span>Mission</div>"
       f"<div style='font-size:38px;font-weight:300;letter-spacing:-.03em;line-height:1.2;color:#F6F3EC;margin-top:14px'>Wir übersetzen olfaktorische Wissenschaft in Werkzeuge für deinen Alltag.</div>")
     return page("Mission", st, fmt, body, css)
 
@@ -152,7 +153,7 @@ def ad_atemzug(fmt):
     tabs = "".join(
         f"<div style='flex:1;text-align:center;padding:14px 0 12px;border-radius:18px;{'background:#fff;box-shadow:0 10px 26px -18px rgba(13,27,51,.4);' if s=='calm' else ''}'>"
         f"<span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:10px;height:10px;{'' if s=='calm' else 'box-shadow:none;'}'></span>"
-        f"<div style='font-size:21px;font-weight:600;margin-top:6px'>{t}</div><div class='lbl' style='font-size:12px;color:{S[s]['c']};margin-top:3px'>{S[s]['name']}</div></div>" for t, s in times)
+        f"<div style='font-size:21px;font-weight:600;margin-top:6px'>{t}</div><div class='lbl' style='font-size:19px;color:{S[s]['c']};margin-top:3px'>{S[s]['name']}</div></div>" for t, s in times)
     body = (top(st)
       + "<div class='eyebrow grey'>Rituale</div>"
       + "<h1 style='font-size:110px;margin-top:10px'>Ein Atemzug.</h1>"
@@ -163,7 +164,8 @@ def ad_atemzug(fmt):
         f"<img src='{A}nr-founder-ritual-3c-poster.jpg' style='display:block;width:100%;height:600px;object-fit:cover;object-position:50% 68%'>"
         f"<div style='position:absolute;right:30px;top:30px;width:96px;height:96px;border-radius:50%;background:#fff;display:grid;place-items:center;box-shadow:0 0 0 12px rgba(163,204,240,.5)'><div style='width:0;height:0;border-left:22px solid #0D1B33;border-top:14px solid transparent;border-bottom:14px solid transparent;margin-left:6px'></div></div>"
         f"<div style='position:absolute;left:0;right:0;bottom:0;padding:16px'><div class='board' style='padding:8px'><div style='display:flex;gap:4px'>{tabs}</div></div></div></div>"
-      + "<div style='font-size:19px;color:rgba(13,27,51,.55);margin-top:14px'>Philip, Gründer von Neurora, über sein Ritual am Feierabend.</div>")
+      + "<div style='font-size:19px;color:rgba(13,27,51,.55);margin-top:14px'>Philip, Gründer von Neurora, über sein Ritual am Feierabend.</div>"
+      + "<div style='margin-top:24px'><div class='btn'>Finde dein Ritual&nbsp; →</div></div>")
     return page("Ein Atemzug", st, fmt, body)
 
 # ---------- 07 Wo hakt dein Tag ----------
@@ -173,7 +175,7 @@ def ad_quiz_tiles(fmt):
              ("calm", "18:30", "Kopf noch im Meeting?"), ("sleep", "22:00", "Im Bett und noch hellwach?")]
     cards = "".join(
         f"<div style='background:linear-gradient(120deg,#fff 55%,color-mix(in srgb,{S[s]['g']} 28%,#fff));border-radius:26px;padding:28px 30px;box-shadow:0 14px 34px -26px rgba(13,27,51,.35);display:flex;align-items:center;gap:22px'>"
-        f"<div style='flex:1'><div class='lbl' style='font-size:15px;color:{S[s]['c']}'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:10px;height:10px;margin-right:12px'></span>{t} · {S[s]['name']}</div>"
+        f"<div style='flex:1'><div class='lbl' style='font-size:18px;color:{S[s]['c']}'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:10px;height:10px;margin-right:12px'></span>{t} · {S[s]['name']}</div>"
         f"<div style='font-size:36px;font-weight:300;letter-spacing:-.03em;margin-top:12px'>{h}</div></div>"
         f"<div style='width:44px;height:44px;border-radius:50%;border:1.5px solid rgba(13,27,51,.15);flex:none'></div></div>" for s, t, h in items)
     body = (top(st, "dots")
@@ -181,7 +183,7 @@ def ad_quiz_tiles(fmt):
       + "<div class='grow' style='min-height:30px'></div>"
       + f"<div style='display:flex;flex-direction:column;gap:14px'>{cards}</div>"
       + "<div style='display:flex;justify-content:space-between;align-items:center;margin-top:28px'>"
-        "<div style='font-size:22px;color:rgba(13,27,51,.65);max-width:520px;line-height:1.4'>Tipp an, was du kennst. Dann zeigen wir dir, wo dein Ritual anfängt.</div>"
+        "<div style='font-size:23px;color:rgba(13,27,51,.65);max-width:440px;line-height:1.35'>Tipp an, was du kennst.</div>"
         "<div class='btn'>Ritual finden →</div></div>")
     return page("Wo hakt dein Tag", st, fmt, body)
 
@@ -199,7 +201,8 @@ def ad_signal_steps(fmt):
       + f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:14px'>{cards}</div>"
       + "<div style='background:#0F1A35;border-radius:28px;padding:30px 32px;color:#F6F3EC;margin-top:16px'>"
         "<div style='font-size:32px;font-weight:300;letter-spacing:-.025em;line-height:1.22'>„Der angenehme Duft wird zum Signal. Und durch die Routine lerne ich, dass der Feierabend jetzt anfangen kann.“</div>"
-        "<div style='font-size:18px;color:rgba(246,243,236,.6);margin-top:14px'>Philip, Gründer von Neurora</div></div>")
+        "<div style='font-size:19px;color:rgba(246,243,236,.6);margin-top:14px'>Philip, Gründer von Neurora</div></div>"
+      + "<div style='margin-top:24px'><div class='btn'>Dein Ritual starten&nbsp; →</div></div>")
     return page("Duft wird Signal", st, fmt, body)
 
 # ---------- 09 Vier Momente ----------
@@ -209,13 +212,14 @@ def ad_vier_momente(fmt):
     cards = "".join(
         f"<div style='border-radius:30px;padding:28px 26px 30px;background:linear-gradient(160deg,rgba(255,255,255,.94) 35%,color-mix(in srgb,{S[s]['g']} 34%,#fff));box-shadow:0 18px 40px -30px rgba(13,27,51,.35);border:1px solid rgba(255,255,255,.95);display:flex;flex-direction:column'>"
         f"<div style='display:flex;justify-content:space-between;align-items:center'><span class='it' style='font-size:44px;color:{S[s]['c']}'>{t}</span>"
-        f"<span class='lbl' style='font-size:13px;color:{S[s]['c']};background:#fff;border-radius:999px;padding:9px 14px'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:9px;height:9px;box-shadow:none;margin-right:8px'></span>{S[s]['name']}</span></div>"
+        f"<span class='lbl' style='font-size:16px;color:{S[s]['c']};background:#fff;border-radius:999px;padding:9px 14px'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:9px;height:9px;box-shadow:none;margin-right:8px'></span>{S[s]['name']}</span></div>"
         f"<div class='grow' style='min-height:20px'></div><div style='margin:0 0 18px'>{signal_inline(s, 410, 54, 0.36)}</div>"
         f"<div style='font-size:46px;font-weight:300;letter-spacing:-.045em;line-height:1.05'>{h}</div></div>" for s, t, h in m)
     body = (top(st, "dots")
       + headline("Dein Tag in vier Ritualen", "Vier Momente.", "Ein Duft für jeden.", 92)
       + "<p class='lead' style='margin-top:18px'>Fang mit einem Moment an. Die anderen kommen dazu, wenn du willst.</p>"
-      + f"<div style='display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px;margin-top:34px;flex:1'>{cards}</div>")
+      + f"<div style='display:grid;grid-template-columns:1fr 1fr;grid-auto-rows:1fr;gap:14px;margin-top:34px;flex:1'>{cards}</div>"
+      + "<div style='margin-top:24px'><div class='btn'>Wähle deinen Moment&nbsp; →</div></div>")
     return page("Vier Momente", st, fmt, body)
 
 # ---------- 10 Die ersten 30 Tage ----------
@@ -234,7 +238,8 @@ def ad_30(fmt):
       + headline("Dein Plan", "Die ersten 30 Tage.", "Ein Moment nach dem anderen.", 80)
       + "<div class='grow' style='min-height:24px'></div>"
       + f"<div style='display:grid;grid-template-columns:1fr 1fr;gap:30px 24px'>{cards}</div>"
-      + "<div style='margin-top:26px;font-size:22px;color:rgba(13,27,51,.7)'><b style='color:#0D1B33;font-weight:600'>Einen Tag ausgelassen?</b> Macht nichts. Mach am nächsten Tag einfach weiter.</div>")
+      + "<div style='margin-top:26px;font-size:22px;color:rgba(13,27,51,.7)'><b style='color:#0D1B33;font-weight:600'>Einen Tag ausgelassen?</b> Macht nichts. Mach am nächsten Tag einfach weiter.</div>"
+      + "<div style='margin-top:24px'><div class='btn'>30 Tage testen&nbsp; →</div></div>")
     return page("Die ersten 30 Tage", st, fmt, body)
 
 # ---------- 11 FOCUS Angebot ----------
@@ -247,7 +252,7 @@ def ad_offer(fmt):
       + headline("Dein Angebot", "Alles für deinen", "Fokus-Block.", 80, grey=False)
       + "<div class='board' style='margin-top:30px;flex:1;display:flex;flex-direction:column'>"
       f"<div style='position:relative'><img src='{A}nr-set-focus-hero_651397b1-0fd3-4ca6-a8b7-f7041f0dc4a8.webp' style='display:block;width:100%;height:360px;object-fit:cover;object-position:50% 62%'>"
-      "<div style='position:absolute;right:24px;bottom:22px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;text-align:center'><div><div style='font-size:42px;font-weight:300;color:var(--c);line-height:1'>30</div><div class='lbl' style='font-size:11px;margin-top:4px'>Tage testen</div></div></div></div>"
+      "<div style='position:absolute;right:24px;bottom:22px;width:130px;height:130px;border-radius:50%;background:rgba(255,255,255,.94);display:grid;place-items:center;text-align:center'><div><div style='font-size:42px;font-weight:300;color:var(--c);line-height:1'>30</div><div class='lbl' style='font-size:16px;margin-top:4px'>Tage testen</div></div></div></div>"
       f"<div style='padding:20px 34px 30px;display:flex;flex-direction:column;flex:1'>{rows}"
       "<div style='display:flex;justify-content:space-between;align-items:flex-end;margin-top:14px;padding-top:16px;border-top:1.5px solid #0D1B33'><div style='font-size:21px;color:rgba(13,27,51,.6)'>Gesamtwert <s>€122,99</s></div>"
       "<div style='font-size:72px;font-weight:300;color:var(--c);line-height:1'>€89</div></div>"
@@ -259,26 +264,26 @@ def ad_offer(fmt):
 def ad_kompass(fmt):
     st = "focus"
     mol = "".join(f"<span style='display:inline-flex;align-items:center;gap:12px;background:#fff;border-radius:999px;padding:8px 22px 8px 8px;box-shadow:0 8px 22px -14px rgba(13,27,51,.35);font-size:22px'>"
-                  f"<span style='width:44px;height:44px;border-radius:50%;background:#1F4A3D;color:#fff;display:grid;place-items:center;font-size:17px;font-weight:600;box-shadow:0 0 0 5px rgba(138,211,189,.35)'>{n}</span>{t}</span>"
+                  f"<span style='width:44px;height:44px;border-radius:50%;background:#1F4A3D;color:#fff;display:grid;place-items:center;font-size:19px;font-weight:600;box-shadow:0 0 0 5px rgba(138,211,189,.35)'>{n}</span>{t}</span>"
                   for n, t in [("08", "1,8-Cineol"), ("09", "Kampfer"), ("10", "Verbenon")])
     body = (top(st, "dots")
-      + "<div class='lbl' style='color:var(--c);font-size:16px'><span class='dot' style='width:10px;height:10px;margin-right:14px'></span>Neurora Kompass · Mood on Demand</div>"
-      + "<h1 style='margin-top:18px;font-size:76px'>Für alle, die mehr über ihren Duft <span style='color:var(--c)'>lernen wollen.</span></h1>"
+      + "<div class='lbl' style='color:var(--c);font-size:19px'><span class='dot' style='width:10px;height:10px;margin-right:14px'></span>Neurora Kompass · Mood on Demand</div>"
+      + "<h1 style='margin-top:18px;font-size:72px'>Für alle, die mehr über ihren Duft <span style='color:var(--c)'>lernen wollen.</span></h1>"
       + "<div class='board glow' style='margin-top:34px;padding:32px 32px 0;flex:1;display:flex;flex-direction:column'>"
-      "<div class='lbl' style='font-size:15px;color:rgba(13,27,51,.55)'><span class='dot' style='width:10px;height:10px;margin-right:12px'></span>Jetzt · 12:46</div>"
+      "<div class='lbl' style='font-size:18px;color:rgba(13,27,51,.55)'><span class='dot' style='width:10px;height:10px;margin-right:12px'></span>Jetzt · 12:46</div>"
       "<div style='display:flex;align-items:baseline;gap:22px;margin-top:10px'><span style='font-size:92px;font-weight:300;letter-spacing:-.045em;color:var(--c);line-height:1'>Scharf</span>"
       "<span class='it' style='font-size:30px;color:rgba(13,27,51,.7)'>Mittag · 12:00</span></div>"
       "<p style='font-size:22px;line-height:1.45;color:rgba(13,27,51,.7);margin-top:12px'>Durchdringend, kampferartig, präzise. Die Noten für die Stunden am Schreibtisch.</p>"
       f"<div style='display:flex;gap:12px;flex-wrap:wrap;margin-top:18px'>{mol}</div>"
-      f"<div style='flex:1;min-height:300px;margin:16px -32px 0;overflow:hidden;display:flex;align-items:flex-start'>{dial_svg(1000)}</div></div>"
-      "<p class='it' style='font-size:20px;line-height:1.4;color:rgba(13,27,51,.55);margin-top:16px'>Duftfamilien beschreiben den Charakter eines Moleküls, keine Wirkung.</p>")
+      f"<div style='flex:1;min-height:260px;margin:16px -32px 0;overflow:hidden;display:flex;align-items:flex-start'>{dial_svg(1000)}</div></div>"
+      "<div style='display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:24px'><p class='it' style='font-size:21px;line-height:1.35;color:rgba(13,27,51,.6);max-width:520px'>Duftfamilien beschreiben den Charakter eines Moleküls, keine Wirkung.</p><div class='btn'>Zum Kompass &nbsp;→</div></div>")
     return page("Kompass", st, fmt, body)
 
 # ---------- 13 Mood-Quiz Intro ----------
 def ad_quiz_intro(fmt):
     st = "sleep"
     body = (top(st, "dots")
-      + "<div class='lbl' style='font-size:16px;color:#0D1B33'><span class='dot' style='--c:#0D1B33;--g:#E6E1F4;width:11px;height:11px;margin-right:14px'></span>Dein Ritual · 4 Fragen</div>"
+      + "<div class='lbl' style='font-size:19px;color:#0D1B33'><span class='dot' style='--c:#0D1B33;--g:#E6E1F4;width:11px;height:11px;margin-right:14px'></span>Dein Ritual · 4 Fragen</div>"
       + "<h1 style='font-size:118px;margin-top:20px'>Finde deinen <span class='acc'>Moment.</span></h1>"
       + "<p class='lead' style='margin-top:20px'>Vier Momente, drei Formate. In unter einer Minute weißt du, womit dein Ritual beginnt.</p>"
       + "<div class='grow' style='min-height:30px'></div>"
@@ -302,7 +307,7 @@ def ad_quiz_q(fmt):
     body = (top(st, "dots")
       + "<div style='display:flex;align-items:center;gap:16px'><span style='display:flex;gap:8px'>"
       + "".join(f"<i style='display:block;width:{44 if i == 0 else 34}px;height:5px;border-radius:3px;background:{'#0D1B33' if i == 0 else 'rgba(13,27,51,.15)'}'></i>" for i in range(4))
-      + "</span><span class='lbl' style='font-size:15px;color:rgba(13,27,51,.55)'>Frage 1 / 4</span></div>"
+      + "</span><span class='lbl' style='font-size:18px;color:rgba(13,27,51,.55)'>Frage 1 / 4</span></div>"
       + "<h1 style='font-size:80px;margin-top:22px'>Welchen Moment deines Tages willst du <span style='color:var(--c)'>verändern?</span></h1>"
       + "<div class='grow' style='min-height:30px'></div>"
       + f"<div class='board glow' style='padding:18px;display:flex;flex-direction:column;gap:12px'>{rows}</div>"
@@ -312,7 +317,7 @@ def ad_quiz_q(fmt):
 # ---------- 15 Glossar: MoodTech ----------
 def ad_gloss_moodtech(fmt):
     st = "sleep"
-    states = "".join(f"<div style='flex:1;text-align:center'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:14px;height:14px'></span><div class='lbl' style='font-size:14px;color:{S[s]['c']};margin-top:14px'>{S[s]['name']}</div></div>" for s in ("activate", "focus", "calm", "sleep"))
+    states = "".join(f"<div style='flex:1;text-align:center'><span class='dot' style='--c:{S[s]['c']};--g:{S[s]['g']};width:14px;height:14px'></span><div class='lbl' style='font-size:17px;color:{S[s]['c']};margin-top:14px'>{S[s]['name']}</div></div>" for s in ("activate", "focus", "calm", "sleep"))
     body = (top(st, "dots")
       + "<div class='eyebrow grey'>Glossar · MoodTech</div>"
       + "<h1 style='font-size:94px;margin-top:18px'>Kein Parfum für andere.<br>Keine Kapsel zum Schlucken.<span class='acc'>Ein Duft für deinen Moment.</span></h1>"
@@ -320,7 +325,7 @@ def ad_gloss_moodtech(fmt):
       + "<div class='board glow' style='padding:38px 38px 34px'>"
         "<div style='font-size:30px;font-weight:300;letter-spacing:-.02em;line-height:1.35'>Düfte, die für einen bestimmten Moment deines Tages gemacht sind und als kurzes, wiederkehrendes Ritual genutzt werden.</div>"
         f"<div style='margin:30px 0 26px'>{signal_inline('sleep', 920, 60, 0.4)}</div><div style='display:flex'>{states}</div></div>"
-      + "<div style='margin-top:26px;display:flex;justify-content:space-between;align-items:center'><div class='slogan' style='font-size:24px'>Mood on Demand. <b>Choose the moment.</b></div></div>")
+      + "<div style='margin-top:24px;display:flex;justify-content:space-between;align-items:center'><div class='slogan' style='font-size:24px'>Mood on Demand. <b>Choose the moment.</b></div><div class='btn'>Momente entdecken &nbsp;→</div></div>")
     return page("Glossar MoodTech", st, fmt, body)
 
 # ---------- 16 Glossar: Applied Scent Science ----------
@@ -339,10 +344,74 @@ def ad_gloss_science(fmt):
       + "<div style='margin-top:26px'><div class='btn'>Zum Glossar →</div></div>")
     return page("Glossar Wissenschaft", st, fmt, body)
 
+
+# ---------- Kompass wheel (full, "Ein Tag im Uhrzeigersinn") ----------
+import math
+def _pt(cx, cy, r, h):  # h in hours, 24 at top, clockwise
+    a = math.radians(h * 15 - 90)
+    return cx + r * math.cos(a), cy + r * math.sin(a)
+def _arc(cx, cy, r, h0, h1):
+    x0, y0 = _pt(cx, cy, r, h0); x1, y1 = _pt(cx, cy, r, h1)
+    large = 1 if ((h1 - h0) % 24) * 15 > 180 else 0
+    return f"M {x0:.1f} {y0:.1f} A {r} {r} 0 {large} 1 {x1:.1f} {y1:.1f}"
+def wheel_svg(size=900):
+    cx = cy = size / 2; R1 = size * 0.432; R2 = size * 0.352; R3 = size * 0.322; Ro = size * 0.300; Ri = size * 0.150
+    o = [f"<svg viewBox='0 0 {size} {size}' width='100%' style='display:block'>"]
+    states = [("SLEEP", 21.2, 3.3, "#4E3D98", 0.15), ("ACTIVATE", 3.5, 10.3, "#B5471F", 7.0), ("FOCUS", 10.5, 14.8, "#1F4A3D", 12.6), ("CALM", 15.0, 21.0, "#2F6FA8", 18.0)]
+    for name, a, b, col, lab in states:
+        o.append(f"<path d='{_arc(cx,cy,R1,a,b)}' stroke='{col}' stroke-width='{size*0.015:.1f}' fill='none'/>")
+        lx, ly = _pt(cx, cy, R1 + size * 0.036, lab)
+        rot = lab * 15 if lab < 6 or lab > 18 else lab * 15 - 180
+        o.append(f"<text x='{lx:.1f}' y='{ly:.1f}' font-family='Manrope' font-weight='600' font-size='{size*0.024:.1f}' letter-spacing='3' fill='{col}' text-anchor='middle' dominant-baseline='middle' transform='rotate({rot:.1f} {lx:.1f} {ly:.1f})'>{name}</text>")
+    o.append(f"<circle cx='{cx}' cy='{cy}' r='{R2+size*0.012:.1f}' fill='none' stroke='rgba(13,27,51,.12)' stroke-width='1.5'/>")
+    for h in range(24):
+        x0, y0 = _pt(cx, cy, R2 + size * 0.012, h); x1, y1 = _pt(cx, cy, R2 + size * (0.03 if h % 3 == 0 else 0.022), h)
+        o.append(f"<line x1='{x0:.1f}' y1='{y0:.1f}' x2='{x1:.1f}' y2='{y1:.1f}' stroke='rgba(13,27,51,{.5 if h%3==0 else .2})' stroke-width='{2 if h%3==0 else 1.2}'/>")
+        if h % 3 == 0:
+            tx, ty = _pt(cx, cy, R2 + size * 0.046, h)
+            o.append(f"<text x='{tx:.1f}' y='{ty:.1f}' font-family='Manrope' font-size='{size*0.018:.1f}' fill='rgba(13,27,51,.5)' text-anchor='middle' dominant-baseline='middle'>{h if h else 24:02d}</text>")
+    fams = [("Still", 0, "#4E3D98", [20, 22]), ("Geerdet", 3, "#6B4A3A", [21, 23]), ("Wach", 6, "#B5471F", [1, 6, 2, 7]), ("Klar", 9, "#B0963F", [3, 5, 4, 11]),
+            ("Scharf", 12, "#1F4A3D", [9, 8, 10]), ("Warm", 15, "#7A2E2E", [13, 12]), ("Weich", 18, "#8C5A6E", [15, 16, 14]), ("Gelöst", 21, "#2F6FA8", [19, 18, 17])]
+    for name, h, col, nums in fams:
+        o.append(f"<path d='{_arc(cx,cy,R3,h-1.38,h+1.38)}' stroke='{col}' stroke-width='{size*0.009:.1f}' fill='none'/>")
+        pts = [_pt(cx, cy, Ro, h - 1.5), _pt(cx, cy, Ro, h + 1.5), _pt(cx, cy, Ri, h + 1.5), _pt(cx, cy, Ri, h - 1.5)]
+        o.append("<polygon points='" + " ".join(f"{x:.1f},{y:.1f}" for x, y in pts) + f"' fill='{col}' fill-opacity='.07' stroke='rgba(13,27,51,.12)' stroke-width='1.2'/>")
+        lx, ly = _pt(cx, cy, Ro - size * 0.022, h)
+        rot = h * 15 if (h <= 6 or h >= 18) else h * 15 - 180
+        if h in (6, 18): rot = 90 if h == 6 else -90
+        o.append(f"<text x='{lx:.1f}' y='{ly:.1f}' font-family='Manrope' font-size='{size*0.024:.1f}' fill='{col}' text-anchor='middle' dominant-baseline='middle' transform='rotate({rot:.1f} {lx:.1f} {ly:.1f})'>{name}</text>")
+        n = len(nums)
+        for i, num in enumerate(nums):
+            rr = Ri + (Ro - Ri) * (0.28 + 0.27 * (i % 2)); hh = h + (i - (n - 1) / 2) * (0.78 if n > 2 else 0.95)
+            x, y = _pt(cx, cy, rr, hh)
+            o.append(f"<circle cx='{x:.1f}' cy='{y:.1f}' r='{size*0.0225:.1f}' fill='{col}' stroke='#fff' stroke-width='3'/>"
+                     f"<text x='{x:.1f}' y='{y+1:.1f}' font-family='Manrope' font-weight='600' font-size='{size*0.0175:.1f}' fill='#fff' text-anchor='middle' dominant-baseline='middle'>{num:02d}</text>")
+    oct_pts = [_pt(cx, cy, Ri, h + 1.5) for h in range(0, 24, 3)]
+    o.append("<polygon points='" + " ".join(f"{x:.1f},{y:.1f}" for x, y in oct_pts) + "' fill='#FBFAF7' stroke='rgba(13,27,51,.15)' stroke-width='1.5'/>")
+    r = size * 0.06; sy = cy - size * 0.03
+    o.append(f"<circle cx='{cx}' cy='{sy}' r='{r:.1f}' fill='none' stroke='rgba(13,27,51,.25)' stroke-width='1.5'/>")
+    o.append(f"<path d='M {cx} {sy-r*0.95:.1f} L {cx+r*0.16:.1f} {sy} L {cx} {sy+r*0.95:.1f} L {cx-r*0.16:.1f} {sy} Z' fill='#0D1B33'/>"
+             f"<path d='M {cx-r*0.95:.1f} {sy} L {cx} {sy-r*0.16:.1f} L {cx+r*0.95:.1f} {sy} L {cx} {sy+r*0.16:.1f} Z' fill='#0D1B33'/>")
+    o.append(f"<text x='{cx}' y='{cy+size*0.075:.1f}' font-family='EB Garamond' font-style='italic' font-size='{size*0.03:.1f}' fill='rgba(13,27,51,.6)' text-anchor='middle'>Ein Tag im Uhrzeigersinn</text>")
+    o.append("</svg>")
+    return "".join(o)
+
+def ad_kompass_wheel(fmt):
+    st = "focus"
+    body = (top(st, "dots")
+      + "<div class='lbl' style='color:var(--c);font-size:19px'><span class='dot' style='width:10px;height:10px;margin-right:14px'></span>Neurora Kompass · Mood on Demand</div>"
+      + "<h1 style='margin-top:18px;font-size:82px'>Für alle, die mehr über ihren Duft <span style='color:var(--c)'>lernen wollen.</span></h1>"
+      + "<div class='grow' style='min-height:20px'></div>"
+      + f"<div class='board glow' style='padding:20px;margin-top:26px'><div style='width:760px;margin:0 auto'>{wheel_svg(900)}</div></div>"
+      + "<div style='display:flex;justify-content:space-between;align-items:center;margin-top:24px;gap:24px'>"
+        "<p class='it' style='font-size:22px;line-height:1.35;color:rgba(13,27,51,.6);max-width:520px'>Duftfamilien beschreiben den Charakter eines Moleküls, keine Wirkung.</p>"
+        "<div class='btn'>Zum Kompass &nbsp;→</div></div>")
+    return page("Kompass", st, fmt, body)
+
 ADS = [(d["key"], (lambda d: (lambda f: ad_ba(d, f)))(d)) for d in BA] + [
     ("04-founder-zitat", ad_founder), ("05-mission", ad_mission), ("06-calm-ein-atemzug", ad_atemzug),
     ("07-wo-hakt-dein-tag", ad_quiz_tiles), ("08-duft-wird-signal", ad_signal_steps), ("09-vier-momente", ad_vier_momente),
-    ("10-erste-30-tage", ad_30), ("11-focus-angebot", ad_offer), ("12-kompass", ad_kompass),
+    ("10-erste-30-tage", ad_30), ("11-focus-angebot", ad_offer), ("12a-kompass-rad", ad_kompass_wheel), ("12b-kompass-scharf", ad_kompass),
     ("13-mood-quiz-intro", ad_quiz_intro), ("14-mood-quiz-frage", ad_quiz_q),
     ("15-glossar-moodtech", ad_gloss_moodtech), ("16-glossar-wissenschaft", ad_gloss_science)]
 
