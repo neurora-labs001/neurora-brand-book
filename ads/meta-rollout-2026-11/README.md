@@ -1,0 +1,28 @@
+# Meta Ads · Rollout KW 47–49 / 2026
+
+Built 1:1 from the live webshop sections (theme NEURORA MOOD 6.1) and Brand Book 2.0. Webshop photos only, Manrope + EB Garamond Italic, original logo.
+
+- `feed-4x5/` 1080×1350 (Feed) · `story-9x16/` 1080×1920 (Reels/Stories; all copy inside the Meta safe zone, bottom band is decorative only)
+- `overview-*.jpg` contact sheets
+- `source/` generator (`gen2.py` = current version, `render.js` = Playwright renderer). Fonts and webshop images are not committed; see the asset list in `gen2.py`.
+
+| # | Ad | State | Funnel role |
+|---|---|---|---|
+| 01 | Der Körper liegt. Der Kopf nicht. | SLEEP | Cold · Kennst du das |
+| 02 | Du bist zu Hause. Aber nicht ganz da. | CALM | Cold · Kennst du das |
+| 03 | Du bist beschäftigt. Aber nicht bei der Sache. | FOCUS | Cold · Kennst du das |
+| 04 | Founder-Zitat Philip | Brand | Cold / warm · Trust |
+| 05 | Auf Wissenschaft gebaut. | Brand | Warm · Trust |
+| 06 | Ein Atemzug. Jeden Tag im selben Moment. | CALM | Cold · Mechanism + founder video |
+| 07 | Wo hakt dein Tag? | All four | Cold · Quiz entry |
+| 08 | Ein Duft wird zum Signal. Durch Wiederholung. | Brand | Cold · Mechanism |
+| 09 | Vier Momente. Ein Duft für jeden. | All four | Warm · System |
+| 10 | Die ersten 30 Tage. | Brand | Warm · Objection (time) |
+| 11 | Alles für deinen Fokus-Block. €89 | FOCUS | Retargeting · Offer |
+| 12 | Kompass: Für alle, die mehr über ihren Duft lernen wollen. | FOCUS | Cold · Curiosity |
+| 13 | Finde deinen Moment. (Quiz) | SLEEP visual | Cold · Quiz |
+| 14 | Welchen Moment deines Tages willst du verändern? (Quiz) | All four | Cold · Quiz |
+| 15 | Kein Parfum für andere. Keine Kapsel zum Schlucken. | Brand | Cold · Belief (Glossar) |
+| 16 | Wir sagen dir genau, was gemessen wurde. Und was nicht. | Brand | Cold · Skeptic trust (Glossar) |
+
+Before launch: claims marked in the strategy doc (§9) still need Claims Register clearance, in particular „auf Abruf" (06, 10, 13) and the study reference in 10.
