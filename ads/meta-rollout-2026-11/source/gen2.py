@@ -142,17 +142,24 @@ def ad_ba(d, fmt):
 
 # ---------- 04 Founder ----------
 def ad_founder(fmt):
-    st = "activate"
-    body = (top(st, "dots")
-      + "<div class='grow' style='display:flex;flex-direction:column;justify-content:center'>"
-      f"<div style='width:230px;height:230px;border-radius:50%;padding:10px;background:rgba(255,255,255,.75);box-shadow:0 22px 50px -32px rgba(13,27,51,.35)'>"
-      f"<img src='{A}nr-philip-portrait-3c.jpg' style='width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:50% 20%'></div>"
-      f"<div class='it' style='font-size:130px;line-height:.6;color:var(--c);height:60px;margin-top:34px'>“</div>"
-      f"<div style='font-size:60px;font-weight:300;letter-spacing:-.04em;line-height:1.12'>Duft begleitet uns jeden Tag, meist unbewusst. Mit Neurora Labs machen wir ihn zu einem <span style='color:var(--c)'>bewussten Werkzeug</span>.</div>"
-      f"<div style='display:flex;align-items:center;gap:16px;margin-top:30px'><div style='width:46px;height:46px;border-radius:10px;background:#0D1B33;display:grid;place-items:center'>{svg_logo('mono', '#F6F3EC', h=22)}</div>"
-      f"<div class='lbl' style='color:rgba(13,27,51,.6);font-size:19px'>Philip Huber, Founder &amp; CEO</div></div></div>"
-      f"<div class='board' style='padding:12px;margin-top:30px'><img src='{A}nr-rituale-66-tag-1.jpg' style='display:block;width:100%;height:300px;object-fit:cover;object-position:62% 55%;border-radius:22px'></div>"
-      + "<div style='margin-top:24px'><div class='btn'>Philip erklärt das Ritual&nbsp; →</div></div>")
+    st = "activate"; tall = fmt == "916"
+    ih = 750 if tall else 680
+    play = ("<div style='position:absolute;right:26px;bottom:26px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,.9);"
+            "border-radius:999px;padding:10px 20px 10px 10px;box-shadow:0 14px 30px -18px rgba(13,27,51,.5)'>"
+            "<span style='width:44px;height:44px;border-radius:50%;background:#0D1B33;display:grid;place-items:center'>"
+            "<svg width='16' height='18' viewBox='0 0 16 18'><path d='M2 1.5v15l13-7.5z' fill='#F6F3EC'/></svg></span>"
+            "<span class='lbl' style='color:#0D1B33'>Philip über das Ritual</span></div>")
+    body = (top(st, "dots") + "<div class='grow'></div>"
+      + f"<div class='board glow' style='padding:12px'><div style='position:relative'>"
+        f"<img src='{A}nr-founder-ritual-3c-poster.jpg' style='display:block;width:100%;height:{ih}px;object-fit:cover;object-position:50% 78%;border-radius:22px'>"
+        f"{play}</div></div>"
+      + f"<div class='it' style='font-size:120px;line-height:.6;color:var(--c);height:52px;margin-top:30px'>“</div>"
+      + f"<div style='font-size:{54 if tall else 50}px;font-weight:300;letter-spacing:-.04em;line-height:1.12'>Duft begleitet uns jeden Tag, meist unbewusst. Mit Neurora Labs machen wir ihn zu einem <span style='color:var(--c)'>bewussten Werkzeug</span>.</div>"
+      + "<div style='display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:28px'>"
+        f"<div style='display:flex;align-items:center;gap:14px'><div style='width:46px;height:46px;border-radius:10px;background:#0D1B33;display:grid;place-items:center'>{svg_logo('mono', '#F6F3EC', h=22)}</div>"
+        "<div class='lbl' style='color:rgba(13,27,51,.6);font-size:18px;line-height:1.5'>Philip Huber<br>Founder &amp; CEO</div></div>"
+        "<div class='btn'>Philip erklärt das Ritual&nbsp; →</div></div>"
+      + "<div class='grow'></div>")
     return page("Founder", st, fmt, body)
 
 # ---------- 05 Mission (navy, product centre) ----------
