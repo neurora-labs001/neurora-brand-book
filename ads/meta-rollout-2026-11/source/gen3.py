@@ -15,6 +15,17 @@ h1 .it{letter-spacing:-.02em;font-weight:400}
  background:linear-gradient(150deg,rgba(255,255,255,.9),rgba(255,255,255,.66));border:1px solid rgba(255,255,255,.95);
  box-shadow:0 16px 30px -22px rgba(13,27,51,.45);backdrop-filter:blur(10px)}
 .callout b{font-weight:700;color:var(--c)}
+.comet{opacity:0}
+body.anim .comet{opacity:1;animation:spin 8s linear infinite}
+body.anim .hitdot{animation:hitdot 8s ease-out infinite}
+body.anim .callout{animation:hitpill 8s ease-out infinite}
+body.anim .prod{animation:pfloat 4s ease-in-out infinite}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes hitdot{0%,100%{transform:scale(1)}5.5%{transform:scale(1.45)}14%{transform:scale(1)}}
+@keyframes hitpill{0%,100%{transform:translateY(-50%) scale(1);box-shadow:0 16px 30px -22px rgba(13,27,51,.45)}
+ 5.5%{transform:translateY(-50%) scale(1.07);box-shadow:0 0 0 3px var(--c),0 18px 34px -16px color-mix(in srgb,var(--c) 60%,transparent)}
+ 16%{transform:translateY(-50%) scale(1);box-shadow:0 16px 30px -22px rgba(13,27,51,.45)}}
+@keyframes pfloat{0%,100%{transform:var(--base) translateY(0)}50%{transform:var(--base) translateY(-9px)}}
 .moodbar{height:8px;border-radius:99px;background:linear-gradient(90deg,#F6AE8E,#8AD3BD 35%,#A3CCF0 66%,#C5B0F3)}
 """
 
@@ -58,6 +69,22 @@ RO = {
     "sleep":    dict(sig="Dein Signal für die Nacht.", air="<b>Ein Atemzug</b><br>und der Tag ist vorbei"),
 }
 
+LOOP = 8.0   # seconds: one full 360° turn of the signal comet
+
+def comet(cx, cy, r, c):
+    """Signal comet: bright head + fading tail on the ring. Hidden in stills, rotates in video (body.anim)."""
+    segs = ""
+    n = 14
+    for i in range(n):
+        a0 = -(i + 1) * 4.2; a1 = -i * 4.2           # tail behind the head (head at 0° = top)
+        p0 = (cx + r * math.sin(math.radians(a0)), cy - r * math.cos(math.radians(a0)))
+        p1 = (cx + r * math.sin(math.radians(a1)), cy - r * math.cos(math.radians(a1)))
+        segs += (f"<path d='M {p0[0]:.1f} {p0[1]:.1f} A {r} {r} 0 0 1 {p1[0]:.1f} {p1[1]:.1f}' fill='none' stroke='{c['c']}' "
+                 f"stroke-opacity='{(1 - i / n) ** 1.6:.2f}' stroke-width='{5 - 3 * i / n:.1f}' stroke-linecap='round'/>")
+    head = (f"<circle cx='{cx}' cy='{cy - r}' r='16' fill='{c['g']}' opacity='.55'/>"
+            f"<circle cx='{cx}' cy='{cy - r}' r='7' fill='#fff' stroke='{c['c']}' stroke-width='3'/>")
+    return f"<g class='comet' style='transform-origin:{cx}px {cy}px'>{segs}{head}</g>"
+
 def ring(st, W, D, bottle=False):
     c = S[st]; r = D / 2; cx = W / 2; cy = r + 30; H = D + 60
     def pt(deg):
@@ -83,6 +110,7 @@ def ring(st, W, D, bottle=False):
             f"<defs><linearGradient id='ag' x1='0' x2='1'><stop offset='0' stop-color='{c['c']}' stop-opacity='.55'/><stop offset='.5' stop-color='{c['c']}'/><stop offset='1' stop-color='{c['c']}' stop-opacity='.55'/></linearGradient></defs>"
             f"<path d='{arc(316, 44)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
             f"<path d='{arc(136, 224)}' fill='none' stroke='url(#ag)' stroke-width='3.2' stroke-linecap='round'/>"
+            + comet(cx, cy, r, c) +
             f"<defs><clipPath id='dc'><circle cx='{cx}' cy='{cy}' r='{r - 3}'/></clipPath></defs><g clip-path='url(#dc)'>"
             f"<path d='{d1}' fill='none' stroke='#fff' stroke-opacity='.85' stroke-width='1.6' stroke-linecap='round'/>"
             f"<path d='{d2}' fill='none' stroke='{c['c']}' stroke-width='1.8' stroke-linecap='round'/>"
@@ -91,22 +119,25 @@ def ring(st, W, D, bottle=False):
     if bottle:
         bh = D * 0.84
         img = (f"<img src='{A}nr-rollon-{st}-cut.png' style='position:absolute;left:50%;top:{cy - bh / 2 - 6:.0f}px;height:{bh:.0f}px;"
-               f"transform:translateX(-50%) rotate(9deg);z-index:2;filter:drop-shadow(0 36px 34px rgba(13,27,51,.28))'>")
+               f"--base:translateX(-50%) rotate(9deg);transform:var(--base);z-index:2;filter:drop-shadow(0 36px 34px rgba(13,27,51,.28))' class='prod'>")
     else:
         bh = D * 0.9
         img = (f"<img src='{A}nr-box-{st}-cut.png' style='position:absolute;left:50%;top:{cy - bh / 2 + 6:.0f}px;height:{bh:.0f}px;"
-               f"transform:translateX(-50%);z-index:2;filter:drop-shadow(0 34px 30px rgba(13,27,51,.30)) drop-shadow(0 4px 6px rgba(13,27,51,.15))'>")
+               f"--base:translateX(-50%);transform:var(--base);z-index:2;filter:drop-shadow(0 34px 30px rgba(13,27,51,.30)) drop-shadow(0 4px 6px rgba(13,27,51,.15))' class='prod'>")
     # layer 3/4: callout dots and labels
     dots = f"<svg width='{W}' height='{H}' style='position:absolute;left:0;top:0;z-index:3;overflow:visible'>"
     labels = ""
     for deg, t in calls:
         x, y = pt(deg)
-        dots += (f"<circle cx='{x:.1f}' cy='{y:.1f}' r='22' fill='{c['g']}' opacity='.45'/>"
+        dl = f"animation-delay:{deg / 360 * LOOP - 0.45 - LOOP:.2f}s"
+        dots += (f"<g class='hitdot' style='transform-origin:{x:.1f}px {y:.1f}px;{dl}'>"
+                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='22' fill='{c['g']}' opacity='.45'/>"
                  f"<circle cx='{x:.1f}' cy='{y:.1f}' r='13' fill='#fff'/>"
-                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='{c['c']}'/>")
+                 f"<circle cx='{x:.1f}' cy='{y:.1f}' r='8' fill='{c['c']}'/></g>")
         left = deg > 180; gap = 28
         style = (f"right:{W - x + gap:.0f}px;text-align:right" if left else f"left:{x + gap:.0f}px")
-        labels += (f"<div class='callout' style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - gap if left else W - x - gap:.0f}px'>{t}</div>")
+        labels += (f"<div class='callout' style='position:absolute;{style};top:{y:.0f}px;transform:translateY(-50%);max-width:{x - gap if left else W - x - gap:.0f}px;"
+                   f"transform-origin:{'right' if left else 'left'} center;{dl}'>{t}</div>")
     dots += "</svg>"
     return f"<div style='position:relative;width:{W}px;height:{H}px;margin:0 auto'>{disc}{back}{img}{dots}{labels}</div>"
 

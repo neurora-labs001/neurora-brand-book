@@ -47,3 +47,12 @@ Before launch: claims marked in the strategy doc (§9) still need Claims Registe
   Es gibt zusätzlich animierte Versionen: Das ❓ wackelt, wird kurz größer und leuchtet auf, als Loop von 4,8 s. Dateien: `video-4x5/` und `video-9x16/` (MP4, H.264). In Meta als Video-Anzeige hochladen, mit denselben Texten wie die Standbilder. Skript: `source/anim.js`.
 - **Runde 5, Callouts 18/19**: „Duft mit Funktion · wissenschaftliche Formel“ ersetzt „Rund 95 Rituale“. Dazu „Immer dabei · 10 ml für jede Tasche“, „Ein Atemzug · und der Tag beginnt / dann tauchst du ab / ab jetzt ist Feierabend / und der Tag ist vorbei“ und „30 Tage testen · Passt nicht? Geld zurück.“ Die Punkte sitzen flacher am Ring, damit alle Pills zweizeilig passen.
   **Claims-Check offen:** „wissenschaftliche Formel“ vor dem Livegang im Claims Register freigeben lassen. Live freigegeben ist auf der Seite „Auf Wissenschaft gebaut“.
+
+## Animierte Video-Anzeigen (20.11.2026)
+
+22 MP4s (H.264, 30 fps), je in `video-4x5/` und `video-9x16/`:
+
+- **01–03 Vorher/Nachher (7 s)**: Die Signal Line zeichnet sich von links nach rechts, erst die unruhige Vorher-Geste, dann die ruhige Nachher-Geste. Die O-Marke ploppt am Wechsel auf und atmet danach. Der Endpunkt leuchtet auf. Die ❓-Pille schwebt, das ❓ wackelt und leuchtet. In 9:16 zeichnet sich zusätzlich die Band-Linie unten.
+- **18a–d und 19a–d Roll-On-Ring (8 s, nahtloser Loop)**: Ein Signal-Komet mit Leuchtschweif läuft einmal 360° um den Ring. Erreicht er einen Benefit-Punkt, pulsiert der Punkt und die Benefit-Pille hebt sich mit Zustandsfarb-Kontur hervor (Reihenfolge: Ein Atemzug → 30 Tage → Immer dabei → Duft mit Funktion). Das Produkt schwebt leicht.
+
+Die Animation ist nur im Video-Render aktiv (`body.anim`), die JPG-Standbilder bleiben unverändert. Neu rendern: `node source/anim.js <filter> <sekunden>`.

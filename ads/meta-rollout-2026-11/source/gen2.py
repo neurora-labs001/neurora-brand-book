@@ -45,6 +45,18 @@ h1 .acc{color:var(--c);display:block}
 .chip .arr{margin-left:auto;font-size:36px;color:var(--c);font-weight:300}
 .btn{display:inline-flex;align-items:center;gap:16px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:28px 46px;font-size:28px;font-weight:600;min-height:96px}
 .grow{flex:1 1 0;min-height:0}
+/* video-only motion: active when the renderer adds body.anim */
+body.anim .sig-b,body.anim .band-b{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.3s cubic-bezier(.45,0,.2,1) .4s forwards}
+body.anim .sig-a,body.anim .band-a{stroke-dasharray:1;stroke-dashoffset:1;animation:draw 1.5s cubic-bezier(.3,0,.2,1) 1.9s forwards}
+body.anim .sig-o,body.anim .band-o{transform-box:fill-box;transform-origin:center;animation:opop .7s cubic-bezier(.3,1.6,.5,1) 1.55s both,obreathe 2.6s ease-in-out 2.3s infinite}
+body.anim .sig-end{transform-box:fill-box;transform-origin:center;animation:opop .6s cubic-bezier(.3,1.6,.5,1) 3.3s both,obreathe 2.6s ease-in-out 3.9s infinite}
+body.anim .sig-start{animation:fadein .4s ease .2s both}
+body.anim .qbadge{animation:qfloat 3.5s ease-in-out infinite}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes opop{0%{transform:scale(0);opacity:0}100%{transform:scale(1);opacity:1}}
+@keyframes obreathe{0%,100%{transform:scale(1)}50%{transform:scale(1.18)}}
+@keyframes fadein{from{opacity:0}to{opacity:1}}
+@keyframes qfloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
 .qbadge{display:inline-flex;align-items:center;gap:12px;background:#0D1B33;color:#F6F3EC;border-radius:999px;padding:10px 14px 10px 28px;font-size:22px;font-weight:600;letter-spacing:.16em;
  box-shadow:0 0 0 7px color-mix(in srgb,var(--g) 40%,transparent),0 16px 30px -16px rgba(13,27,51,.55)}
 .qbadge .q{font-family:'Noto Color Emoji';font-size:34px;letter-spacing:0;line-height:1;display:inline-block;transform:rotate(14deg);
@@ -66,8 +78,8 @@ def band(st):
     d1 = "M 60 %d" % y + gesture_before(st, 60, 430, y); d2 = "M 482 %d" % y + gesture_after(st, 482, 1020, y)
     dots = "".join("<circle cx='%d' cy='150' r='8' fill='%s'/>" % (60 + i * 30, S[k]['c']) for i, k in enumerate(("activate", "focus", "calm", "sleep")))
     return ("<svg style='position:absolute;left:0;bottom:120px;z-index:0;opacity:.55' width='1080' height='190' viewBox='0 0 1080 190'>"
-            "<path d='%s' fill='none' stroke='%s' stroke-opacity='.5' stroke-width='3' stroke-linecap='round'/>"
-            "<path d='%s' fill='none' stroke='%s' stroke-width='4' stroke-linecap='round'/>%s%s</svg>") % (d1, c['c'], d2, c['c'], o_mark(456, y, st, 20), dots)
+            "<path class='band-b' pathLength='1' d='%s' fill='none' stroke='%s' stroke-opacity='.5' stroke-width='3' stroke-linecap='round'/>"
+            "<path class='band-a' pathLength='1' d='%s' fill='none' stroke='%s' stroke-width='4' stroke-linecap='round'/><g class='band-o'>%s</g>%s</svg>") % (d1, c['c'], d2, c['c'], o_mark(456, y, st, 20), dots)
 
 def page(title, st, fmt, body, css=""):
     c = S[st]

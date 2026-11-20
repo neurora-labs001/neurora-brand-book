@@ -87,11 +87,11 @@ def signal_bridge(st, W, top=20, drop=120, lx=None, rx=None):
     yl = float(after_g.split()[-1])
     after = f"M {ox+24:.1f} {y:.1f}" + after_g + f" Q {rx:.1f} {yl:.1f} {rx:.1f} {yl+rad:.1f} L {rx:.1f} {top+drop:.1f}"
     return (f"<svg class='bridge' viewBox='0 0 {W} {top+drop+16}' width='{W}' height='{top+drop+16}' style='overflow:visible'>"
-            f"<path d='{before}' fill='none' stroke='{c['c']}' stroke-opacity='.42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>"
-            f"<path d='{after}' fill='none' stroke='{c['c']}' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/>"
-            f"<circle cx='{lx}' cy='{top+drop}' r='6' fill='#FAF9F6' stroke='{c['c']}' stroke-opacity='.5' stroke-width='2'/>"
-            f"<circle cx='{rx}' cy='{top+drop}' r='14' fill='{c['g']}' opacity='.4'/><circle cx='{rx}' cy='{top+drop}' r='7.5' fill='{c['c']}'/>"
-            f"{o_mark(ox, y, st)}</svg>")
+            f"<path class='sig-b' pathLength='1' d='{before}' fill='none' stroke='{c['c']}' stroke-opacity='.42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/>"
+            f"<path class='sig-a' pathLength='1' d='{after}' fill='none' stroke='{c['c']}' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'/>"
+            f"<circle class='sig-start' cx='{lx}' cy='{top+drop}' r='6' fill='#FAF9F6' stroke='{c['c']}' stroke-opacity='.5' stroke-width='2'/>"
+            f"<g class='sig-end'><circle cx='{rx}' cy='{top+drop}' r='14' fill='{c['g']}' opacity='.4'/><circle cx='{rx}' cy='{top+drop}' r='7.5' fill='{c['c']}'/></g>"
+            f"<g class='sig-o'>{o_mark(ox, y, st)}</g></svg>")
 
 def signal_inline(st, W, H=70, ox_frac=0.36, color=None):
     c = S[st]; y = H / 2; ox = W * ox_frac
